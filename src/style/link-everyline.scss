@@ -1,0 +1,20 @@
+a {
+  text-decoration: none;
+  color: darken(antiquewhite, 90%);
+  font-size: 20px;
+  letter-spacing: 2px;
+  .every-line {
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transition: transform 0.4s ease-out;
+    background-color: darken(antiquewhite, 90%);
+    opacity: 0.7;
+  }
+  &:hover .every-line,
+  .every-line.active {
+    transform: scaleX(1);
+    transform-origin: center center;
+    transition: transform 0.4s ease-out;
+  }
+}

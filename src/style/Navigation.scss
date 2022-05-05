@@ -1,0 +1,46 @@
+@import "./link-everyline.scss";
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 4%;
+  width: 30%;
+  height: 100%;
+  z-index: 3000;
+  overflow: hidden;
+  .logo {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 160px;
+    font-weight: 500;
+    opacity: 0.92;
+    color: darken(antiquewhite, 90%);
+  }
+  &__list {
+    position: absolute;
+    top: 47%;
+    left: 20%;
+    list-style: none;
+    // visibility: hidden;
+    transition: visibility 0.3s;
+    &-item {
+      padding-bottom: 80px;
+      &-link {
+        position: absolute;
+        letter-spacing: 10px;
+        font-size: 60px;
+        font-weight: 400;
+        .every-line {
+          transition-duration: 0.6s;
+          height: 2px;
+        }
+      }
+    }
+    .link.opacity {
+      color: darken(antiquewhite, 90%);
+      opacity: 0.9;
+    }
+  }
+}

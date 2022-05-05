@@ -1,0 +1,18 @@
+.main-section{
+position: relative;
+width: 300vw;
+height: 100vh;
+left: 100vw;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+
+.main-section__page-1{
+    background-color: red;
+
+}
+.main-section__page-2{
+background-color: green;
+
+}
+
+}

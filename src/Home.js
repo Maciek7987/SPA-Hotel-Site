@@ -3,6 +3,9 @@ import Main from "./layouts/Main";
 import Navigation from "./layouts/Navigation";
 import "./style/Home.scss";
 
+//try import library to scroll
+import HorizontalScroll from "react-scroll-horizontal";
+
 const handelToggle = (e, link) => {
   if (link) {
     [...link.current.children].forEach((item) => {
@@ -18,7 +21,12 @@ const Home = () => {
   return (
     <>
       <section className="home-page">
-        <Main />
+        <HorizontalScroll
+          pageLock={true}
+          config={{ stiffness: 28, damping: 10 }}
+        >
+          <Main/>
+        </HorizontalScroll>
         <Navigation />
         <Footer handelToggle={handelToggle} />
       </section>

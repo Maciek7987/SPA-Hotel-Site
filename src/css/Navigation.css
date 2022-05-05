@@ -1,0 +1,85 @@
+a {
+  text-decoration: none;
+  color: #050301;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+a .every-line {
+  width: 100%;
+  height: 1px;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.4s ease-out;
+  transition: -webkit-transform 0.4s ease-out;
+  transition: transform 0.4s ease-out;
+  transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+  background-color: #050301;
+  opacity: 0.7;
+}
+
+a:hover .every-line,
+a .every-line.active {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: -webkit-transform 0.4s ease-out;
+  transition: -webkit-transform 0.4s ease-out;
+  transition: transform 0.4s ease-out;
+  transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+}
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 4%;
+  width: 30%;
+  height: 100%;
+  z-index: 3000;
+  overflow: hidden;
+}
+
+.navigation .logo {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 160px;
+  font-weight: 500;
+  opacity: 0.92;
+  color: #050301;
+}
+
+.navigation__list {
+  position: absolute;
+  top: 47%;
+  left: 20%;
+  list-style: none;
+  -webkit-transition: visibility 0.3s;
+  transition: visibility 0.3s;
+}
+
+.navigation__list-item {
+  padding-bottom: 80px;
+}
+
+.navigation__list-item-link {
+  position: absolute;
+  letter-spacing: 10px;
+  font-size: 60px;
+  font-weight: 400;
+}
+
+.navigation__list-item-link .every-line {
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+  height: 2px;
+}
+
+.navigation__list .link.opacity {
+  color: #050301;
+  opacity: 0.9;
+}
+/*# sourceMappingURL=Navigation.css.map */

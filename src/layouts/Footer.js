@@ -1,10 +1,11 @@
 import "../style/Footer.scss";
 import { useRef } from "react";
 
-const Footer = ({ handelToggle }) => {
+const Footer = ({ handelToggle}) => {
   const link = useRef();
 
   const ArryLinks = ({ linkName }) => {
+    
     return (
       <a
         onClick={(e) => {

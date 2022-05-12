@@ -1,12 +1,11 @@
 import "../style/Footer.scss";
-import { useRef } from "react";
 
 const Footer = ({ handelToggle }) => {
-  const link = useRef();
+  let link = document.querySelector("nav.footer__navigation");
 
   return (
     <footer className="footer">
-      <nav ref={link} className="footer__navigation">
+      <nav className="footer__navigation">
         <a
           onClick={(e) => {
             handelToggle(e, link);

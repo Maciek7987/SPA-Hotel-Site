@@ -58,7 +58,7 @@ a .every-line.active {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   opacity: 1;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
 }
 /*# sourceMappingURL=Footer.css.map */

@@ -93,6 +93,7 @@ class Home extends Component {
         matrix.m41 === this.horizontalScroll.current.state.animValues - 1 // if in handleToggle has been subtracted
       ) {
         link.style.opacity = "1";
+        link.style.pointerEvents = "";
 
         toShowLinks = true;
         toHome = matrix.m41 * -1;
@@ -105,7 +106,8 @@ class Home extends Component {
           toMenu,
         };
       } else {
-        link.style.opacity = "0";
+        link.style.opacity = "0.6";
+        link.style.pointerEvents = "none";
 
         toShowLinks = false;
       }

@@ -5,13 +5,13 @@ height: 100vh;
 left: 100vw;
 display: grid;
 grid-template-columns: repeat(2, 1fr);
-
+background-image: url("../pictures/pexels-cottonbro-3-cut.jpg");
+filter: contrast(115%);
 .main-section__page-1{
-    background-color: red;
-
+    // background-color: darken(rgb(43, 41, 40), 2)
 }
 .main-section__page-2{
-background-color: green;
+// background-color: darken(rgb(43, 41, 40), 2)
 
 }
 

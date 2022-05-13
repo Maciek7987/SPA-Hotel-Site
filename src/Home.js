@@ -1,6 +1,6 @@
 import { Component, createRef } from "react";
 import HorizontalScroll from "react-scroll-horizontal";
-
+import video from "./videos/pexels-cottonbro-main.mp4";
 import "./style/Home.scss";
 import Footer from "./layouts/Footer";
 import Main from "./layouts/Main";
@@ -27,7 +27,6 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.homePage = createRef();
-    this.pauseScrollElement = createRef();
     this.horizontalScroll = createRef();
     this.state = {
       animValue: 0,
@@ -93,9 +92,7 @@ class Home extends Component {
         matrix.m41 === this.horizontalScroll.current.state.animValues ||
         matrix.m41 === this.horizontalScroll.current.state.animValues - 1 // if in handleToggle has been subtracted
       ) {
-        [...link.children].forEach((item) => {
-          item.style.color = "blue";
-        });
+        link.style.opacity = "1";
 
         toShowLinks = true;
         toHome = matrix.m41 * -1;
@@ -108,9 +105,7 @@ class Home extends Component {
           toMenu,
         };
       } else {
-        [...link.children].forEach((item) => {
-          item.style.color = "yellow";
-        });
+        link.style.opacity = "0";
 
         toShowLinks = false;
       }
@@ -146,15 +141,18 @@ class Home extends Component {
         logicOfScroll("observer");
       });
     });
-    observer.observe(target, { attributes: true, attributeFilter: ["style"] });
+    observer.observe(target, {
+      attributes: true,
+      attributeFilter: ["style"],
+    });
   }
 
   render() {
     return (
       <>
-        <div ref={this.pauseScrollElement} className="pauseScrollElement">
-          chuj
-        </div>
+        {/* <div className="loading-screen">
+          <div className="spinner"></div>
+        </div> */}
         <section ref={this.homePage} className="home-page">
           <HorizontalScroll
             ref={this.horizontalScroll}
@@ -165,6 +163,9 @@ class Home extends Component {
           >
             <Main />
           </HorizontalScroll>
+          <video className="home-video" loop autoPlay muted>
+            <source src={video} type="video/mp4" />
+          </video>
           <Navigation handleReset={this.resetStateAnimValue} />
           <Footer handelToggle={this.handelToggle} />
         </section>

@@ -7,13 +7,8 @@
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
-}
-
-.main-section .main-section__page-1 {
-  background-color: red;
-}
-
-.main-section .main-section__page-2 {
-  background-color: green;
+  background-image: url("../pictures/pexels-cottonbro-3-cut.jpg");
+  -webkit-filter: contrast(115%);
+          filter: contrast(115%);
 }
 /*# sourceMappingURL=Main.css.map */

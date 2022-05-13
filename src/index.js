@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./style/index.scss";
 import Home from "./Home";
 import Book from "./subpages/Book";
@@ -8,10 +8,11 @@ import Rooms from "./subpages/Rooms";
 import Spa from "./subpages/Spa";
 import Contact from "./subpages/Contact";
 const root = document.getElementById("root");
+
 ReactDOM.render(
   <Router>
     <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/" element={<Home />} />
       <Route path="book" element={<Book />} />
       <Route path="rooms" element={<Rooms />} />
       <Route path="restaurants" element={<Restaurants />} />
@@ -21,3 +22,8 @@ ReactDOM.render(
   </Router>,
   root
 );
+// window.addEventListener("load", () => {
+//   const loadScreen = document.querySelector(".loading-screen");
+//   loadScreen.style.display = "none";
+//   console.log("załadowane");
+// });

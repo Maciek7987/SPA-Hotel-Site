@@ -15,6 +15,7 @@
     height: 100%;
     align-items: center;
     justify-content: space-evenly;
-    
+    opacity: 1;
+    transition: opacity 0.2s;
   }
 }

@@ -1,20 +1,22 @@
+import { Component, createRef } from "react";
+import HorizontalScroll from "react-scroll-horizontal";
+
+import "./style/Home.scss";
 import Footer from "./layouts/Footer";
 import Main from "./layouts/Main";
 import Navigation from "./layouts/Navigation";
-import "./style/Home.scss";
-
-//try import library to scroll
-import HorizontalScroll from "react-scroll-horizontal";
-import { Component, createRef } from "react";
 
 let whichPageWeAre = "home";
 let toShowLinks = true;
 let offSetWidth = window.innerWidth;
 
+//valuesToStopScroll is a initial variable hold number of pixeles since left side of window
 let valuesToStopScroll = {
   lobby: -offSetWidth,
   menu: -(2 * offSetWidth),
 };
+
+//valuesToPages is a variable hold number of pixels to next site, which left after scroll
 let valuesToPages = {
   toHome: 0,
   toLobby: valuesToStopScroll.lobby,
@@ -26,7 +28,7 @@ class Home extends Component {
     super(props);
     this.homePage = createRef();
     this.pauseScrollElement = createRef();
-    this.dsfds = createRef();
+    this.horizontalScroll = createRef();
     this.state = {
       animValue: 0,
     };
@@ -42,7 +44,8 @@ class Home extends Component {
     toShowLinks = true;
   };
 
-  handelToggle = (e, link, matrix) => {
+  handelToggle = (e, link) => {
+    //if is e-vent it means it's after click
     if (e) {
       switch (e.target.className) {
         case "home":
@@ -52,6 +55,7 @@ class Home extends Component {
           this.setState({ animValue: valuesToPages.toLobby });
           break;
         case "menu":
+          //new animValue shoud be diffrent than current aniValue
           if (this.state.animValue == valuesToPages.toMenu) {
             this.setState({ animValue: valuesToPages.toMenu - 1 });
           } else {
@@ -60,12 +64,13 @@ class Home extends Component {
           break;
       }
     }
+    //link variable shoud be for every call
     if (link) {
       [...link.children].forEach((item) => {
         if (item.children[0].classList.contains("active")) {
           item.children[0].classList.remove("active");
         }
-
+        //add active class to element which has class witchPageWeAre
         if (item.classList.contains(whichPageWeAre)) {
           item.children[0].classList.add("active");
         }
@@ -76,29 +81,23 @@ class Home extends Component {
   componentDidMount() {
     const target = this.homePage.current.firstChild.firstChild;
     const style = window.getComputedStyle(target);
-    let matrix;
-    let toHome;
-    let toLobby;
-    let toMenu;
-    let link = document.querySelector("nav.footer__navigation");
+    const link = document.querySelector("nav.footer__navigation");
+    let matrix, toHome, toLobby, toMenu;
 
-    window.addEventListener("resize", () => {
-      offSetWidth = window.innerWidth;
-      valuesToStopScroll = {
-        lobby: -offSetWidth,
-        menu: -(2 * offSetWidth),
-      };
-
+    const logicOfScroll = (name) => {
       matrix = new DOMMatrix(style.transform);
 
+      //check matrix.m41 that is increased or decreased is the same than value end of scroll
+      //true value means that translate isn't change
       if (
-        matrix.m41 === this.dsfds.current.state.animValues ||
-        matrix.m41 === this.dsfds.current.state.animValues - 1
+        matrix.m41 === this.horizontalScroll.current.state.animValues ||
+        matrix.m41 === this.horizontalScroll.current.state.animValues - 1 // if in handleToggle has been subtracted
       ) {
-        toShowLinks = true;
         [...link.children].forEach((item) => {
           item.style.color = "blue";
         });
+
+        toShowLinks = true;
         toHome = matrix.m41 * -1;
         toLobby = valuesToStopScroll.lobby - matrix.m41;
         toMenu = valuesToStopScroll.menu - matrix.m41;
@@ -109,14 +108,19 @@ class Home extends Component {
           toMenu,
         };
       } else {
-        toShowLinks = false;
         [...link.children].forEach((item) => {
           item.style.color = "yellow";
         });
+
+        toShowLinks = false;
       }
 
-      if (matrix.m41 < valuesToStopScroll.menu) {
-        this.setState({ animValue: -(matrix.m41 - valuesToStopScroll.menu) });
+      //protection from error when page is behind window after resize
+      if (matrix.m41 < valuesToStopScroll.menu && name == "resize") {
+        console.log(matrix.m41 - valuesToStopScroll.menu);
+        this.setState({
+          animValue: -(matrix.m41 - valuesToStopScroll.menu),
+        });
       }
 
       if (matrix.m41 <= 0) whichPageWeAre = "home";
@@ -126,46 +130,22 @@ class Home extends Component {
         whichPageWeAre = "menu";
 
       this.handelToggle(null, link, matrix.m41);
+    };
+
+    window.addEventListener("resize", () => {
+      offSetWidth = window.innerWidth;
+      valuesToStopScroll = {
+        lobby: -offSetWidth,
+        menu: -(2 * offSetWidth),
+      };
+      logicOfScroll("resize");
     });
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach(() => {
-        matrix = new DOMMatrix(style.transform);
-
-        if (
-          matrix.m41 === this.dsfds.current.state.animValues ||
-          matrix.m41 === this.dsfds.current.state.animValues - 1
-        ) {
-          toShowLinks = true;
-          [...link.children].forEach((item) => {
-            item.style.color = "blue";
-          });
-          toHome = matrix.m41 * -1;
-          toLobby = valuesToStopScroll.lobby - matrix.m41;
-          toMenu = valuesToStopScroll.menu - matrix.m41;
-
-          valuesToPages = {
-            toHome,
-            toLobby,
-            toMenu,
-          };
-        } else {
-          toShowLinks = false;
-          [...link.children].forEach((item) => {
-            item.style.color = "yellow";
-          });
-        }
-
-        if (matrix.m41 <= 0) whichPageWeAre = "home";
-        if (matrix.m41 < (valuesToStopScroll.lobby * 80) / 100)
-          whichPageWeAre = "lobby";
-        if (matrix.m41 < (valuesToStopScroll.menu * 80) / 100)
-          whichPageWeAre = "menu";
-
-        this.handelToggle(null, link);
+        logicOfScroll("observer");
       });
     });
-
     observer.observe(target, { attributes: true, attributeFilter: ["style"] });
   }
 
@@ -177,8 +157,7 @@ class Home extends Component {
         </div>
         <section ref={this.homePage} className="home-page">
           <HorizontalScroll
-            ref={this.dsfds}
-            pageLock={true}
+            ref={this.horizontalScroll}
             reverseScroll={true}
             className={"horizontal-scroll"}
             config={{ stiffness: 28, damping: 10 }}

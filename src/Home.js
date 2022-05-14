@@ -1,13 +1,13 @@
 import { Component, createRef } from "react";
 import HorizontalScroll from "react-scroll-horizontal";
-import video from "./videos/pexels-cottonbro-main.mp4";
+import video from "./videos/pexels-cottonbro-main-xs.mp4";
 import "./style/Home.scss";
 import Footer from "./layouts/Footer";
 import Main from "./layouts/Main";
 import Navigation from "./layouts/Navigation";
 
 let whichPageWeAre = "home";
-let toShowLinks = true;
+
 let offSetWidth = window.innerWidth;
 
 //valuesToStopScroll is a initial variable hold number of pixeles since left side of window
@@ -40,7 +40,6 @@ class Home extends Component {
       toLobby: valuesToStopScroll.lobby,
       toMenu: valuesToStopScroll.menu,
     };
-    toShowLinks = true;
   };
 
   handelToggle = (e, link) => {
@@ -55,12 +54,14 @@ class Home extends Component {
           break;
         case "menu":
           //new animValue shoud be diffrent than current aniValue
-          if (this.state.animValue == valuesToPages.toMenu) {
+          if (this.state.animValue === valuesToPages.toMenu) {
             this.setState({ animValue: valuesToPages.toMenu - 1 });
           } else {
             this.setState({ animValue: valuesToPages.toMenu });
           }
           break;
+        default:
+          console.log("You must click");
       }
     }
     //link variable shoud be for every call
@@ -95,7 +96,6 @@ class Home extends Component {
         link.style.opacity = "1";
         link.style.pointerEvents = "";
 
-        toShowLinks = true;
         toHome = matrix.m41 * -1;
         toLobby = valuesToStopScroll.lobby - matrix.m41;
         toMenu = valuesToStopScroll.menu - matrix.m41;
@@ -108,12 +108,10 @@ class Home extends Component {
       } else {
         link.style.opacity = "0.6";
         link.style.pointerEvents = "none";
-
-        toShowLinks = false;
       }
 
       //protection from error when page is behind window after resize
-      if (matrix.m41 < valuesToStopScroll.menu && name == "resize") {
+      if (matrix.m41 < valuesToStopScroll.menu && name === "resize") {
         console.log(matrix.m41 - valuesToStopScroll.menu);
         this.setState({
           animValue: -(matrix.m41 - valuesToStopScroll.menu),
@@ -165,7 +163,7 @@ class Home extends Component {
           >
             <Main />
           </HorizontalScroll>
-          <video className="home-video" loop autoPlay muted>
+          <video className="lazysizes" loop autoPlay muted>
             <source src={video} type="video/mp4" />
           </video>
           <Navigation handleReset={this.resetStateAnimValue} />

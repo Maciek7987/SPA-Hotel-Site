@@ -4,7 +4,7 @@
   height: 100vh;
 }
 
-.home-page .home-video {
+.home-page .lazysizes {
   z-index: -1;
   position: absolute;
   top: -10vh;

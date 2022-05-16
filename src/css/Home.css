@@ -9,5 +9,7 @@
   position: absolute;
   top: -10vh;
   width: 100%;
+  -webkit-filter: contrast(111%);
+          filter: contrast(111%);
 }
 /*# sourceMappingURL=Home.css.map */

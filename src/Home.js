@@ -82,17 +82,36 @@ class Home extends Component {
     const target = this.homePage.current.firstChild.firstChild;
     const style = window.getComputedStyle(target);
     const link = document.querySelector("nav.footer__navigation");
+    const lobbyImg = document.querySelector(".main-section__page-1-image-1");
+    let lobbyImgTranslateX = 0;
     let matrix, toHome, toLobby, toMenu;
+
+    // window.addEventListener("wheel", (e) => {});
 
     const logicOfScroll = (name) => {
       matrix = new DOMMatrix(style.transform);
 
-      //check matrix.m41 that is increased or decreased is the same than value end of scroll
-      //true value means that translate isn't change
+      // if (
+      //   matrix.m41 < this.horizontalScroll.current.state.animValues &&
+      //   lobbyImgTranslateX < 8.5
+      // ) {
+      //   lobbyImgTranslateX += 0.01;
+      //   lobbyImg.style.transform = `translateX(${lobbyImgTranslateX}%)`;
+      // } else if (
+      //   matrix.m41 >
+      //   this.horizontalScroll.current.state.animValues >
+      //   -8.5
+      // ) {
+      //   lobbyImgTranslateX -= 0.01;
+      //   lobbyImg.style.transform = `translateX(${lobbyImgTranslateX}%)`;
+      // }
+
       if (
         matrix.m41 === this.horizontalScroll.current.state.animValues ||
         matrix.m41 === this.horizontalScroll.current.state.animValues - 1 // if in handleToggle has been subtracted
       ) {
+        //check matrix.m41 that is increased or decreased is the same than value end of scroll
+        //true value means that translate isn't change
         link.style.opacity = "1";
         link.style.pointerEvents = "";
 

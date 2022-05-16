@@ -7,8 +7,73 @@
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
-  -webkit-filter: contrast(115%);
-          filter: contrast(115%);
-  background-image: url("../pictures/pexels-cottonbro-3-cut.avif");
+  background-color: antiquewhite;
+}
+
+.main-section .main-section__page-1 {
+  position: relative;
+}
+
+.main-section .main-section__page-1 .bgc-color-1 {
+  position: absolute;
+  width: 65%;
+  height: 95%;
+  right: 2%;
+  top: 2.5%;
+  background-color: #f7e0c0;
+}
+
+.main-section .main-section__page-1 .bgc-color-2 {
+  position: absolute;
+  width: 56%;
+  height: 80%;
+  right: 0;
+  top: 0;
+  margin: 3% 3%;
+  background-color: rgba(250, 235, 215, 0.552);
+}
+
+.main-section .main-section__page-1 .bgc-color-2 h2 {
+  width: 20%;
+  font-size: 6rem;
+  font-weight: 300;
+  text-transform: capitalize;
+  color: #492e09;
+  padding: 2%;
+  line-height: 100%;
+  letter-spacing: 2px;
+  text-shadow: 1.25px 0 0 black;
+}
+
+.main-section .main-section__page-1 .wrapper {
+  position: absolute;
+  height: 100%;
+  width: 55%;
+  bottom: 2%;
+  right: 2%;
+  z-index: 2;
+  background-color: green;
+  overflow: hidden;
+}
+
+.main-section .main-section__page-1 .wrapper .main-section__page-1-image-1 {
+  width: 120%;
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  -webkit-filter: brightness(90%);
+          filter: brightness(90%);
+  -webkit-transform: translateX(2.5%);
+          transform: translateX(2.5%);
+}
+
+.main-section .main-section__page-1 .main-section__page-1-image-2 {
+  position: absolute;
+  width: 80%;
+  right: 30%;
+  top: 35%;
+  z-index: 1;
+  -webkit-filter: brightness(50%) contrast(112%);
+          filter: brightness(50%) contrast(112%);
 }
 /*# sourceMappingURL=Main.css.map */

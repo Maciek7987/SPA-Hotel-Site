@@ -12,4 +12,22 @@
   -webkit-filter: contrast(111%);
           filter: contrast(111%);
 }
+
+.home-page .infoAboutScroll {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  text-orientation: sideways;
+  color: #B85042;
+  z-index: 4;
+  font-family: sans-serif;
+}
 /*# sourceMappingURL=Home.css.map */

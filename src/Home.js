@@ -187,6 +187,7 @@ class Home extends Component {
           </video>
           <Navigation handleReset={this.resetStateAnimValue} />
           <Footer handelToggle={this.handelToggle} />
+          <div className="infoAboutScroll">scroll to explore</div>
         </section>
       </>
     );

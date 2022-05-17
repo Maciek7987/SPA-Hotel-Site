@@ -76,4 +76,18 @@
   -webkit-filter: brightness(50%) contrast(112%);
           filter: brightness(50%) contrast(112%);
 }
+
+.main-section .main-section__page-1 .description {
+  position: absolute;
+  bottom: 3%;
+  left: -2.5%;
+  width: 40%;
+  font-size: 3.2rem;
+  font-weight: 200;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 3px 0 0 black;
+  z-index: 3;
+}
 /*# sourceMappingURL=Main.css.map */

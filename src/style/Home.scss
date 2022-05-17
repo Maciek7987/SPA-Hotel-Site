@@ -14,6 +14,20 @@
     width: 100%;
     filter: contrast(111%);
   }
+  .infoAboutScroll{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transform: translateY(-50%);
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    color: #B85042;
+    z-index: 4;
+    font-family:  sans-serif;
+  }
 }
 // .loading-screen{
 //   position: fixed;

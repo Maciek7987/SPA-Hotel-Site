@@ -21,6 +21,10 @@ const Main = () => {
             src={plantsImg}
             alt="plants-background-image"
           />
+          <p className="description">
+            "Truth, when it is more difficult, is more pleasant, and knowledge
+            that costs is more valued."
+          </p>
         </div>
       </article>
       <article className="main-section__page-2"></article>

@@ -3,14 +3,14 @@
 .navigation {
   position: fixed;
   top: 0;
-  left: 4%;
+  left: 3.5%;
   width: 30%;
   height: 100%;
   z-index: 3000;
   overflow: hidden;
   .logo {
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 160px;
@@ -23,8 +23,7 @@
     top: 47%;
     left: 20%;
     list-style: none;
-    // visibility: hidden;
-    transition: visibility 0.3s;
+    transition: visibility 0.5s, opacity 0.5s;
     &-item {
       padding-bottom: 80px;
       &-link {
@@ -37,10 +36,6 @@
           height: 2px;
         }
       }
-    }
-    .link.opacity {
-      color: darken(antiquewhite, 90%);
-      opacity: 0.9;
     }
   }
 }

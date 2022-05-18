@@ -82,30 +82,15 @@ class Home extends Component {
     const target = this.homePage.current.firstChild.firstChild;
     const style = window.getComputedStyle(target);
     const link = document.querySelector("nav.footer__navigation");
-    const lobbyImg = document.querySelector(".main-section__page-1-image-1");
-    let lobbyImgTranslateX = 0;
+    const list = document.querySelector("ul.navigation__list");
+    const lobbyImg = document.querySelector(".main-section__page-1-lobby");
+    // let lobbyImgTranslateX = 0;
     let matrix, toHome, toLobby, toMenu;
 
     // window.addEventListener("wheel", (e) => {});
 
     const logicOfScroll = (name) => {
       matrix = new DOMMatrix(style.transform);
-
-      // if (
-      //   matrix.m41 < this.horizontalScroll.current.state.animValues &&
-      //   lobbyImgTranslateX < 8.5
-      // ) {
-      //   lobbyImgTranslateX += 0.01;
-      //   lobbyImg.style.transform = `translateX(${lobbyImgTranslateX}%)`;
-      // } else if (
-      //   matrix.m41 >
-      //   this.horizontalScroll.current.state.animValues >
-      //   -8.5
-      // ) {
-      //   lobbyImgTranslateX -= 0.01;
-      //   lobbyImg.style.transform = `translateX(${lobbyImgTranslateX}%)`;
-      // }
-
       if (
         matrix.m41 === this.horizontalScroll.current.state.animValues ||
         matrix.m41 === this.horizontalScroll.current.state.animValues - 1 // if in handleToggle has been subtracted
@@ -137,11 +122,21 @@ class Home extends Component {
         });
       }
 
-      if (matrix.m41 <= 0) whichPageWeAre = "home";
-      if (matrix.m41 < (valuesToStopScroll.lobby * 80) / 100)
-        whichPageWeAre = "lobby";
-      if (matrix.m41 < (valuesToStopScroll.menu * 80) / 100)
+      if (matrix.m41 < (valuesToStopScroll.menu * 80) / 100) {
+        list.style.visibility = "none";
+        list.style.opacity = "1";
         whichPageWeAre = "menu";
+      } else if (matrix.m41 < (valuesToStopScroll.lobby * 80) / 100) {
+        list.style.visibility = "visible";
+        list.style.opacity = "0";
+        lobbyImg.style.transform = "scale(91%)";
+        whichPageWeAre = "lobby";
+      } else if (matrix.m41 <= 0) {
+        list.style.visibility = "none";
+        list.style.opacity = "1";
+        lobbyImg.style.transform = "scale(100%)";
+        whichPageWeAre = "home";
+      }
 
       this.handelToggle(null, link, matrix.m41);
     };

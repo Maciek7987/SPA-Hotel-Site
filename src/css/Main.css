@@ -14,6 +14,22 @@
   position: relative;
 }
 
+.main-section .main-section__page-1-description {
+  width: 30%;
+  font-size: 3.35rem;
+  font-weight: 200;
+  color: #372307;
+  padding: 18% 2% 2% 8%;
+  line-height: 110%;
+  letter-spacing: 1px;
+}
+
+.main-section .main-section__page-1-description span {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 5rem;
+}
+
 .main-section .main-section__page-1 .bgc-color-1 {
   position: absolute;
   width: 65%;
@@ -38,36 +54,43 @@
   font-size: 6rem;
   font-weight: 300;
   text-transform: capitalize;
-  color: #492e09;
+  color: #57360b;
   padding: 2%;
   line-height: 100%;
   letter-spacing: 2px;
-  text-shadow: 1.25px 0 0 black;
+  text-shadow: 1.25px 0 0 #0a0601;
 }
 
 .main-section .main-section__page-1 .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   height: 100%;
   width: 55%;
   bottom: 2%;
   right: 2%;
   z-index: 2;
-  background-color: green;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   overflow: hidden;
 }
 
-.main-section .main-section__page-1 .wrapper .main-section__page-1-image-1 {
-  width: 120%;
-  position: absolute;
-  top: -10%;
-  left: -10%;
+.main-section .main-section__page-1 .wrapper .main-section__page-1-lobby {
+  width: 110%;
   -webkit-filter: brightness(90%);
           filter: brightness(90%);
-  -webkit-transform: translateX(2.5%);
-          transform: translateX(2.5%);
+  -webkit-transition: -webkit-transform 0.3s 0.1s ease-in-out;
+  transition: -webkit-transform 0.3s 0.1s ease-in-out;
+  transition: transform 0.3s 0.1s ease-in-out;
+  transition: transform 0.3s 0.1s ease-in-out, -webkit-transform 0.3s 0.1s ease-in-out;
 }
 
-.main-section .main-section__page-1 .main-section__page-1-image-2 {
+.main-section .main-section__page-1-plants {
   position: absolute;
   width: 80%;
   right: 30%;
@@ -77,7 +100,7 @@
           filter: brightness(50%) contrast(112%);
 }
 
-.main-section .main-section__page-1 .description {
+.main-section .main-section__page-1-quote {
   position: absolute;
   bottom: 3%;
   left: -2.5%;

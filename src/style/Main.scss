@@ -1,87 +1,93 @@
-.main-section{
-position: relative;
-width: 200vw;
-height: 100vh;
-left: 100vw;
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-background-color: antiquewhite;
-// background-image: url("../pictures/pexels-cottonbro-3-cut.avif");
-    
-.main-section__page-1{
+.main-section {
+  position: relative;
+  width: 200vw;
+  height: 100vh;
+  left: 100vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: antiquewhite;
+  .main-section__page-1 {
     // background-color: darken(rgb(43, 41, 40), 2)
     position: relative;
-    .bgc-color-1{
-            position: absolute;
-            width: 65%;
-            height: 95%;
-            right: 2%;
-            top: 2.5%;
-            background-color: darken(antiquewhite, 5%);
-        }
+    &-description {
+      width: 30%;
+      font-size: 3.35rem;
+      font-weight: 200;
+      color: darken(antiquewhite, 79%);
+      padding: 18% 2% 2% 8%;
+      line-height: 110%;
+      letter-spacing: 1px;
+      span {
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 5rem;
+      }
+    }
+    .bgc-color-1 {
+      position: absolute;
+      width: 65%;
+      height: 95%;
+      right: 2%;
+      top: 2.5%;
+      background-color: darken(antiquewhite, 5%);
+    }
     .bgc-color-2 {
-        position: absolute;
-        width: 56%;
-        height: 80%;
-        right: 0;
-        top: 0;
-        margin: 3% 3%;
-        background-color: rgba(250, 235, 215, 0.552);
-        h2{
-            width: 20%;
-            font-size: 6rem;
-            font-weight: 300;
-            text-transform: capitalize;
-            color: darken(antiquewhite, 75%);
-            padding: 2%;
-            line-height: 100%;
-            letter-spacing: 2px;
-            text-shadow: 1.25px  0 0 darken(antiquewhite, 100%);
-        }
-    
-    }
-.wrapper{
-    position: absolute;
-    height: 100%;
-        width: 55%;
-       bottom: 2%;
-       right: 2%;
-        z-index: 2;
-        background-color: green;
-        overflow: hidden;
-    .main-section__page-1-image-1 {
-            width: 120%;
-            position: absolute;
-            top:-10%;
-            left: -10%;
-            filter: brightness(90%);
-            transform: translateX(2.5%);
-            // transition: transform 0.5s .2s linear;
-        }
-}
-
-    .main-section__page-1-image-2{
-        position: absolute;
-        width: 80%;
-        right: 30%;
-        top: 35%;
-        z-index: 1;
-        filter: brightness(50%) contrast(112%);
-    }
-    .description{
-        position: absolute;
-        bottom: 3%;
-        left: -2.5%;
-        width: 40%;
-        font-size:3.2rem;
-        font-weight: 200;
+      position: absolute;
+      width: 56%;
+      height: 80%;
+      right: 0;
+      top: 0;
+      margin: 3% 3%;
+      background-color: rgba(250, 235, 215, 0.552);
+      h2 {
+        width: 20%;
+        font-size: 6rem;
+        font-weight: 300;
         text-transform: capitalize;
+        color: darken(antiquewhite, 72%);
+        padding: 2%;
+        line-height: 100%;
         letter-spacing: 2px;
-        color: #fff;
-        text-shadow: 3px 0 0 darken(antiquewhite, 100%);
-        z-index: 3;
+        text-shadow: 1.25px 0 0 darken(antiquewhite, 89%);
+      }
     }
-}
-
-
+    .wrapper {
+      display: flex;
+      position: absolute;
+      height: 100%;
+      width: 55%;
+      bottom: 2%;
+      right: 2%;
+      z-index: 2;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      .main-section__page-1-lobby {
+        width: 110%;
+        filter: brightness(90%);
+        transition: transform 0.3s 0.1s ease-in-out;
+      }
+    }
+    &-plants {
+      position: absolute;
+      width: 80%;
+      right: 30%;
+      top: 35%;
+      z-index: 1;
+      filter: brightness(50%) contrast(112%);
+    }
+    &-quote {
+      position: absolute;
+      bottom: 3%;
+      left: -2.5%;
+      width: 40%;
+      font-size: 3.2rem;
+      font-weight: 200;
+      text-transform: capitalize;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 3px 0 0 darken(antiquewhite, 100%);
+      z-index: 3;
+    }
+  }
 }

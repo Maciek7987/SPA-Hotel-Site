@@ -26,8 +26,28 @@
       -ms-writing-mode: tb-lr;
           writing-mode: vertical-lr;
   text-orientation: sideways;
-  color: #B85042;
-  z-index: 4;
-  font-family: sans-serif;
+  color: #b85042;
+  z-index: -1;
+  font-family: "Noto Sans JP", sans-serif;
+  -webkit-animation: blink 1s linear infinite alternate;
+          animation: blink 1s linear infinite alternate;
+}
+
+@-webkit-keyframes blink {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 /*# sourceMappingURL=Home.css.map */

@@ -7,21 +7,22 @@
     position: absolute;
     top: -10vh;
     width: 100%;
-    filter: contrast(111%);
+    filter: contrast(112%);
   }
   .infoAboutScroll {
     position: absolute;
     right: 0;
-    top: 50%;
-    font-size: 1.1rem;
-    font-weight: 500;
+    top: 54%;
+    font-size: 1.7rem;
+    font-weight: 400;
+    font-style: italic;
     letter-spacing: 1px;
     transform: translateY(-50%);
     writing-mode: vertical-lr;
     text-orientation: sideways;
     color: #b85042;
     z-index: -1;
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: "Cardo", "Noto Sans JP", sans-serif;
     animation: blink 1s linear infinite alternate;
   }
 }

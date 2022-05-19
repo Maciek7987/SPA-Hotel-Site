@@ -34,7 +34,7 @@ a .every-line.active {
   position: fixed;
   top: 0;
   left: 3.5%;
-  width: 30%;
+  width: 35%;
   height: 100%;
   z-index: 3000;
   overflow: hidden;
@@ -42,11 +42,11 @@ a .every-line.active {
 
 .navigation .logo {
   position: absolute;
-  top: 15%;
-  left: 50%;
+  top: 10%;
+  left: 45%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  font-size: 160px;
+  font-size: 150px;
   font-weight: 500;
   opacity: 0.92;
   color: #010100;
@@ -54,11 +54,11 @@ a .every-line.active {
 
 .navigation__list {
   position: absolute;
-  top: 47%;
+  top: 40%;
   left: 20%;
   list-style: none;
-  -webkit-transition: visibility 0.5s, opacity 0.5s;
-  transition: visibility 0.5s, opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 .navigation__list-item {

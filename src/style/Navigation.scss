@@ -4,26 +4,26 @@
   position: fixed;
   top: 0;
   left: 3.5%;
-  width: 30%;
+  width: 35%;
   height: 100%;
   z-index: 3000;
   overflow: hidden;
   .logo {
     position: absolute;
-    top: 15%;
-    left: 50%;
+    top: 10%;
+    left: 45%;
     transform: translateX(-50%);
-    font-size: 160px;
+    font-size: 150px;
     font-weight: 500;
     opacity: 0.92;
     color: darken(antiquewhite, 91%);
   }
   &__list {
     position: absolute;
-    top: 47%;
+    top: 40%;
     left: 20%;
     list-style: none;
-    transition: visibility 0.5s, opacity 0.5s;
+    transition: opacity 0.5s;
     &-item {
       padding-bottom: 80px;
       &-link {

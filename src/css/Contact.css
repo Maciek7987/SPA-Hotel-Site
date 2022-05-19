@@ -1,0 +1,123 @@
+.contact-page {
+  width: 100%;
+  height: 100vh;
+  background-color: #a7beae75;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 30vh 1fr;
+      grid-template-rows: 30vh 1fr;
+}
+
+.contact-page__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-column: 1/-1;
+  margin: 0 10%;
+  border-bottom: 1px solid #a7beae;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.contact-page__title h1 {
+  position: absolute;
+  top: 8%;
+  font-size: 160px;
+  font-weight: 500;
+  opacity: 0.92;
+  color: #010100;
+}
+
+.contact-page__form {
+  margin: 5% 0;
+  border-right: 1px solid #a7beae;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+}
+
+.contact-page__form .form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto 1fr 1fr;
+      grid-template-rows: auto auto 1fr 1fr;
+  width: 60%;
+  height: 40vh;
+  margin-left: 38%;
+  margin-right: 2%;
+}
+
+.contact-page__form .form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 4%;
+}
+
+.contact-page__form .form div > * {
+  height: 4vh;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #a7beae;
+}
+
+.contact-page__form .form #form__textarea {
+  grid-column: -1/1;
+  height: 20vh;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #a7beae;
+}
+
+.contact-page__form .form #submit {
+  grid-column: -1/1;
+  width: 50%;
+  height: 5vh;
+  margin: 7% auto;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.232);
+  background-color: #a46715;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.contact-page__form .form #submit:hover {
+  cursor: pointer;
+  background-color: antiquewhite;
+}
+
+.contact-page__info {
+  margin: 5% 0;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+}
+
+.contact-page__info .wrapper-3 {
+  width: 80%;
+  height: 30%;
+  padding: 2%;
+}
+
+.contact-page__info .wrapper-3 p {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  padding-bottom: 1%;
+}
+
+.contact-page__info .map {
+  padding: 0 3% 3% 2%;
+  width: 60%;
+  height: 80%;
+}
+/*# sourceMappingURL=Contact.css.map */

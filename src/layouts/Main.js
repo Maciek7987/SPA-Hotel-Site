@@ -1,6 +1,7 @@
 import "../style/Main.scss";
 import lobbyImg from "../pictures/pexels-pixabay-hotel-lobby-cut.jpg";
 import plantsImg from "../pictures/bg-plants-mid.jpg";
+import baroqueImg from "../pictures/pexels-baroque.jpg";
 
 const Main = () => {
   return (
@@ -33,7 +34,15 @@ const Main = () => {
         </div>
       </article>
 
-      <article className="main-section__page-2"></article>
+      <article className="main-section__page-2">
+        <div className="wrapper2">
+          <img
+            className="main-section__page-1-baroque"
+            src={baroqueImg}
+            alt="baroque-image"
+          />
+        </div>
+      </article>
     </section>
   );
 };

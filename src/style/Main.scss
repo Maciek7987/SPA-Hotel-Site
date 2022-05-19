@@ -11,10 +11,10 @@
     position: relative;
     &-description {
       width: 30%;
-      font-size: 3.35rem;
+      font-size: 2.7rem;
       font-weight: 200;
       color: darken(antiquewhite, 79%);
-      padding: 18% 2% 2% 8%;
+      padding: 19% 2% 2% 8%;
       line-height: 110%;
       letter-spacing: 1px;
       span {
@@ -44,7 +44,7 @@
         font-size: 6rem;
         font-weight: 300;
         text-transform: capitalize;
-        color: darken(antiquewhite, 72%);
+        color: darken(antiquewhite, 75%);
         padding: 2%;
         line-height: 100%;
         letter-spacing: 2px;
@@ -56,15 +56,15 @@
       position: absolute;
       height: 100%;
       width: 55%;
-      bottom: 2%;
-      right: 2%;
+      bottom: 10%;
+      right: -5.4%;
       z-index: 2;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       .main-section__page-1-lobby {
         width: 110%;
-        filter: brightness(90%);
+        filter: contrast(112%) brightness(90%);
         transition: transform 0.3s 0.1s ease-in-out;
       }
     }
@@ -74,20 +74,36 @@
       right: 30%;
       top: 35%;
       z-index: 1;
-      filter: brightness(50%) contrast(112%);
+      filter: brightness(35%) contrast(112%);
     }
     &-quote {
       position: absolute;
       bottom: 3%;
-      left: -2.5%;
+      left: 0;
       width: 40%;
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 200;
       text-transform: capitalize;
       letter-spacing: 2px;
       color: #fff;
       text-shadow: 3px 0 0 darken(antiquewhite, 100%);
       z-index: 3;
+    }
+  }
+  .main-section__page-2 {
+    position: relative;
+    .wrapper2 {
+      display: flex;
+      position: absolute;
+      height: 80%;
+      width: 60%;
+      bottom: 10%;
+      right: 3%;
+      .main-section__page-1-baroque {
+        object-fit: cover;
+        width: 100%;
+        filter: contrast(102%);
+      }
     }
   }
 }

@@ -9,16 +9,17 @@
   position: absolute;
   top: -10vh;
   width: 100%;
-  -webkit-filter: contrast(111%);
-          filter: contrast(111%);
+  -webkit-filter: contrast(112%);
+          filter: contrast(112%);
 }
 
 .home-page .infoAboutScroll {
   position: absolute;
   right: 0;
-  top: 50%;
-  font-size: 1.1rem;
-  font-weight: 500;
+  top: 54%;
+  font-size: 1.7rem;
+  font-weight: 400;
+  font-style: italic;
   letter-spacing: 1px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -28,7 +29,7 @@
   text-orientation: sideways;
   color: #b85042;
   z-index: -1;
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
   -webkit-animation: blink 1s linear infinite alternate;
           animation: blink 1s linear infinite alternate;
 }

@@ -1,0 +1,104 @@
+.contact-page {
+  width: 100%;
+  height: 100vh;
+  background-color: #a7beae75;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30vh 1fr;
+  &__title {
+    display: flex;
+    grid-column: 1/-1;
+    margin: 0 10%;
+    border-bottom: 1px solid #a7beae;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      position: absolute;
+      top: 8%;
+      font-size: 160px;
+      font-weight: 500;
+      opacity: 0.92;
+      color: darken(antiquewhite, 91%);
+    }
+  }
+  &__form {
+    margin: 5% 0;
+    border-right: 1px solid #a7beae;
+    font-family: "Cardo", "Noto Sans JP", sans-serif;
+    .form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto 1fr 1fr;
+      width: 60%;
+      height: 40vh;
+      margin-left: 38%;
+      margin-right: 2%;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        padding: 4%;
+      }
+      div > * {
+        height: 4vh;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #a7beae;
+      }
+      //   #input-name {
+      //     border: none;
+      //   }
+      //   #input-surname {
+      //     border: none;
+      //   }
+      //   #input-phone {
+      //     border: none;
+      //   }
+      //   #input-email {
+      //     border: none;
+      //   }
+      #form__textarea {
+        grid-column: -1/1;
+        height: 20vh;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #a7beae;
+      }
+      #submit {
+        grid-column: -1/1;
+        width: 50%;
+        height: 5vh;
+        margin: 7% auto;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        font-family: "Cardo", "Noto Sans JP", sans-serif;
+        border: 1px solid rgba(0, 0, 0, 0.232);
+        background-color: darken(antiquewhite, 55%);
+        transition: background-color 0.3s;
+        &:hover {
+          cursor: pointer;
+          background-color: antiquewhite;
+        }
+      }
+    }
+  }
+  &__info {
+    margin: 5% 0;
+    font-family: "Cardo", "Noto Sans JP", sans-serif;
+    .wrapper-3 {
+      width: 80%;
+      height: 30%;
+      padding: 2%;
+      p {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        padding-bottom: 1%;
+      }
+    }
+    .map {
+      padding: 0 3% 3% 2%;
+      width: 60%;
+      height: 80%;
+    }
+  }
+}

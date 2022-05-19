@@ -4,7 +4,7 @@ import "../style/Navigation.scss";
 const Navigation = ({ handleReset }) => {
   return (
     <div className="navigation">
-      <h1 className="logo">Brand</h1>
+      <h1 className="logo">Bermud</h1>
       <ul className="navigation__list">
         <li className="navigation__list-item">
           <Link

@@ -123,16 +123,16 @@ class Home extends Component {
       }
 
       if (matrix.m41 < (valuesToStopScroll.menu * 80) / 100) {
-        list.style.visibility = "none";
+        list.style.pointerEvents = "";
         list.style.opacity = "1";
         whichPageWeAre = "menu";
       } else if (matrix.m41 < (valuesToStopScroll.lobby * 80) / 100) {
-        list.style.visibility = "visible";
+        list.style.pointerEvents = "none";
         list.style.opacity = "0";
         lobbyImg.style.transform = "scale(91%)";
         whichPageWeAre = "lobby";
       } else if (matrix.m41 <= 0) {
-        list.style.visibility = "none";
+        list.style.pointerEvents = "";
         list.style.opacity = "1";
         lobbyImg.style.transform = "scale(100%)";
         whichPageWeAre = "home";

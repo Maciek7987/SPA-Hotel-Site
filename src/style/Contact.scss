@@ -38,31 +38,40 @@
         display: flex;
         flex-direction: column;
         padding: 4%;
+        flex-wrap: nowrap;
+
+        input {
+          height: 4vh;
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid #a7beae;
+        }
       }
-      div > * {
-        height: 4vh;
-        background-color: transparent;
-        border: none;
+      .wrapper-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: nowrap;
         border-bottom: 1px solid #a7beae;
+        align-items: center;
+        p {
+          font-size: 0.82rem;
+          color: red;
+        }
       }
-      //   #input-name {
-      //     border: none;
-      //   }
-      //   #input-surname {
-      //     border: none;
-      //   }
-      //   #input-phone {
-      //     border: none;
-      //   }
-      //   #input-email {
-      //     border: none;
-      //   }
+      .wrapper-info--texterea {
+        border-bottom: none;
+      }
       #form__textarea {
         grid-column: -1/1;
         height: 20vh;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid #a7beae;
+        p {
+          font-size: 0.8rem;
+          color: red;
+        }
       }
       #submit {
         grid-column: -1/1;

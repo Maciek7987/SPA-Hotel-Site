@@ -10,33 +10,107 @@ export default class Contact extends Component {
       inputPhoneValue: "",
       inputEmailValue: "",
       inputTextareaValue: "",
+      rex: false,
     };
+
+    this.inccorectCharacters = [
+      "!",
+      `"`,
+      "#",
+      "$",
+      "%",
+      "&",
+      `'`,
+      "(",
+      ")",
+      "*",
+      `+`,
+      `,`,
+      `-`,
+      `.`,
+      "/",
+      ":",
+      ";",
+      "<",
+      `=`,
+      ">",
+      "?",
+      "@",
+      "[",
+      "]",
+      "^",
+      "_",
+      "{",
+      "|",
+      "}",
+      "`",
+    ];
   }
+
+  checkInvalidCharacters = (variableToCheck) => {
+    const incorrectChar = [...variableToCheck].find((character) =>
+      this.inccorectCharacters.includes(character)
+    );
+    return incorrectChar;
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    alert("A message was sent");
-    this.setState({
-      inputNameValue: "",
-      inputSurnameValue: "",
-      inputPhoneValue: "",
-      inputEmailValue: "",
-      inputTextareaValue: "",
-    });
+    let flag = true;
+    const {
+      inputNameValue,
+      inputSurnameValue,
+      inputPhoneValue,
+      inputTextareaValue,
+      inputEmailValue,
+    } = this.state;
+    let nameInvalid, surnameInvalid;
+
+    nameInvalid = this.checkInvalidCharacters(inputNameValue);
+    surnameInvalid = this.checkInvalidCharacters(inputSurnameValue);
+    console.log(nameInvalid, surnameInvalid);
+
+    // if(inputNameValue.length <= 3 || typeof inputNameValue != String || inputNameValue.includes())
+
+    if (flag) {
+      // window.Email.send({
+      //   Host: "smtp.elasticemail.com",
+      //   Username: "mierl23441@gmail.com",
+      //   Password: "920A7482EE5C8A1510FDFF227BA9AAA2029A",
+      //   To: "mierl23441@gmail.com",
+      //   From: "mierl23441@gmail.com",
+      //   Subject: `${inputNameValue} sent you a message`,
+      //   Body: `Name: ${inputNameValue} <br/> Surname: ${inputSurnameValue} <br/> Email: ${inputEmailValue} <br/> Phone: ${inputPhoneValue} <br/> Message: ${inputTextareaValue} `,
+      // }).then((inputNameValue) => {
+      //   alert("message was sent successfully");
+      // });
+
+      this.setState({
+        inputNameValue: "",
+        inputSurnameValue: "",
+        inputPhoneValue: "",
+        inputEmailValue: "",
+        inputTextareaValue: "",
+      });
+    } else {
+      return;
+    }
   };
 
   handleChangeInput = (e) => {
     switch (e.target.name) {
       case "name":
-        this.setState({ inputNameValue: e.target.value });
+        if (e.target.value.charCodeAt(0))
+          this.setState({ inputNameValue: e.target.value, rex: true });
         break;
       case "surname":
         this.setState({ inputSurnameValue: e.target.value });
         break;
       case "email":
-        this.setState({ inputPhoneValue: e.target.value });
+        this.setState({ inputEmailValue: e.target.value });
         break;
       case "telephone":
-        this.setState({ inputEmailValue: e.target.value });
+        this.setState({ inputPhoneValue: e.target.value });
         break;
       case "textarea":
         this.setState({ inputTextareaValue: e.target.value });
@@ -55,44 +129,61 @@ export default class Contact extends Component {
             <h1>contact</h1>
           </header>
           <article className="contact-page__form">
-            <form className="form" action="mierl23441@gmail.com" method="post">
+            <form className="form" method="post">
               <div className="input-name">
-                <label>Name</label>
+                <div className="wrapper-info">
+                  <label>Name</label>
+                  <p id="emial-error">walidacja formularza email react</p>
+                </div>
                 <input
                   id="input-name"
                   type="text"
                   name="name"
                   maxlength="30"
+                  value={this.state.inputNameValue}
                   onChange={this.handleChangeInput}
                 />
               </div>
               <div className="input-surname">
-                <label>Surname</label>
+                <div className="wrapper-info">
+                  <label>Surname</label>
+                  <p id="emial-error">walidacja formularza email react</p>
+                </div>
                 <input
                   id="input-surname"
                   type="text"
                   name="surname"
                   maxlength="30"
+                  value={this.state.inputSurnameValue}
                   onChange={this.handleChangeInput}
                 />
               </div>
               <div className="input-phone">
-                <label>Phone</label>
+                <div className="wrapper-info">
+                  <label>Phone</label>
+                  <p id="emial-error">walidacja formularza email react</p>
+                </div>
                 <input
                   id="input-phone"
                   type="tel"
                   name="telephone"
                   maxlength="15"
+                  value={this.state.inputPhoneValue}
                   onChange={this.handleChangeInput}
                 />
               </div>
               <div className="input-email">
-                <label>Email</label>
+                <div className="wrapper-info">
+                  <label>Email</label>
+                  <p id="emial-error">walidacja formularza email react</p>
+                </div>
+
                 <input
                   id="input-email"
                   type="email"
                   name="email"
                   maxlength="30"
+                  value={this.state.inputEmailValue}
                   onChange={this.handleChangeInput}
                 />
               </div>
@@ -102,9 +193,18 @@ export default class Contact extends Component {
                 id="form__textarea"
                 cols="30"
                 rows="10"
+                value={this.state.inputTextareaValue}
                 onChange={this.handleChangeInput}
               ></textarea>
-              <input id="submit" type="submit" value="Send" />
+              <div className="wrapper-info wrapper-info--texterea">
+                <p id="emial-error">walidacja formularza email react</p>
+              </div>
+              <input
+                id="submit"
+                type="submit"
+                value="Send"
+                onClick={this.handleSubmit}
+              />
             </form>
           </article>
           <article className="contact-page__info">

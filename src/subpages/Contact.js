@@ -10,53 +10,12 @@ export default class Contact extends Component {
       inputPhoneValue: "",
       inputEmailValue: "",
       inputTextareaValue: "",
-      rex: false,
     };
-
-    this.inccorectCharacters = [
-      "!",
-      `"`,
-      "#",
-      "$",
-      "%",
-      "&",
-      `'`,
-      "(",
-      ")",
-      "*",
-      `+`,
-      `,`,
-      `-`,
-      `.`,
-      "/",
-      ":",
-      ";",
-      "<",
-      `=`,
-      ">",
-      "?",
-      "@",
-      "[",
-      "]",
-      "^",
-      "_",
-      "{",
-      "|",
-      "}",
-      "`",
-    ];
   }
-
-  checkInvalidCharacters = (variableToCheck) => {
-    const incorrectChar = [...variableToCheck].find((character) =>
-      this.inccorectCharacters.includes(character)
-    );
-    return incorrectChar;
-  };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let flag = true;
+    let flg1, flg2, flg3, flg4, flg5;
     const {
       inputNameValue,
       inputSurnameValue,
@@ -64,15 +23,90 @@ export default class Contact extends Component {
       inputTextareaValue,
       inputEmailValue,
     } = this.state;
-    let nameInvalid, surnameInvalid;
 
-    nameInvalid = this.checkInvalidCharacters(inputNameValue);
-    surnameInvalid = this.checkInvalidCharacters(inputSurnameValue);
-    console.log(nameInvalid, surnameInvalid);
+    const reg =
+      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-    // if(inputNameValue.length <= 3 || typeof inputNameValue != String || inputNameValue.includes())
+    const checkWhichInoutItIs = (name, info) => {
+      const form = document.querySelector("form.form");
+      const element = form.querySelector(`.wrapper-info.${name}`);
+      element.lastChild.textContent = info;
+      if (info === "") {
+        switch (name) {
+          case "name":
+            flg1 = true;
+            break;
+          case "surname":
+            flg2 = true;
+            break;
+          case "phone":
+            flg3 = true;
+            break;
+          case "email":
+            flg4 = true;
+            break;
+          case "textarea":
+            flg5 = true;
+            break;
+        }
+      } else {
+        switch (name) {
+          case "name":
+            flg1 = false;
+            break;
+          case "surname":
+            flg2 = false;
+            break;
+          case "phone":
+            flg3 = false;
+            break;
+          case "email":
+            flg4 = false;
+            break;
+          case "textarea":
+            flg5 = false;
+            break;
+        }
+      }
+    };
 
-    if (flag) {
+    if (inputNameValue.length < 3 || /[^a-zA-Z]/.test(inputNameValue)) {
+      const info =
+        "Name have to more than 2 letters and must not contain numbers and special chars e.g  @ # $ / , . { [ ";
+      checkWhichInoutItIs("name", info);
+    } else {
+      checkWhichInoutItIs("name", "");
+    }
+    if (inputSurnameValue.length < 3 || /[^a-zA-Z]/.test(inputSurnameValue)) {
+      const info =
+        "Surname have to more than 2 letters and must not contain numbers and special chars e.g  @ # $ / , . { [ ";
+      checkWhichInoutItIs("surname", info);
+    } else {
+      checkWhichInoutItIs("surname", "");
+    }
+
+    if (inputPhoneValue.length < 3 || /\D/.test(inputPhoneValue)) {
+      const info =
+        "Phone have to more than 2 numbers and must not contain letters and special chars e.g  @ # $ / , . { [ ";
+      checkWhichInoutItIs("phone", info);
+    } else {
+      checkWhichInoutItIs("phone", "");
+    }
+    if (inputEmailValue.length < 5 || !reg.test(inputEmailValue)) {
+      const info =
+        "Email address have to more than 5 characters, the symbol @, and a domain e.g. john.smith@example.com";
+      checkWhichInoutItIs("email", info);
+    } else {
+      checkWhichInoutItIs("email", "");
+    }
+    if (inputTextareaValue.length < 3) {
+      const info = "Message have to more than 2 characters";
+      checkWhichInoutItIs("textarea", info);
+    } else {
+      checkWhichInoutItIs("textarea", "");
+    }
+
+    if (flg1 && flg2 && flg3 && flg4 && flg5) {
       // window.Email.send({
       //   Host: "smtp.elasticemail.com",
       //   Username: "mierl23441@gmail.com",
@@ -100,8 +134,7 @@ export default class Contact extends Component {
   handleChangeInput = (e) => {
     switch (e.target.name) {
       case "name":
-        if (e.target.value.charCodeAt(0))
-          this.setState({ inputNameValue: e.target.value, rex: true });
+        this.setState({ inputNameValue: e.target.value });
         break;
       case "surname":
         this.setState({ inputSurnameValue: e.target.value });
@@ -109,7 +142,7 @@ export default class Contact extends Component {
       case "email":
         this.setState({ inputEmailValue: e.target.value });
         break;
-      case "telephone":
+      case "phone":
         this.setState({ inputPhoneValue: e.target.value });
         break;
       case "textarea":
@@ -131,9 +164,9 @@ export default class Contact extends Component {
           <article className="contact-page__form">
             <form className="form" method="post">
               <div className="input-name">
-                <div className="wrapper-info">
+                <div className="wrapper-info name">
                   <label>Name</label>
-                  <p id="emial-error">walidacja formularza email react</p>
+                  <p id="error"></p>
                 </div>
                 <input
                   id="input-name"
@@ -145,9 +178,9 @@ export default class Contact extends Component {
                 />
               </div>
               <div className="input-surname">
-                <div className="wrapper-info">
+                <div className="wrapper-info surname">
                   <label>Surname</label>
-                  <p id="emial-error">walidacja formularza email react</p>
+                  <p id="error"></p>
                 </div>
                 <input
                   id="input-surname"
@@ -159,23 +192,23 @@ export default class Contact extends Component {
                 />
               </div>
               <div className="input-phone">
-                <div className="wrapper-info">
+                <div className="wrapper-info phone">
                   <label>Phone</label>
-                  <p id="emial-error">walidacja formularza email react</p>
+                  <p id="error"></p>
                 </div>
                 <input
                   id="input-phone"
                   type="tel"
-                  name="telephone"
-                  maxlength="15"
+                  name="phone"
+                  maxlength="19"
                   value={this.state.inputPhoneValue}
                   onChange={this.handleChangeInput}
                 />
               </div>
               <div className="input-email">
-                <div className="wrapper-info">
+                <div className="wrapper-info email">
                   <label>Email</label>
-                  <p id="emial-error">walidacja formularza email react</p>
+                  <p id="error"></p>
                 </div>
 
                 <input
@@ -196,8 +229,8 @@ export default class Contact extends Component {
                 value={this.state.inputTextareaValue}
                 onChange={this.handleChangeInput}
               ></textarea>
-              <div className="wrapper-info wrapper-info--texterea">
-                <p id="emial-error">walidacja formularza email react</p>
+              <div className="wrapper-info wrapper-info--texterea textarea">
+                <p id="error"></p>
               </div>
               <input
                 id="submit"

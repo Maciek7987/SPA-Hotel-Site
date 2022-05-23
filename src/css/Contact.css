@@ -6,8 +6,8 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 30vh 1fr;
-      grid-template-rows: 30vh 1fr;
+  -ms-grid-rows: 20vh 1fr;
+      grid-template-rows: 20vh 1fr;
 }
 
 .contact-page__title {
@@ -27,15 +27,15 @@
 
 .contact-page__title h1 {
   position: absolute;
-  top: 8%;
-  font-size: 160px;
+  top: 1%;
+  font-size: 150px;
   font-weight: 500;
   opacity: 0.92;
   color: #010100;
 }
 
 .contact-page__form {
-  margin: 5% 0;
+  margin: 3% 0;
   border-right: 1px solid #a7beae;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
 }
@@ -45,11 +45,10 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: auto auto 1fr 1fr;
-      grid-template-rows: auto auto 1fr 1fr;
-  width: 60%;
-  height: 40vh;
-  margin-left: 38%;
+  -ms-grid-rows: (17vh)[3];
+      grid-template-rows: repeat(3, 17vh);
+  width: 80%;
+  margin-left: 18%;
   margin-right: 2%;
 }
 
@@ -61,7 +60,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 4%;
+  padding: 0 2% 2% 4%;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
 }
@@ -90,26 +89,32 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 9vh;
+}
+
+.contact-page__form .form .wrapper-info label {
+  font-size: 1.1rem;
+  padding-right: 5%;
 }
 
 .contact-page__form .form .wrapper-info p {
-  font-size: 0.82rem;
+  font-size: 0.87rem;
   color: red;
-}
-
-.contact-page__form .form .wrapper-info--texterea {
-  border-bottom: none;
 }
 
 .contact-page__form .form #form__textarea {
   grid-column: -1/1;
-  height: 20vh;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #a7beae;
 }
 
-.contact-page__form .form #form__textarea p {
+.contact-page__form .form .wrapper-info--texterea {
+  height: 10vh;
+  border-bottom: none;
+}
+
+.contact-page__form .form .wrapper-info--texterea p {
   font-size: 0.8rem;
   color: red;
 }
@@ -118,7 +123,7 @@
   grid-column: -1/1;
   width: 50%;
   height: 5vh;
-  margin: 7% auto;
+  margin: 0 auto;
   text-transform: uppercase;
   font-size: 1.1rem;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
@@ -134,7 +139,7 @@
 }
 
 .contact-page__info {
-  margin: 5% 0;
+  margin: 3% 0;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
 }
 
@@ -151,7 +156,7 @@
 }
 
 .contact-page__info .map {
-  padding: 0 3% 3% 2%;
+  padding: 0 3% 6% 2%;
   width: 60%;
   height: 80%;
 }

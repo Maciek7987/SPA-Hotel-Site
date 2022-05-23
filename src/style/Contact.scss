@@ -4,7 +4,7 @@
   background-color: #a7beae75;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 30vh 1fr;
+  grid-template-rows: 20vh 1fr;
   &__title {
     display: flex;
     grid-column: 1/-1;
@@ -14,32 +14,29 @@
     align-items: center;
     h1 {
       position: absolute;
-      top: 8%;
-      font-size: 160px;
+      top: 1%;
+      font-size: 150px;
       font-weight: 500;
       opacity: 0.92;
       color: darken(antiquewhite, 91%);
     }
   }
   &__form {
-    margin: 5% 0;
+    margin: 3% 0;
     border-right: 1px solid #a7beae;
     font-family: "Cardo", "Noto Sans JP", sans-serif;
     .form {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto 1fr 1fr;
-      width: 60%;
-      height: 40vh;
-      margin-left: 38%;
+      grid-template-rows: repeat(3, 17vh);
+      width: 80%;
+      margin-left: 18%;
       margin-right: 2%;
-
       div {
         display: flex;
         flex-direction: column;
-        padding: 4%;
+        padding: 0 2% 2% 4%;
         flex-wrap: nowrap;
-
         input {
           height: 4vh;
           background-color: transparent;
@@ -54,20 +51,26 @@
         flex-wrap: nowrap;
         border-bottom: 1px solid #a7beae;
         align-items: center;
+        height: 9vh;
+        label {
+          font-size: 1.1rem;
+          padding-right: 5%;
+        }
         p {
-          font-size: 0.82rem;
+          font-size: 0.87rem;
           color: red;
         }
       }
-      .wrapper-info--texterea {
-        border-bottom: none;
-      }
+
       #form__textarea {
         grid-column: -1/1;
-        height: 20vh;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid #a7beae;
+      }
+      .wrapper-info--texterea {
+        height: 10vh;
+        border-bottom: none;
         p {
           font-size: 0.8rem;
           color: red;
@@ -77,7 +80,7 @@
         grid-column: -1/1;
         width: 50%;
         height: 5vh;
-        margin: 7% auto;
+        margin: 0 auto;
         text-transform: uppercase;
         font-size: 1.1rem;
         font-family: "Cardo", "Noto Sans JP", sans-serif;
@@ -92,7 +95,7 @@
     }
   }
   &__info {
-    margin: 5% 0;
+    margin: 3% 0;
     font-family: "Cardo", "Noto Sans JP", sans-serif;
     .wrapper-3 {
       width: 80%;
@@ -105,7 +108,7 @@
       }
     }
     .map {
-      padding: 0 3% 3% 2%;
+      padding: 0 3% 6% 2%;
       width: 60%;
       height: 80%;
     }

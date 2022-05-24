@@ -6,36 +6,36 @@ const Footer = ({ handelToggle }) => {
   return (
     <footer className="footer">
       <nav className="footer__navigation">
-        <a
+        <button
           onClick={(e) => {
             handelToggle(e, link);
           }}
           className="home"
-          href="#"
+          id="footer__navigation-btn"
         >
           home
           <div className="active every-line"></div>
-        </a>
-        <a
+        </button>
+        <button
           onClick={(e) => {
             handelToggle(e, link);
           }}
           className="lobby"
-          href="#"
+          id="footer__navigation-btn"
         >
           lobby
           <div className="every-line"></div>
-        </a>
-        <a
+        </button>
+        <button
           onClick={(e) => {
             handelToggle(e, link);
           }}
           className="menu"
-          href="#"
+          id="footer__navigation-btn"
         >
           menu
           <div className="every-line"></div>
-        </a>
+        </button>
       </nav>
     </footer>
   );

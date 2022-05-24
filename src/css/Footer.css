@@ -1,11 +1,14 @@
-a {
+a,
+button {
   text-decoration: none;
   color: #0e0902;
   font-size: 20px;
   letter-spacing: 2px;
+  cursor: pointer;
 }
 
-a .every-line {
+a .every-line,
+button .every-line {
   width: 100%;
   height: 1px;
   -webkit-transform: scaleX(0);
@@ -19,7 +22,9 @@ a .every-line {
 }
 
 a:hover .every-line,
-a .every-line.active {
+a .every-line.active,
+button:hover .every-line,
+button .every-line.active {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
   -webkit-transform-origin: center center;
@@ -60,5 +65,11 @@ a .every-line.active {
   opacity: 1;
   -webkit-transition: opacity 0.25s;
   transition: opacity 0.25s;
+}
+
+.footer__navigation #footer__navigation-btn {
+  border: none;
+  background-color: transparent;
+  font-family: "Noto Serif Display", serif;
 }
 /*# sourceMappingURL=Footer.css.map */

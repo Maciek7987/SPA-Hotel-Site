@@ -116,7 +116,6 @@ class Home extends Component {
 
       //protection from error when page is behind window after resize
       if (matrix.m41 < valuesToStopScroll.menu && name === "resize") {
-        console.log(matrix.m41 - valuesToStopScroll.menu);
         this.setState({
           animValue: -(matrix.m41 - valuesToStopScroll.menu),
         });

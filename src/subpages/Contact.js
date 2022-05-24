@@ -27,8 +27,7 @@ export default class Contact extends Component {
     } = this.state;
 
     //regular expression to vailidate emial input
-    const reg =
-      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const reg = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
 
     //function to set information about wrong input and blocking it
     const checkWhichInoutItIs = (name, info) => {
@@ -57,6 +56,9 @@ export default class Contact extends Component {
           case "textarea":
             flg5 = true;
             break;
+          default:
+            console.log("null");
+            break;
         }
       } else {
         switch (name) {
@@ -74,6 +76,9 @@ export default class Contact extends Component {
             break;
           case "textarea":
             flg5 = false;
+            break;
+          default:
+            console.log("null");
             break;
         }
       }
@@ -183,7 +188,7 @@ export default class Contact extends Component {
                   className="form__wrap-input"
                   type="text"
                   name="name"
-                  maxlength="30"
+                  maxLength="30"
                   value={this.state.inputNameValue}
                   onChange={this.handleChangeInput}
                 />
@@ -198,7 +203,7 @@ export default class Contact extends Component {
                   className="form__wrap-input"
                   type="text"
                   name="surname"
-                  maxlength="30"
+                  maxLength="30"
                   value={this.state.inputSurnameValue}
                   onChange={this.handleChangeInput}
                 />
@@ -213,7 +218,7 @@ export default class Contact extends Component {
                   className="form__wrap-input"
                   type="tel"
                   name="phone"
-                  maxlength="19"
+                  maxLength="19"
                   value={this.state.inputPhoneValue}
                   onChange={this.handleChangeInput}
                 />
@@ -228,7 +233,7 @@ export default class Contact extends Component {
                   className="form__wrap-input"
                   type="email"
                   name="email"
-                  maxlength="30"
+                  maxLength="30"
                   value={this.state.inputEmailValue}
                   onChange={this.handleChangeInput}
                 />
@@ -264,6 +269,7 @@ export default class Contact extends Component {
               <h2>25°14'51"N 72°32'33"W</h2>
             </div>
             <iframe
+              title="Bermuda Triangle"
               className="map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28928.027636145816!2d-71.01750961661052!3d24.99999857523423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89451ab5034cb7ab%3A0xb600ecf3df7aca4d!2sBermuda%20Triangle!5e0!3m2!1sen!2spl!4v1652959593268!5m2!1sen!2spl"
               style={{ border: 0 }}

@@ -82,6 +82,7 @@
   border-bottom: 1px solid #a7beae;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
   font-size: 1.1rem;
+  resize: none;
 }
 
 .contact-page__article-form .form__submit {

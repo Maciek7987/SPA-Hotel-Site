@@ -12,7 +12,7 @@
     border-bottom: 1px solid #a7beae;
     justify-content: center;
     align-items: center;
-    h1 {
+    &-h1 {
       position: absolute;
       top: 1%;
       font-size: 150px;
@@ -21,7 +21,8 @@
       color: darken(antiquewhite, 91%);
     }
   }
-  &__form {
+
+  &__article-form {
     margin: 3% 0;
     border-right: 1px solid #a7beae;
     font-family: "Cardo", "Noto Sans JP", sans-serif;
@@ -32,64 +33,69 @@
       width: 80%;
       margin-left: 18%;
       margin-right: 2%;
-      div {
+      &__wrap {
         display: flex;
         flex-direction: column;
-        padding: 0 2% 2% 4%;
+        padding: 0 3% 4% 3%;
         flex-wrap: nowrap;
-        input {
+        &-input {
           height: 4vh;
           background-color: transparent;
           border: none;
           border-bottom: 1px solid #a7beae;
+          font-family: "Cardo", "Noto Sans JP", sans-serif;
+          font-size: 1rem;
         }
       }
-      .wrapper-info {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-        border-bottom: 1px solid #a7beae;
-        align-items: center;
-        height: 9vh;
-        label {
-          font-size: 1.1rem;
-          padding-right: 5%;
-        }
-        p {
-          font-size: 0.87rem;
-          color: red;
-        }
-      }
-
-      #form__textarea {
-        grid-column: -1/1;
+      &__textarea {
+        grid-column: 1/-1;
+        margin: 0 1%;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid #a7beae;
+        font-family: "Cardo", "Noto Sans JP", sans-serif;
+        font-size: 1.1rem;
       }
-      .wrapper-info--texterea {
-        height: 10vh;
-        border-bottom: none;
-        p {
-          font-size: 0.8rem;
-          color: red;
-        }
-      }
-      #submit {
-        grid-column: -1/1;
+      &__submit {
+        grid-column: 1/-1;
         width: 50%;
         height: 5vh;
         margin: 0 auto;
+        background-color: darken(antiquewhite, 55%);
+        border: 1px solid rgba(0, 0, 0, 0.232);
         text-transform: uppercase;
         font-size: 1.1rem;
         font-family: "Cardo", "Noto Sans JP", sans-serif;
-        border: 1px solid rgba(0, 0, 0, 0.232);
-        background-color: darken(antiquewhite, 55%);
         transition: background-color 0.3s;
         &:hover {
           cursor: pointer;
           background-color: antiquewhite;
+        }
+      }
+    }
+    .wrapper-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      border-bottom: 1px solid #a7beae;
+      align-items: center;
+      height: 9vh;
+      &__label {
+        font-size: 1.1rem;
+        padding: 0 5% 0 1%;
+      }
+      &__paragraph {
+        font-size: 0.87rem;
+        color: red;
+      }
+      &--textarea {
+        height: 8vh;
+        border-bottom: none;
+        &__paragraph {
+          padding: 0 0 0 2%;
+          font-size: 0.88rem;
+          color: red;
         }
       }
     }
@@ -99,7 +105,7 @@
     font-family: "Cardo", "Noto Sans JP", sans-serif;
     .wrapper-3 {
       width: 80%;
-      height: 30%;
+      height: 25%;
       padding: 2%;
       p {
         font-size: 1.2rem;

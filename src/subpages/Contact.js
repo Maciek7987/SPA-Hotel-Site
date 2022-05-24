@@ -1,9 +1,10 @@
 import "../style/Contact.scss";
-import { Component, createRef } from "react";
+import { Component } from "react";
 
 export default class Contact extends Component {
   constructor(props) {
     super(props);
+    //inputss value
     this.state = {
       inputNameValue: "",
       inputSurnameValue: "",
@@ -15,6 +16,7 @@ export default class Contact extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     let flg1, flg2, flg3, flg4, flg5;
     const {
       inputNameValue,
@@ -24,13 +26,20 @@ export default class Contact extends Component {
       inputEmailValue,
     } = this.state;
 
+    //regular expression to vailidate emial input
     const reg =
       /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
+    //function to set information about wrong input and blocking it
     const checkWhichInoutItIs = (name, info) => {
       const form = document.querySelector("form.form");
+
+      //assignment to a variable result of searching element wrapper-info which has class from argument "name"
       const element = form.querySelector(`.wrapper-info.${name}`);
+      //e.g selector: from .wrapper-info.phone > p
       element.lastChild.textContent = info;
+
+      //verification if variable "info" is empty is means, that function was call when input had correct value
       if (info === "") {
         switch (name) {
           case "name":
@@ -70,6 +79,8 @@ export default class Contact extends Component {
       }
     };
 
+    //simple vailidation
+
     if (inputNameValue.length < 3 || /[^a-zA-Z]/.test(inputNameValue)) {
       const info =
         "Name have to more than 2 letters and must not contain numbers and special chars e.g  @ # $ / , . { [ ";
@@ -106,6 +117,7 @@ export default class Contact extends Component {
       checkWhichInoutItIs("textarea", "");
     }
 
+    // if everything is "true" then message is send and form is clearing
     if (flg1 && flg2 && flg3 && flg4 && flg5) {
       // window.Email.send({
       //   Host: "smtp.elasticemail.com",
@@ -152,24 +164,23 @@ export default class Contact extends Component {
         console.log("none");
         break;
     }
-    console.log(this.state);
   };
   render() {
     return (
       <>
         <section className="contact-page">
           <header className="contact-page__title">
-            <h1>contact</h1>
+            <h1 className="contact-page__title-h1">contact</h1>
           </header>
-          <article className="contact-page__form">
+          <article className="contact-page__article-form">
             <form className="form" method="post">
-              <div className="input-name">
+              <div className="form__wrap">
                 <div className="wrapper-info name">
-                  <label>Name</label>
-                  <p id="error"></p>
+                  <label className="wrapper-info__label">Name</label>
+                  <p className="wrapper-info__paragraph"></p>
                 </div>
                 <input
-                  id="input-name"
+                  className="form__wrap-input"
                   type="text"
                   name="name"
                   maxlength="30"
@@ -177,13 +188,14 @@ export default class Contact extends Component {
                   onChange={this.handleChangeInput}
                 />
               </div>
-              <div className="input-surname">
+
+              <div className="form__wrap">
                 <div className="wrapper-info surname">
-                  <label>Surname</label>
-                  <p id="error"></p>
+                  <label className="wrapper-info__label">Surname</label>
+                  <p className="wrapper-info__paragraph"></p>
                 </div>
                 <input
-                  id="input-surname"
+                  className="form__wrap-input"
                   type="text"
                   name="surname"
                   maxlength="30"
@@ -191,13 +203,14 @@ export default class Contact extends Component {
                   onChange={this.handleChangeInput}
                 />
               </div>
-              <div className="input-phone">
+
+              <div className="form__wrap">
                 <div className="wrapper-info phone">
-                  <label>Phone</label>
-                  <p id="error"></p>
+                  <label className="wrapper-info__label">Phone</label>
+                  <p className="wrapper-info__paragraph"></p>
                 </div>
                 <input
-                  id="input-phone"
+                  className="form__wrap-input"
                   type="tel"
                   name="phone"
                   maxlength="19"
@@ -205,14 +218,14 @@ export default class Contact extends Component {
                   onChange={this.handleChangeInput}
                 />
               </div>
-              <div className="input-email">
-                <div className="wrapper-info email">
-                  <label>Email</label>
-                  <p id="error"></p>
-                </div>
 
+              <div className="form__wrap">
+                <div className="wrapper-info email">
+                  <label className="wrapper-info__label">Email</label>
+                  <p className="wrapper-info__paragraph"></p>
+                </div>
                 <input
-                  id="input-email"
+                  className="form__wrap-input"
                   type="email"
                   name="email"
                   maxlength="30"
@@ -222,24 +235,27 @@ export default class Contact extends Component {
               </div>
 
               <textarea
+                className="form__textarea"
                 name="textarea"
-                id="form__textarea"
                 cols="30"
                 rows="10"
                 value={this.state.inputTextareaValue}
                 onChange={this.handleChangeInput}
               ></textarea>
-              <div className="wrapper-info wrapper-info--texterea textarea">
-                <p id="error"></p>
+
+              <div className="wrapper-info wrapper-info--textarea textarea">
+                <p className="wrapper-info__paragraph wrapper-info--textarea__paragraph"></p>
               </div>
+
               <input
-                id="submit"
+                className="form__submit"
                 type="submit"
                 value="Send"
                 onClick={this.handleSubmit}
               />
             </form>
           </article>
+
           <article className="contact-page__info">
             <div className="wrapper-3">
               <p>Email: alabaster@ahotelsite.com</p>
@@ -247,7 +263,6 @@ export default class Contact extends Component {
               <p>Instagram: hotel-site</p>
               <h2>25°14'51"N 72°32'33"W</h2>
             </div>
-
             <iframe
               className="map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28928.027636145816!2d-71.01750961661052!3d24.99999857523423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89451ab5034cb7ab%3A0xb600ecf3df7aca4d!2sBermuda%20Triangle!5e0!3m2!1sen!2spl!4v1652959593268!5m2!1sen!2spl"

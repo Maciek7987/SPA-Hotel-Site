@@ -25,7 +25,7 @@
           align-items: center;
 }
 
-.contact-page__title h1 {
+.contact-page__title-h1 {
   position: absolute;
   top: 1%;
   font-size: 150px;
@@ -34,13 +34,13 @@
   color: #010100;
 }
 
-.contact-page__form {
+.contact-page__article-form {
   margin: 3% 0;
   border-right: 1px solid #a7beae;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
 }
 
-.contact-page__form .form {
+.contact-page__article-form .form {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -52,7 +52,7 @@
   margin-right: 2%;
 }
 
-.contact-page__form .form div {
+.contact-page__article-form .form__wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,19 +60,50 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 2% 2% 4%;
+  padding: 0 3% 4% 3%;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
 }
 
-.contact-page__form .form div input {
+.contact-page__article-form .form__wrap-input {
   height: 4vh;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #a7beae;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  font-size: 1rem;
 }
 
-.contact-page__form .form .wrapper-info {
+.contact-page__article-form .form__textarea {
+  grid-column: 1/-1;
+  margin: 0 1%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #a7beae;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  font-size: 1.1rem;
+}
+
+.contact-page__article-form .form__submit {
+  grid-column: 1/-1;
+  width: 50%;
+  height: 5vh;
+  margin: 0 auto;
+  background-color: #a46715;
+  border: 1px solid rgba(0, 0, 0, 0.232);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.contact-page__article-form .form__submit:hover {
+  cursor: pointer;
+  background-color: antiquewhite;
+}
+
+.contact-page__article-form .wrapper-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,50 +123,25 @@
   height: 9vh;
 }
 
-.contact-page__form .form .wrapper-info label {
+.contact-page__article-form .wrapper-info__label {
   font-size: 1.1rem;
-  padding-right: 5%;
+  padding: 0 5% 0 1%;
 }
 
-.contact-page__form .form .wrapper-info p {
+.contact-page__article-form .wrapper-info__paragraph {
   font-size: 0.87rem;
   color: red;
 }
 
-.contact-page__form .form #form__textarea {
-  grid-column: -1/1;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #a7beae;
-}
-
-.contact-page__form .form .wrapper-info--texterea {
-  height: 10vh;
+.contact-page__article-form .wrapper-info--textarea {
+  height: 8vh;
   border-bottom: none;
 }
 
-.contact-page__form .form .wrapper-info--texterea p {
-  font-size: 0.8rem;
+.contact-page__article-form .wrapper-info--textarea__paragraph {
+  padding: 0 0 0 2%;
+  font-size: 0.88rem;
   color: red;
-}
-
-.contact-page__form .form #submit {
-  grid-column: -1/1;
-  width: 50%;
-  height: 5vh;
-  margin: 0 auto;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  font-family: "Cardo", "Noto Sans JP", sans-serif;
-  border: 1px solid rgba(0, 0, 0, 0.232);
-  background-color: #a46715;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-}
-
-.contact-page__form .form #submit:hover {
-  cursor: pointer;
-  background-color: antiquewhite;
 }
 
 .contact-page__info {
@@ -145,7 +151,7 @@
 
 .contact-page__info .wrapper-3 {
   width: 80%;
-  height: 30%;
+  height: 25%;
   padding: 2%;
 }
 

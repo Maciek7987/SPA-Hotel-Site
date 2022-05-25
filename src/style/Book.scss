@@ -1,6 +1,3 @@
-.book-btn {
-}
-
 .book-page {
   width: 100%;
   height: 100vh;
@@ -32,11 +29,43 @@
     margin: 3% 0;
     border-right: 1px solid #a7beae;
     font-family: "Cardo", "Noto Sans JP", sans-serif;
+    overflow: hidden;
+
+    .window-to {
+      margin: 7vh;
+      padding: 1vh;
+      transform: translateY(3%);
+      transition: 0.5s ease;
+      grid-row: 2/-1;
+      pointer-events: none;
+      opacity: 0;
+      &.active {
+        transform: translateY(-5%);
+      }
+    }
+    .select-guest {
+      background-color: #a7beae75;
+      grid-column: 1/2;
+    }
+    .select-room {
+      background-color: #a7beae75;
+      grid-column: 2/3;
+    }
+    .select-date {
+      background-color: #a7beae75;
+      grid-column: 1/-1;
+      .calendar {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+    }
   }
   &__navigation {
     grid-column: 1/-1;
-    width: 80%;
-    margin: 0 2% 0 auto;
+    width: 90%;
+    margin: 0 auto;
     background-color: transparent;
     &-list {
       display: flex;
@@ -49,53 +78,33 @@
         position: relative;
         width: 30%;
         height: 90%;
+        overflow: hidden;
+        &::before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          content: "";
+          display: block;
+          width: 100%;
+          height: 100%;
+          transform: translateX(-101%);
+          background-color: #a7beae;
+          transition: 0.7s ease;
+        }
+        &:hover.li::before {
+          transform: translateX(0);
+        }
 
         &-btn {
           position: relative;
           width: 100%;
           height: 100%;
-          border: 1px solid rgba(0, 0, 0, 0.232);
-          background-color: darken(antiquewhite, 55%);
           font-size: 1rem;
           font-family: "Cardo", "Noto Sans JP", sans-serif;
           font-weight: 700;
           text-transform: uppercase;
-          transition: background-color 0.3s;
-          .arrow {
-            position: absolute;
-            left: 50%;
-            top: 65%;
-            transform: translate(-50%, 50%);
-            opacity: 0.6;
-            font-size: 1rem;
-            transition: 0.4s;
-          }
-          &:hover {
-            cursor: pointer;
-            background-color: antiquewhite;
-            .arrow {
-              opacity: 0.4;
-              transform: translate(-50%, 68%);
-            }
-          }
-        }
-        .date {
-          pointer-events: none;
-        }
-        .window-to {
-          position: absolute;
-          left: 10%;
-          top: 100%;
-          background-color: green;
-          transform: translateY(50%);
-          width: 16vw;
-          height: 15vw;
-          opacity: 0;
-          transition: transform 0.3s, opacity 0.3s;
-          &.active {
-            transform: translateY(0);
-            opacity: 1;
-          }
+          background-color: transparent;
+          border: 1px solid black;
         }
       }
     }

@@ -19,13 +19,13 @@ const Main = () => {
             <img
               className="main-section__page-1-lobby"
               src={lobbyImg}
-              alt="lobby-image"
+              alt="lobby"
             />
           </div>
           <img
             className="main-section__page-1-plants"
             src={plantsImg}
-            alt="plants-background-image"
+            alt="plants-background"
           />
           <p className="main-section__page-1-quote">
             "Truth, when it is more difficult, is more pleasant, and knowledge
@@ -39,7 +39,7 @@ const Main = () => {
           <img
             className="main-section__page-1-baroque"
             src={baroqueImg}
-            alt="baroque-image"
+            alt="baroque"
           />
         </div>
       </article>

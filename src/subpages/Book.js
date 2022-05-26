@@ -1,9 +1,35 @@
-// import { useState } from "react";
+import { useState } from "react";
+import Calendar from "react-calendar";
 import "../style/Book.scss";
+import "../components/style/Calendar.scss";
 
+let targetBtn = "zeroClick";
 export default function Book() {
-  // const [value, onChange] = useState(new Date());
-  let targetBtn = "zeroClick";
+  //  let targetBtn = "zeroClick";
+  const [value, onChange] = useState(new Date());
+  const [value2, onChange2] = useState(new Date());
+
+  let idDate;
+
+  let dateNow = new Date();
+
+  let year = dateNow.getFullYear();
+  let month = dateNow.getMonth() + 1;
+  let day = dateNow.getDate();
+
+  let adults = 0,
+    children = 0,
+    guests = ` ${adults} Adults / ${children} Children`,
+    date = "Check In / Check Out",
+    roomName = "select room";
+  if (value.length === 2) {
+    idDate = "biggerFontSize";
+    date = `${value[0].getDate()}.${
+      value[0].getMonth() + 1
+    }.${value[0].getFullYear()} - ${value[1].getDate()}.${
+      value[1].getMonth() + 1
+    }.${value[1].getFullYear()}`;
+  }
 
   //120 pokoji zwykłych
   //45 apartamentów
@@ -32,12 +58,10 @@ export default function Book() {
     const targetWindow = document.querySelector(`.select-${e.target.name}`);
 
     if (!targetWindow.classList.contains("active")) {
-      console.log("add active");
       targetWindow.style.pointerEvents = "visible";
       targetWindow.style.opacity = "1";
       targetWindow.classList.add("active");
     } else {
-      console.log("add active");
       targetWindow.style.pointerEvents = "none";
       targetWindow.style.opacity = "0";
       targetWindow.classList.remove("active");
@@ -54,11 +78,13 @@ export default function Book() {
         }
       });
     }
+
     if (e.target.classList.contains("book-btn")) {
-      if (targetBtn !== e.target && targetBtn !== "zeroClick") {
+      if (targetBtn.name !== e.target.name && targetBtn !== "zeroClick") {
         const targetWindow = document.querySelector(
           `.select-${targetBtn.name}`
         );
+        console.log("ile razy usunie");
         targetWindow.style.pointerEvents = "none";
         targetWindow.style.opacity = "0";
         targetWindow.classList.remove("active");
@@ -66,12 +92,6 @@ export default function Book() {
       targetBtn = e.target;
     }
   };
-
-  let adults = 0,
-    children = 0,
-    guests = ` ${adults} Adults / ${children} Children`,
-    date = "12.04.2022 - 23.06.2022",
-    roomName = "select room";
 
   return (
     <section className="book-page">
@@ -96,6 +116,7 @@ export default function Book() {
 
             <li className="book-page__navigation-list-item li">
               <button
+                id={idDate}
                 name="date"
                 onClick={handleClickBtn}
                 className="book-page__navigation-list-item-btn book-btn date"
@@ -119,7 +140,31 @@ export default function Book() {
         <div className="window-to select-guest"></div>
         <div className="window-to select-room"></div>
         <div className="window-to select-date">
-          <div className="calendar"></div>
+          <div className="calendar">
+            <Calendar
+              maxDate={new Date(year + 2, month, day)}
+              minDate={new Date()}
+              minDetail="month"
+              locale="en-EN"
+              className="class1"
+              onChange={onChange}
+              value={value}
+              selectRange={true}
+              showDoubleView={true}
+              showFixedNumberOfWeeks={false}
+              showNeighboringMonth={false}
+            />
+            {/* <Calendar
+              maxDate={new Date(year + 2, month, day)}
+              minDate={new Date(year, month, 1)}
+              minDetail="month"
+              defaultActiveStartDate={new Date(year, month, 1)}
+              locale="en-EN"
+              className="class2"
+              onChange={onChange2}
+              value={value2}
+            /> */}
+          </div>
         </div>
       </article>
       <article className="book-page__article-info">

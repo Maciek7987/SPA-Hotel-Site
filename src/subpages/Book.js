@@ -5,6 +5,10 @@ import "../components/style/Calendar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
+import exclusiveRoom from "../pictures/rooms/exclusive/pexels-cottonbro-1.jpg";
+import apartmentRoom from "../pictures/rooms/apartment/pexels-elina-sazonova-room-1.jpg";
+import standardRoom from "../pictures/rooms/standard/pexels-natasha-filippovskaya-1.jpg";
+
 let targetBtn = "zeroClick";
 export default function Book() {
   //  let targetBtn = "zeroClick";
@@ -326,7 +330,22 @@ export default function Book() {
             error distinctio perspiciatis tempore repudiandae voluptatem illum.
           </p>
         </div>
-        <div className="window-to select-room"></div>
+        <div className="window-to select-room">
+          <div className="select-room__pictures">
+            <img src={apartmentRoom} alt="exclusive-room" />
+          </div>
+          <div className="select-room__info">
+            <h3 className="select-room__info-name">Exclusive Room</h3>
+            <h4 className="select-room__info-price">4000</h4>
+            <div className="select-room__info-details">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Inventore, rerum expedita reiciendis molestias ex sequi illo?
+              Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque
+              culpa, ab natus suscipit illo.
+            </div>
+            <button className="more-details">more details</button>
+          </div>
+        </div>
         <div className="window-to select-date">
           <div className="calendar">
             <Calendar

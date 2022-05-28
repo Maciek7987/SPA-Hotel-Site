@@ -18,7 +18,7 @@
   width: 30%;
   font-size: 2.7rem;
   font-weight: 200;
-  color: #372307;
+  color: #402808;
   padding: 19% 2% 2% 8%;
   line-height: 110%;
   letter-spacing: 1px;
@@ -54,11 +54,11 @@
   font-size: 6rem;
   font-weight: 300;
   text-transform: capitalize;
-  color: #492e09;
+  color: #402808;
   padding: 2%;
   line-height: 100%;
   letter-spacing: 2px;
-  text-shadow: 1.25px 0 0 #0a0601;
+  text-shadow: 1.25px 0 0 #050301;
 }
 
 .main-section .main-section__page-1 .wrapper {
@@ -110,7 +110,7 @@
   text-transform: capitalize;
   letter-spacing: 2px;
   color: #fff;
-  text-shadow: 3px 0 0 black;
+  text-shadow: 3px 0 0 #050301;
   z-index: 3;
 }
 
@@ -133,7 +133,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
-  -webkit-filter: contrast(102%);
-          filter: contrast(102%);
+  -webkit-filter: contrast(103%);
+          filter: contrast(103%);
 }
 /*# sourceMappingURL=Main.css.map */

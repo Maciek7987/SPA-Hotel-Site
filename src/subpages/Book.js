@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "../style/Book.scss";
-import "../components/style/Calendar.scss";
+import "../components/scss/Calendar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 

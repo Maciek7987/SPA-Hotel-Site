@@ -1,175 +1,176 @@
 import "../style/Contact.scss";
 import { Component } from "react";
+import Email from "../components/Email";
 
 export default class Contact extends Component {
-  constructor(props) {
-    super(props);
-    //inputss value
-    this.state = {
-      inputNameValue: "",
-      inputSurnameValue: "",
-      inputPhoneValue: "",
-      inputEmailValue: "",
-      inputTextareaValue: "",
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   //inputss value
+  //   this.state = {
+  //     inputNameValue: "",
+  //     inputSurnameValue: "",
+  //     inputPhoneValue: "",
+  //     inputEmailValue: "",
+  //     inputTextareaValue: "",
+  //   };
+  // }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    let flg1, flg2, flg3, flg4, flg5;
-    const {
-      inputNameValue,
-      inputSurnameValue,
-      inputPhoneValue,
-      inputTextareaValue,
-      inputEmailValue,
-    } = this.state;
+  //   let flg1, flg2, flg3, flg4, flg5;
+  //   const {
+  //     inputNameValue,
+  //     inputSurnameValue,
+  //     inputPhoneValue,
+  //     inputTextareaValue,
+  //     inputEmailValue,
+  //   } = this.state;
 
-    //regular expression to vailidate emial input
-    const reg = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
+  //   //regular expression to vailidate emial input
+  //   const reg = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
 
-    //function to set information about wrong input and blocking it
-    const checkWhichInoutItIs = (name, info) => {
-      const form = document.querySelector("form.form");
+  //   //function to set information about wrong input and blocking it
+  //   const checkWhichInoutItIs = (name, info) => {
+  //     const form = document.querySelector("form.form");
 
-      //assignment to a variable result of searching element wrapper-info which has class from argument "name"
-      const element = form.querySelector(`.wrapper-info.${name}`);
-      //e.g selector: from .wrapper-info.phone > p
-      element.lastChild.textContent = info;
+  //     //assignment to a variable result of searching element wrapper-info which has class from argument "name"
+  //     const element = form.querySelector(`.wrapper-info.${name}`);
+  //     //e.g selector: from .wrapper-info.phone > p
+  //     element.lastChild.textContent = info;
 
-      //verification if variable "info" is empty is means, that function was call when input had correct value
-      if (info === "") {
-        switch (name) {
-          case "name":
-            flg1 = true;
-            break;
-          case "surname":
-            flg2 = true;
-            break;
-          case "phone":
-            flg3 = true;
-            break;
-          case "email":
-            flg4 = true;
-            break;
-          case "textarea":
-            flg5 = true;
-            break;
-          default:
-            console.log("null");
-            break;
-        }
-      } else {
-        switch (name) {
-          case "name":
-            flg1 = false;
-            break;
-          case "surname":
-            flg2 = false;
-            break;
-          case "phone":
-            flg3 = false;
-            break;
-          case "email":
-            flg4 = false;
-            break;
-          case "textarea":
-            flg5 = false;
-            break;
-          default:
-            console.log("null");
-            break;
-        }
-      }
-    };
+  //     //verification if variable "info" is empty is means, that function was call when input had correct value
+  //     if (info === "") {
+  //       switch (name) {
+  //         case "name":
+  //           flg1 = true;
+  //           break;
+  //         case "surname":
+  //           flg2 = true;
+  //           break;
+  //         case "phone":
+  //           flg3 = true;
+  //           break;
+  //         case "email":
+  //           flg4 = true;
+  //           break;
+  //         case "textarea":
+  //           flg5 = true;
+  //           break;
+  //         default:
+  //           console.log("null");
+  //           break;
+  //       }
+  //     } else {
+  //       switch (name) {
+  //         case "name":
+  //           flg1 = false;
+  //           break;
+  //         case "surname":
+  //           flg2 = false;
+  //           break;
+  //         case "phone":
+  //           flg3 = false;
+  //           break;
+  //         case "email":
+  //           flg4 = false;
+  //           break;
+  //         case "textarea":
+  //           flg5 = false;
+  //           break;
+  //         default:
+  //           console.log("null");
+  //           break;
+  //       }
+  //     }
+  //   };
 
-    //simple vailidation
+  //   //simple vailidation
 
-    if (inputNameValue.length < 3 || /[^a-zA-Z]/.test(inputNameValue)) {
-      const info =
-        "Name have to more than 2 letters and must not contain numbers and special chars e.g  @ # $ / , . { [ ";
-      checkWhichInoutItIs("name", info);
-    } else {
-      checkWhichInoutItIs("name", "");
-    }
-    if (inputSurnameValue.length < 3 || /[^a-zA-Z]/.test(inputSurnameValue)) {
-      const info =
-        "Surname have to more than 2 letters and must not contain numbers and special chars e.g  @ # $ / , . { [ ";
-      checkWhichInoutItIs("surname", info);
-    } else {
-      checkWhichInoutItIs("surname", "");
-    }
+  //   if (inputNameValue.length < 3 || /[^a-zA-Z]/.test(inputNameValue)) {
+  //     const info =
+  //       "Name have to more than 2 letters and must not contain numbers and special chars e.g  @ # $ / , . { [ ";
+  //     checkWhichInoutItIs("name", info);
+  //   } else {
+  //     checkWhichInoutItIs("name", "");
+  //   }
+  //   if (inputSurnameValue.length < 3 || /[^a-zA-Z]/.test(inputSurnameValue)) {
+  //     const info =
+  //       "Surname have to more than 2 letters and must not contain numbers and special chars e.g  @ # $ / , . { [ ";
+  //     checkWhichInoutItIs("surname", info);
+  //   } else {
+  //     checkWhichInoutItIs("surname", "");
+  //   }
 
-    if (inputPhoneValue.length < 3 || /\D/.test(inputPhoneValue)) {
-      const info =
-        "Phone have to more than 2 numbers and must not contain letters and special chars e.g  @ # $ / , . { [ ";
-      checkWhichInoutItIs("phone", info);
-    } else {
-      checkWhichInoutItIs("phone", "");
-    }
-    if (inputEmailValue.length < 5 || !reg.test(inputEmailValue)) {
-      const info =
-        "Email address have to more than 5 characters, the symbol @, and a domain e.g. john.smith@example.com";
-      checkWhichInoutItIs("email", info);
-    } else {
-      checkWhichInoutItIs("email", "");
-    }
-    if (inputTextareaValue.length < 3) {
-      const info = "Message have to more than 2 characters";
-      checkWhichInoutItIs("textarea", info);
-    } else {
-      checkWhichInoutItIs("textarea", "");
-    }
+  //   if (inputPhoneValue.length < 3 || /\D/.test(inputPhoneValue)) {
+  //     const info =
+  //       "Phone have to more than 2 numbers and must not contain letters and special chars e.g  @ # $ / , . { [ ";
+  //     checkWhichInoutItIs("phone", info);
+  //   } else {
+  //     checkWhichInoutItIs("phone", "");
+  //   }
+  //   if (inputEmailValue.length < 5 || !reg.test(inputEmailValue)) {
+  //     const info =
+  //       "Email address have to more than 5 characters, the symbol @, and a domain e.g. john.smith@example.com";
+  //     checkWhichInoutItIs("email", info);
+  //   } else {
+  //     checkWhichInoutItIs("email", "");
+  //   }
+  //   if (inputTextareaValue.length < 3) {
+  //     const info = "Message have to more than 2 characters";
+  //     checkWhichInoutItIs("textarea", info);
+  //   } else {
+  //     checkWhichInoutItIs("textarea", "");
+  //   }
 
-    // if everything is "true" then message is send and form is clearing
-    if (flg1 && flg2 && flg3 && flg4 && flg5) {
-      // window.Email.send({
-      //   Host: "smtp.elasticemail.com",
-      //   Username: "mierl23441@gmail.com",
-      //   Password: "920A7482EE5C8A1510FDFF227BA9AAA2029A",
-      //   To: "mierl23441@gmail.com",
-      //   From: "mierl23441@gmail.com",
-      //   Subject: `${inputNameValue} sent you a message`,
-      //   Body: `Name: ${inputNameValue} <br/> Surname: ${inputSurnameValue} <br/> Email: ${inputEmailValue} <br/> Phone: ${inputPhoneValue} <br/> Message: ${inputTextareaValue} `,
-      // }).then((inputNameValue) => {
-      //   alert("message was sent successfully");
-      // });
+  //   // if everything is "true" then message is send and form is clearing
+  //   if (flg1 && flg2 && flg3 && flg4 && flg5) {
+  //     // window.Email.send({
+  //     //   Host: "smtp.elasticemail.com",
+  //     //   Username: "mierl23441@gmail.com",
+  //     //   Password: "920A7482EE5C8A1510FDFF227BA9AAA2029A",
+  //     //   To: "mierl23441@gmail.com",
+  //     //   From: "mierl23441@gmail.com",
+  //     //   Subject: `${inputNameValue} sent you a message`,
+  //     //   Body: `Name: ${inputNameValue} <br/> Surname: ${inputSurnameValue} <br/> Email: ${inputEmailValue} <br/> Phone: ${inputPhoneValue} <br/> Message: ${inputTextareaValue} `,
+  //     // }).then((inputNameValue) => {
+  //     //   alert("message was sent successfully");
+  //     // });
 
-      this.setState({
-        inputNameValue: "",
-        inputSurnameValue: "",
-        inputPhoneValue: "",
-        inputEmailValue: "",
-        inputTextareaValue: "",
-      });
-    } else {
-      return;
-    }
-  };
+  //     this.setState({
+  //       inputNameValue: "",
+  //       inputSurnameValue: "",
+  //       inputPhoneValue: "",
+  //       inputEmailValue: "",
+  //       inputTextareaValue: "",
+  //     });
+  //   } else {
+  //     return;
+  //   }
+  // };
 
-  handleChangeInput = (e) => {
-    switch (e.target.name) {
-      case "name":
-        this.setState({ inputNameValue: e.target.value });
-        break;
-      case "surname":
-        this.setState({ inputSurnameValue: e.target.value });
-        break;
-      case "email":
-        this.setState({ inputEmailValue: e.target.value });
-        break;
-      case "phone":
-        this.setState({ inputPhoneValue: e.target.value });
-        break;
-      case "textarea":
-        this.setState({ inputTextareaValue: e.target.value });
-        break;
-      default:
-        console.log("none");
-        break;
-    }
-  };
+  // // handleChangeInput = (e) => {
+  // //   switch (e.target.name) {
+  // //     case "name":
+  // //       this.setState({ inputNameValue: e.target.value });
+  // //       break;
+  // //     case "surname":
+  // //       this.setState({ inputSurnameValue: e.target.value });
+  // //       break;
+  // //     case "email":
+  // //       this.setState({ inputEmailValue: e.target.value });
+  // //       break;
+  // //     case "phone":
+  // //       this.setState({ inputPhoneValue: e.target.value });
+  // //       break;
+  // //     case "textarea":
+  // //       this.setState({ inputTextareaValue: e.target.value });
+  // //       break;
+  // //     default:
+  // //       console.log("none");
+  // //       break;
+  // //   }
+  // // };
   render() {
     return (
       <>
@@ -178,7 +179,7 @@ export default class Contact extends Component {
             <h1 className="contact-page__title-h1">contact</h1>
           </header>
           <article className="contact-page__article-form">
-            <form className="form" method="post">
+            {/* <form className="form" method="post">
               <div className="form__wrap">
                 <div className="wrapper-info name">
                   <label className="wrapper-info__label">Name</label>
@@ -258,7 +259,8 @@ export default class Contact extends Component {
                 value="Send"
                 onClick={this.handleSubmit}
               />
-            </form>
+            </form> */}
+            <Email></Email>
           </article>
 
           <article className="contact-page__info">

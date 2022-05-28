@@ -1,0 +1,105 @@
+.form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: (17vh)[3];
+      grid-template-rows: repeat(3, 17vh);
+  width: 80%;
+  margin-left: 18%;
+  margin-right: 2%;
+}
+
+.form__wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 3% 4% 3%;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.form__wrap-input {
+  height: 4vh;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #a7beae;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  font-size: 1rem;
+}
+
+.form__textarea {
+  grid-column: 1/-1;
+  margin: 0 1%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #a7beae;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  font-size: 1.1rem;
+  resize: none;
+}
+
+.form__submit {
+  grid-column: 1/-1;
+  width: 50%;
+  height: 5vh;
+  margin: 0 auto;
+  background-color: #a46715;
+  border: 1px solid rgba(0, 0, 0, 0.232);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.form__submit:hover {
+  cursor: pointer;
+  background-color: antiquewhite;
+}
+
+.wrapper-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  border-bottom: 1px solid #a7beae;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 9vh;
+}
+
+.wrapper-info__label {
+  font-size: 1.1rem;
+  padding: 0 5% 0 1%;
+}
+
+.wrapper-info__paragraph {
+  font-size: 0.87rem;
+  color: red;
+}
+
+.wrapper-info--textarea {
+  height: 8vh;
+  border-bottom: none;
+}
+
+.wrapper-info--textarea__paragraph {
+  padding: 0 0 0 2%;
+  font-size: 0.88rem;
+  color: red;
+}
+/*# sourceMappingURL=Email.css.map */

@@ -1,3 +1,4 @@
+@import "../components/scss/variables.scss";
 .main-section {
   position: relative;
   width: 200vw;
@@ -5,15 +6,14 @@
   left: 100vw;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  background-color: antiquewhite;
+  background-color: $main-color;
   .main-section__page-1 {
-    // background-color: darken(rgb(43, 41, 40), 2)
     position: relative;
     &-description {
       width: 30%;
       font-size: 2.7rem;
       font-weight: 200;
-      color: darken(antiquewhite, 79%);
+      color: $main-color-medium;
       padding: 19% 2% 2% 8%;
       line-height: 110%;
       letter-spacing: 1px;
@@ -29,7 +29,7 @@
       height: 95%;
       right: 2%;
       top: 2.5%;
-      background-color: darken(antiquewhite, 5%);
+      background-color: darken($main-color, 5%);
     }
     .bgc-color-2 {
       position: absolute;
@@ -44,11 +44,11 @@
         font-size: 6rem;
         font-weight: 300;
         text-transform: capitalize;
-        color: darken(antiquewhite, 75%);
+        color: $main-color-medium;
         padding: 2%;
         line-height: 100%;
         letter-spacing: 2px;
-        text-shadow: 1.25px 0 0 darken(antiquewhite, 89%);
+        text-shadow: 1.25px 0 0 $main-color-dark;
       }
     }
     .wrapper {
@@ -64,7 +64,7 @@
       overflow: hidden;
       .main-section__page-1-lobby {
         width: 110%;
-        filter: contrast(112%) brightness(90%);
+        filter: $picture-contrast brightness(90%);
         transition: transform 0.3s 0.1s ease-in-out;
       }
     }
@@ -74,7 +74,7 @@
       right: 30%;
       top: 35%;
       z-index: 1;
-      filter: brightness(35%) contrast(112%);
+      filter: brightness(35%) $picture-contrast;
     }
     &-quote {
       position: absolute;
@@ -86,7 +86,7 @@
       text-transform: capitalize;
       letter-spacing: 2px;
       color: #fff;
-      text-shadow: 3px 0 0 darken(antiquewhite, 100%);
+      text-shadow: 3px 0 0 $main-color-dark;
       z-index: 3;
     }
   }
@@ -102,7 +102,7 @@
       .main-section__page-1-baroque {
         object-fit: cover;
         width: 100%;
-        filter: contrast(102%);
+        filter: contrast(103%);
       }
     }
   }

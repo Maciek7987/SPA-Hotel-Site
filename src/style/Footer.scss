@@ -1,4 +1,4 @@
-@import "../components/style/link-everyline.scss";
+@import "../components/scss/link-everyline.scss";
 
 .footer {
   display: flex;
@@ -20,7 +20,7 @@
     #footer__navigation-btn {
       border: none;
       background-color: transparent;
-      font-family: "Noto Serif Display", serif;
+      font-family: $main-font;
     }
   }
 }

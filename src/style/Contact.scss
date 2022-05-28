@@ -1,5 +1,4 @@
-$main-color: antiquewhite;
-
+@import "../components/scss/variables.scss";
 
 .contact-page {
   width: 100%;
@@ -21,96 +20,24 @@ $main-color: antiquewhite;
       font-size: 150px;
       font-weight: 500;
       opacity: 0.92;
-      color: darken($main-color, 91%);
+      color: $main-color-dark;
     }
   }
 
   &__article-form {
     margin: 3% 0;
+    padding: 0 2%;
     border-right: 1px solid #a7beae;
-    font-family: "Cardo", "Noto Sans JP", sans-serif;
-    .form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(3, 17vh);
-      width: 80%;
-      margin-left: 18%;
-      margin-right: 2%;
-      &__wrap {
-        display: flex;
-        flex-direction: column;
-        padding: 0 3% 4% 3%;
-        flex-wrap: nowrap;
-        &-input {
-          height: 4vh;
-          background-color: transparent;
-          border: none;
-          border-bottom: 1px solid #a7beae;
-          font-family: "Cardo", "Noto Sans JP", sans-serif;
-          font-size: 1rem;
-        }
-      }
-      &__textarea {
-        grid-column: 1/-1;
-        margin: 0 1%;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid #a7beae;
-        font-family: "Cardo", "Noto Sans JP", sans-serif;
-        font-size: 1.1rem;
-        resize: none;
-      }
-      &__submit {
-        grid-column: 1/-1;
-        width: 50%;
-        height: 5vh;
-        margin: 0 auto;
-        background-color: darken($main-color, 50%);
-        border: 1px solid rgba(0, 0, 0, 0.232);
-        text-transform: uppercase;
-        font-size: 1.1rem;
-        font-family: "Cardo", "Noto Sans JP", sans-serif;
-        transition: background-color 0.3s;
-        &:hover {
-          cursor: pointer;
-          background-color: $main-color;
-        }
-      }
-    }
-    .wrapper-info {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      flex-wrap: nowrap;
-      border-bottom: 1px solid #a7beae;
-      align-items: center;
-      height: 9vh;
-      &__label {
-        font-size: 1.1rem;
-        padding: 0 5% 0 1%;
-      }
-      &__paragraph {
-        font-size: 0.87rem;
-        color: red;
-      }
-      &--textarea {
-        height: 8vh;
-        border-bottom: none;
-        &__paragraph {
-          padding: 0 0 0 2%;
-          font-size: 0.88rem;
-          color: red;
-        }
-      }
-    }
+    font-family: $secondary-font;
   }
   &__info {
     margin: 3% 0;
-    font-family: "Cardo", "Noto Sans JP", sans-serif;
+    padding: 0 4%;
+    font-family: $secondary-font;
     .wrapper-3 {
       width: 80%;
       height: 25%;
-      padding: 2%;
+      padding: 2% 0;
       p {
         font-size: 1.2rem;
         letter-spacing: 1px;
@@ -118,7 +45,7 @@ $main-color: antiquewhite;
       }
     }
     .map {
-      padding: 0 3% 6% 2%;
+      padding-bottom: 6%;
       width: 60%;
       height: 80%;
     }

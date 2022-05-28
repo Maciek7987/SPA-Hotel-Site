@@ -1,4 +1,4 @@
-$main-color: antiquewhite;
+@import "../components/scss/variables.scss";
 
 .book-page {
   width: 100%;
@@ -20,7 +20,7 @@ $main-color: antiquewhite;
       font-size: 150px;
       font-weight: 500;
       opacity: 0.92;
-      color: darken($main-color, 91%);
+      color: $main-color-dark;
     }
   }
 
@@ -30,7 +30,7 @@ $main-color: antiquewhite;
     grid-template-rows: 11vh 1fr;
     margin: 3% 0;
     border-right: 1px solid #a7beae;
-    font-family: "Cardo", "Noto Sans JP", sans-serif;
+    font-family: $secondary-font;
     overflow: hidden;
 
     .window-to {
@@ -161,7 +161,7 @@ $main-color: antiquewhite;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: contrast(112%);
+          filter: $picture-contrast;
         }
       }
     }
@@ -177,14 +177,15 @@ $main-color: antiquewhite;
   }
   &__navigation {
     grid-column: 1/-1;
-    width: 90%;
+    width: 100%;
+    padding: 0 4%;
     margin: 0 auto;
     background-color: transparent;
     &-list {
       display: flex;
       width: 100%;
       height: 100%;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       list-style: none;
       &-item {
@@ -201,7 +202,7 @@ $main-color: antiquewhite;
           width: 100%;
           height: 100%;
           transform: translateX(-101%);
-          background-color: darken($main-color, 55%);
+          background-color: $main-color-light;
           transition: 0.7s ease;
         }
         &:hover.li::before {
@@ -213,7 +214,7 @@ $main-color: antiquewhite;
           width: 100%;
           height: 100%;
           font-size: 0.9rem;
-          font-family: "Cardo", "Noto Sans JP", sans-serif;
+          font-family: $secondary-font;
           font-weight: 700;
           text-transform: uppercase;
           background-color: transparent;
@@ -232,6 +233,6 @@ $main-color: antiquewhite;
   &__article-info {
     // background-color: blue;
     margin: 3% 0;
-    font-family: "Cardo", "Noto Sans JP", sans-serif;
+     font-family: $secondary-font;
   }
 }

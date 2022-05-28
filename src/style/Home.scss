@@ -1,3 +1,5 @@
+@import "../components/scss/variables.scss";
+
 .home-page {
   position: relative;
   width: 100%;
@@ -7,7 +9,7 @@
     position: absolute;
     top: -10vh;
     width: 100%;
-    filter: contrast(112%);
+    filter: $picture-contrast;
   }
   .infoAboutScroll {
     position: absolute;
@@ -22,7 +24,7 @@
     text-orientation: sideways;
     color: #b85042;
     z-index: -1;
-    font-family: "Cardo", "Noto Sans JP", sans-serif;
+    font-family: $secondary-font;
     animation: blink 1s linear infinite alternate;
   }
 }

@@ -1,12 +1,11 @@
-$main-color: antiquewhite;
-$main-font-family: "Cardo", "Noto Sans JP", sans-serif;
+@import "./variables.scss";
 
 .react-calendar {
   width: 45%;
   height: 70%;
   max-width: 100%;
   background: transparent;
-  font-family: $main-font-family;
+  font-family: $secondary-font;
   line-height: 1.125em;
 }
 .react-calendar--doubleView {
@@ -44,7 +43,7 @@ $main-font-family: "Cardo", "Noto Sans JP", sans-serif;
 .react-calendar__navigation button {
   min-width: 44px;
   background: none;
-  font-family: $main-font-family;
+  font-family: $secondary-font;
   font-size: 1.4rem;
   font-weight: 700;
 }
@@ -85,8 +84,8 @@ $main-font-family: "Cardo", "Noto Sans JP", sans-serif;
   text-align: center;
   line-height: 17px;
   font-weight: 700;
-  font-family: $main-font-family;
-  color: darken($main-color, 78%);
+  font-family: $secondary-font;
+  color: $main-color-medium;
 }
 .react-calendar__month-view__days__day--neighboringMonth {
   opacity: 0.8;
@@ -114,13 +113,13 @@ $main-font-family: "Cardo", "Noto Sans JP", sans-serif;
 
 button.react-calendar__navigation__label {
   pointer-events: none;
-  color: darken($main-color, 90%) !important;
-  background-color: darken($main-color, 55%) !important;
+  color: $main-color-dark !important;
+  background-color: $main-color-light !important;
   opacity: 1 !important;
   font-size: 1.1rem;
 }
 abbr[title] {
-  color: darken($main-color, 90%) !important;
+  color:  $main-color-dark !important;
   text-decoration: none !important;
   font-size: 0.8rem;
 }

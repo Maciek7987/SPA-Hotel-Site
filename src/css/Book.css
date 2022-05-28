@@ -31,7 +31,7 @@
   font-size: 150px;
   font-weight: 500;
   opacity: 0.92;
-  color: #010100;
+  color: #050301;
 }
 
 .book-page__article-select {
@@ -258,7 +258,8 @@
 
 .book-page__navigation {
   grid-column: 1/-1;
-  width: 90%;
+  width: 100%;
+  padding: 0 4%;
   margin: 0 auto;
   background-color: transparent;
 }
@@ -269,8 +270,9 @@
   display: flex;
   width: 100%;
   height: 100%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

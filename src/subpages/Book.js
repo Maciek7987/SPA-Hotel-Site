@@ -5,28 +5,51 @@ import "../components/scss/Calendar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
-import exclusiveRoom from "../pictures/rooms/exclusive/pexels-cottonbro-1.jpg";
+import exclusiveRoom from "../pictures/rooms/exclusive/pexels-cottonbro-2.jpg";
 import apartmentRoom from "../pictures/rooms/apartment/pexels-elina-sazonova-room-1.jpg";
 import standardRoom from "../pictures/rooms/standard/pexels-natasha-filippovskaya-1.jpg";
 
+//isolated some variables, them cause errors
 let targetBtn = "zeroClick";
+let indexOfObjectImges = 1;
+let adults = 1,
+  children = 0,
+  allGuests = adults + children,
+  date = "Check In / Check Out",
+  roomName = "select room";
+
 export default function Book() {
-  //  let targetBtn = "zeroClick";
   const [value, onChange] = useState(new Date());
+  const objectImages = [
+    {
+      title: "Exclusive Room",
+      src: exclusiveRoom,
+      price: "1000$",
+      description:
+        "Exclusive Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+    },
+    {
+      title: "Apartment Room",
+      price: "700$",
+      src: apartmentRoom,
+      description:
+        "Apartment Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+    },
+    {
+      title: "Standard Room",
+      price: "400$",
+      src: standardRoom,
+      description:
+        "Standard Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+    },
+  ];
 
   let idDate;
-
   let dateNow = new Date();
 
   let year = dateNow.getFullYear();
   let month = dateNow.getMonth() + 1;
   let day = dateNow.getDate();
-
-  let adults = 1,
-    children = 0,
-    allGuests = adults + children,
-    date = "Check In / Check Out",
-    roomName = "select room";
 
   if (value.length === 2) {
     idDate = "biggerFontSize";
@@ -36,6 +59,8 @@ export default function Book() {
       value[1].getMonth() + 1
     }.${value[1].getFullYear()}`;
   }
+
+  let whichElement = "next";
 
   //130 pokoji zwykłych
   //50 apartamentów
@@ -62,8 +87,86 @@ export default function Book() {
   //pokazanie jaki jest wolny pokój w jakim przedziale terminów
   //określenie wyjazdu
 
+  const changeImage = (selectRoomImg, modifire) => {
+    const btnRoom = document.querySelector(
+      ".book-page__navigation-list-item-btn.book-btn.room"
+    );
+    //at the beginning we remove class which was add to element in previous click, default is "next" class
+    //its important because this element is now "current" and it have differnt animation
+    selectRoomImg.classList.remove(whichElement);
+
+    //asign to "whichElement" name of class, depending on whether modifire is true or false
+    whichElement = modifire ? "next" : "prev";
+
+    //objectImages is declarated above "array"
+
+    indexOfObjectImges = modifire
+      ? indexOfObjectImges + 1
+      : indexOfObjectImges - 1;
+    indexOfObjectImges =
+      indexOfObjectImges === 3 ? (indexOfObjectImges = 0) : indexOfObjectImges;
+    indexOfObjectImges =
+      indexOfObjectImges === -1 ? (indexOfObjectImges = 2) : indexOfObjectImges;
+
+    //at the end of this function we remove class "current" form animated img, but only after next click we remove this element because then it don't have class "current" and animation on this element is finished
+    [...selectRoomImg.parentElement.children].forEach((img) => {
+      if (!img.classList.contains("current")) {
+        img.remove();
+      }
+    });
+
+    //create img elemnet, set atribute class from above variable,
+    //important also set class "current" which help to defined img for next click
+    //and then for next click assigning this image as selectRoomImg
+    //set atribute src putting as index also above variable and add to parent of images
+    const createdImgElementNext = document.createElement("img");
+    createdImgElementNext.setAttribute(
+      "class",
+      `select-room__pictures-img current ${whichElement}`
+    );
+    createdImgElementNext.setAttribute("id", "roomSel");
+    createdImgElementNext.setAttribute(
+      "src",
+      `${objectImages[indexOfObjectImges].src}`
+    );
+    selectRoomImg.parentElement.appendChild(createdImgElementNext);
+
+    //differnt animation if after click, modifire was false(prev, so left side), true(next, so right side)
+    if (modifire) {
+      selectRoomImg.animate(
+        { transform: "translateX(-100%)" },
+        { duration: 500, fill: "forwards", easing: "ease" }
+      );
+    } else {
+      selectRoomImg.animate(
+        { transform: "translateX(100%)" },
+        { duration: 500, fill: "forwards", easing: "ease" }
+      );
+    }
+    selectRoomImg.classList.remove("current");
+    const divInfo = selectRoomImg.parentElement.parentElement.lastChild;
+
+    divInfo.children[0].textContent = objectImages[indexOfObjectImges].title;
+    divInfo.children[1].textContent = objectImages[indexOfObjectImges].price;
+    divInfo.children[2].textContent =
+      objectImages[indexOfObjectImges].description;
+    btnRoom.textContent = objectImages[indexOfObjectImges].title;
+  };
+
+  const cursorChanger = (selectRoom) => {
+    let limitToNextImgCursor = selectRoom.firstChild.offsetWidth / 2;
+    selectRoom.addEventListener("mousemove", (e) => {
+      if (e.clientX > limitToNextImgCursor) {
+        selectRoom.classList.add("select-room--modifire");
+      } else {
+        selectRoom.classList.remove("select-room--modifire");
+      }
+    });
+  };
+
   const handleCounter = (e) => {
     e.preventDefault();
+    console.log("counter: " + e.target.parentElement);
     const btnGuest = document.querySelector(
       ".book-page__navigation-list-item-btn.book-btn.guest"
     );
@@ -137,9 +240,11 @@ export default function Book() {
             .classList.remove("select-guest__counter--disable");
           //usuń kalse disble również z plus adult
         }
+        console.log("spróbuj odjąć od child 1", children);
         if (children === 0) {
           return;
         } else {
+          console.log("odejmij od child 1");
           children -= 1;
           allGuests -= 1;
           if (children === 0) {
@@ -180,8 +285,7 @@ export default function Book() {
     }
 
     //  const spanGuest = document.querySelector(`#${selector}`);
-
-    console.log(selector, "#adult-result", adults);
+    console.log(children, adults);
     btnGuest.innerHTML = `<span>${adults}</span> Adults / <span>${children}</span> Children`;
     spanGuest.textContent = selector === "adult-result" ? adults : children;
   };
@@ -189,6 +293,11 @@ export default function Book() {
   const handleClickBtn = (e) => {
     e.preventDefault();
     const targetWindow = document.querySelector(`.select-${e.target.name}`);
+    if (e.target.name === "room") {
+      e.target.textContent = objectImages[indexOfObjectImges].title;
+      cursorChanger(targetWindow);
+    }
+    console.log(targetWindow, e.target);
 
     if (!targetWindow.classList.contains("active")) {
       targetWindow.style.pointerEvents = "visible";
@@ -202,6 +311,23 @@ export default function Book() {
   };
 
   const afterFirstClickBtn = (e) => {
+    //if clicked target is img or container "bgc-room" them have id "roomSel"
+    if (e.target.id === "roomSel") {
+      //assign img to variable which is shown in the slider, and after whose click changing image
+      const selectRoomImg = document.querySelector(
+        ".select-room__pictures-img.current"
+      );
+
+      //call function "changeImage" with true/false second argument depending on whether main element "select-room" has class "modifire"
+      if (
+        selectRoomImg.parentElement.parentElement.classList.contains(
+          "select-room--modifire"
+        )
+      ) {
+        changeImage(selectRoomImg, true);
+      } else changeImage(selectRoomImg, false);
+    }
+
     if (e.target.classList.contains("book-page__article-select")) {
       [...e.target.children].forEach((item) => {
         if (item.classList.contains("active")) {
@@ -217,7 +343,6 @@ export default function Book() {
         const targetWindow = document.querySelector(
           `.select-${targetBtn.name}`
         );
-        console.log("ile razy usunie");
         targetWindow.style.pointerEvents = "none";
         targetWindow.style.opacity = "0";
         targetWindow.classList.remove("active");
@@ -262,7 +387,7 @@ export default function Book() {
               <button
                 name="room"
                 onClick={handleClickBtn}
-                className="book-page__navigation-list-item-btn book-btn"
+                className="book-page__navigation-list-item-btn book-btn room"
               >
                 {roomName}
               </button>
@@ -331,17 +456,21 @@ export default function Book() {
           </p>
         </div>
         <div className="window-to select-room">
+          <div id="roomSel" className="bgc-room"></div>
           <div className="select-room__pictures">
-            <img src={apartmentRoom} alt="exclusive-room" />
+            <img
+              className="select-room__pictures-img current"
+              id="roomSel"
+              loading="lazy"
+              src={objectImages[1].src}
+              alt="exclusive-room"
+            />
           </div>
           <div className="select-room__info">
-            <h3 className="select-room__info-name">Exclusive Room</h3>
-            <h4 className="select-room__info-price">4000</h4>
+            <h3 className="select-room__info-name">{objectImages[1].title}</h3>
+            <h4 className="select-room__info-price">{objectImages[1].price}</h4>
             <div className="select-room__info-details">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Inventore, rerum expedita reiciendis molestias ex sequi illo?
-              Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque
-              culpa, ab natus suscipit illo.
+              {objectImages[1].description}
             </div>
             <button className="more-details">more details</button>
           </div>

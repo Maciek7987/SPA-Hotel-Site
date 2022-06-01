@@ -17,12 +17,14 @@ const Main = () => {
           <h2>amazing interior</h2>
           <div className="wrapper">
             <img
+              loading="lazy"
               className="main-section__page-1-lobby"
               src={lobbyImg}
               alt="lobby"
             />
           </div>
           <img
+            loading="lazy"
             className="main-section__page-1-plants"
             src={plantsImg}
             alt="plants-background"
@@ -37,6 +39,7 @@ const Main = () => {
       <article className="main-section__page-2">
         <div className="wrapper2">
           <img
+            loading="lazy"
             className="main-section__page-1-baroque"
             src={baroqueImg}
             alt="baroque"

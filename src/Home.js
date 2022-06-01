@@ -176,8 +176,8 @@ class Home extends Component {
           >
             <Main />
           </HorizontalScroll>
-          <video className="lazysizes" loop autoPlay muted>
-            <source src={video} type="video/mp4" />
+          <video loading="lazy" className="lazysizes" loop autoPlay muted>
+            <source loading="lazy" src={video} type="video/mp4" />
           </video>
           <Navigation handleReset={this.resetStateAnimValue} />
           <Footer handelToggle={this.handelToggle} />

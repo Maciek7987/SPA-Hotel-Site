@@ -1,0 +1,103 @@
+@import "./variables.scss";
+
+.popup-content {
+  width: 50%;
+  margin: auto;
+  background: rgb(255, 255, 255);
+  border: 1px solid $main-color-medium;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role="tooltip"].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup="tooltip"].popup-overlay {
+  background: transparent;
+}
+
+.more-details {
+  position: absolute;
+  bottom: 2vh;
+  padding: 1vh 2vh;
+  background: transparent;
+  border: 1px solid $main-color-medium;
+  font-family: $third-font;
+  font-weight: 400;
+  transition: background-color 0.4s ease;
+  &:hover {
+    cursor: pointer;
+    background-color: #fff;
+  }
+}
+.modal {
+  position: relative;
+  padding: 1vh;
+  background-color: rgb(216, 208, 191);
+  font-family: $secondary-font;
+  font-weight: 500;
+  font-size: 1.4rem;
+  &__header {
+    width: 90%;
+    height: 4vh;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    h3 {
+      position: absolute;
+      display: block;
+      left: 50%;
+      top: 2.5vh;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &__content {
+    width: 100%;
+    padding: 10px 5px;
+  }
+  &__actions {
+    width: 100%;
+    margin: auto;
+    padding: 10px 5px;
+    text-align: center;
+    &-more-details {
+      padding: 0.9vh 1.8vh;
+      background: transparent;
+      border: 1px solid $main-color-medium;
+      font-family: $third-font;
+      font-weight: 400;
+      font-size: 1rem;
+      transition: background-color 0.4s ease;
+      &:hover {
+        cursor: pointer;
+        background-color: #fff;
+      }
+    }
+  }
+  &__close {
+    display: block;
+    position: absolute;
+    right: 1vh;
+    top: 1vh;
+    width: 3.5vh;
+    height: 3.5vh;
+    background: transparent;
+    border: none;
+    text-align: center;
+    transition: background-color 0.4s ease;
+    img {
+      width: 100%;
+      height: 100%;
+      padding: 0.6vh;
+    }
+    &:hover {
+      cursor: pointer;
+      background: #fff;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+.popup-content {
+  width: 50%;
+  margin: auto;
+  background: white;
+  border: 1px solid #402808;
+}
+
+.popup-arrow {
+  color: white;
+}
+
+[role="tooltip"].popup-content {
+  width: 200px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-popup="tooltip"].popup-overlay {
+  background: transparent;
+}
+
+.more-details {
+  position: absolute;
+  bottom: 2vh;
+  padding: 1vh 2vh;
+  background: transparent;
+  border: 1px solid #402808;
+  font-family: "Noto Sans JP", "Cardo", sans-serif;
+  font-weight: 400;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.more-details:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.modal {
+  position: relative;
+  padding: 1vh;
+  background-color: #d8d0bf;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.modal__header {
+  width: 90%;
+  height: 4vh;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+}
+
+.modal__header h3 {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 2.5vh;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.modal__content {
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.modal__actions {
+  width: 100%;
+  margin: auto;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.modal__actions-more-details {
+  padding: 0.9vh 1.8vh;
+  background: transparent;
+  border: 1px solid #402808;
+  font-family: "Noto Sans JP", "Cardo", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.modal__actions-more-details:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.modal__close {
+  display: block;
+  position: absolute;
+  right: 1vh;
+  top: 1vh;
+  width: 3.5vh;
+  height: 3.5vh;
+  background: transparent;
+  border: none;
+  text-align: center;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.modal__close img {
+  width: 100%;
+  height: 100%;
+  padding: 0.6vh;
+}
+
+.modal__close:hover {
+  cursor: pointer;
+  background: #fff;
+}
+/*# sourceMappingURL=Modal.css.map */

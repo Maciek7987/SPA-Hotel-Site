@@ -1,9 +1,14 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
+import Popup from "../components/Modal";
+
 import "../style/Book.scss";
 import "../components/scss/Calendar.scss";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+
+import doubleBedIcon from "../pictures/icons/room-icons/double_bed_icon_150149.svg";
 
 import exclusiveRoom from "../pictures/rooms/exclusive/pexels-cottonbro-2.jpg";
 import apartmentRoom from "../pictures/rooms/apartment/pexels-elina-sazonova-room-1.jpg";
@@ -14,36 +19,44 @@ let targetBtn = "zeroClick";
 let indexOfObjectImges = 1;
 let adults = 1,
   children = 0,
+  maxGuestsOnRoom = 4,
   allGuests = adults + children,
   date = "Check In / Check Out",
   roomName = "select room";
 
 export default function Book() {
   const [value, onChange] = useState(new Date());
+
   const objectImages = [
     {
       title: "Exclusive Room",
       src: exclusiveRoom,
-      price: "1000$",
+      price: "$1148",
       description:
         "Exclusive Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+      alt: "exclusiveRoom",
     },
     {
       title: "Apartment Room",
-      price: "700$",
+      price: "$876",
       src: apartmentRoom,
       description:
         "Apartment Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+      alt: "apartmentRoom",
     },
     {
       title: "Standard Room",
-      price: "400$",
+      price: "$389",
       src: standardRoom,
       description:
         "Standard Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+      alt: "standardRoom",
     },
   ];
 
+  let dynamicTitleProps = {
+    title: objectImages[indexOfObjectImges].title,
+  };
   let idDate;
   let dateNow = new Date();
 
@@ -86,6 +99,7 @@ export default function Book() {
   //określenie przyjazdu
   //pokazanie jaki jest wolny pokój w jakim przedziale terminów
   //określenie wyjazdu
+ 
 
   const changeImage = (selectRoomImg, modifire) => {
     const btnRoom = document.querySelector(
@@ -126,6 +140,10 @@ export default function Book() {
     );
     createdImgElementNext.setAttribute("id", "roomSel");
     createdImgElementNext.setAttribute(
+      "alt",
+      `${objectImages[indexOfObjectImges].alt}`
+    );
+    createdImgElementNext.setAttribute(
       "src",
       `${objectImages[indexOfObjectImges].src}`
     );
@@ -146,11 +164,20 @@ export default function Book() {
     selectRoomImg.classList.remove("current");
     const divInfo = selectRoomImg.parentElement.parentElement.lastChild;
 
-    divInfo.children[0].textContent = objectImages[indexOfObjectImges].title;
-    divInfo.children[1].textContent = objectImages[indexOfObjectImges].price;
-    divInfo.children[2].textContent =
-      objectImages[indexOfObjectImges].description;
-    btnRoom.textContent = objectImages[indexOfObjectImges].title;
+    dynamicTitleProps = {
+      title: objectImages[indexOfObjectImges].title,
+    };
+
+    divInfo.children[0].textContent = dynamicTitleProps.title;
+    divInfo.children[1].innerHTML = `${objectImages[indexOfObjectImges].price} <span>USD / NIGHT</span>`;
+    divInfo.children[2].innerHTML = `
+      ${objectImages[indexOfObjectImges].description}
+         <span class="select-room__info-details-bedIcon">
+        <img src=${doubleBedIcon} alt="doubleBedIcon" />  King Bed
+      </span>`;
+    btnRoom.textContent = dynamicTitleProps.title;
+
+    // divInfo.children[3].innerHTML = `<Popup title="${objectImages[indexOfObjectImges].title}"></Popup>`;
   };
 
   const cursorChanger = (selectRoom) => {
@@ -180,7 +207,7 @@ export default function Book() {
 
     switch (e.target.parentElement.id) {
       case "adultMinus":
-        if (allGuests === 8) {
+        if (allGuests === maxGuestsOnRoom) {
           document
             .querySelector(`.counter-plus-adult`)
             .classList.remove("select-guest__counter--disable");
@@ -211,12 +238,12 @@ export default function Book() {
             .classList.remove("select-guest__counter--disable");
           //usnuń klase disable z minus adult
         }
-        if (allGuests === 8) {
+        if (allGuests === maxGuestsOnRoom) {
           return;
         } else {
           adults += 1;
           allGuests += 1;
-          if (allGuests === 8) {
+          if (allGuests === maxGuestsOnRoom) {
             e.target.parentElement.classList.add(
               "select-guest__counter--disable"
             );
@@ -230,7 +257,7 @@ export default function Book() {
         break;
 
       case "childMinus":
-        if (allGuests === 8) {
+        if (allGuests === maxGuestsOnRoom) {
           document
             .querySelector(`.counter-plus-child`)
             .classList.remove("select-guest__counter--disable");
@@ -262,12 +289,12 @@ export default function Book() {
             .classList.remove("select-guest__counter--disable");
           //usnuń klase disable z minus child
         }
-        if (allGuests === 8) {
+        if (allGuests === maxGuestsOnRoom) {
           return;
         } else {
           children += 1;
           allGuests += 1;
-          if (allGuests === 8) {
+          if (allGuests === maxGuestsOnRoom) {
             e.target.parentElement.classList.add(
               "select-guest__counter--disable"
               //dodaj klase disable do plus child
@@ -285,7 +312,6 @@ export default function Book() {
     }
 
     //  const spanGuest = document.querySelector(`#${selector}`);
-    console.log(children, adults);
     btnGuest.innerHTML = `<span>${adults}</span> Adults / <span>${children}</span> Children`;
     spanGuest.textContent = selector === "adult-result" ? adults : children;
   };
@@ -297,7 +323,6 @@ export default function Book() {
       e.target.textContent = objectImages[indexOfObjectImges].title;
       cursorChanger(targetWindow);
     }
-    console.log(targetWindow, e.target);
 
     if (!targetWindow.classList.contains("active")) {
       targetWindow.style.pointerEvents = "visible";
@@ -463,16 +488,23 @@ export default function Book() {
               id="roomSel"
               loading="lazy"
               src={objectImages[1].src}
-              alt="exclusive-room"
+              alt="apartment-room"
             />
           </div>
           <div className="select-room__info">
             <h3 className="select-room__info-name">{objectImages[1].title}</h3>
-            <h4 className="select-room__info-price">{objectImages[1].price}</h4>
+            <h4 className="select-room__info-price">
+              {objectImages[indexOfObjectImges].price}
+              <span> USD / NIGHT</span>
+            </h4>
             <div className="select-room__info-details">
               {objectImages[1].description}
+              <span className="select-room__info-details-bedIcon">
+                <img src={doubleBedIcon} alt="doubleBedIcon" /> King Bed
+              </span>
             </div>
-            <button className="more-details">more details</button>
+
+            <Popup {...dynamicTitleProps} ></Popup>
           </div>
         </div>
         <div className="window-to select-date">

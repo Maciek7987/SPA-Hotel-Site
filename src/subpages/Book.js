@@ -19,7 +19,7 @@ let targetBtn = "zeroClick";
 let indexOfObjectImges = 1;
 let adults = 1,
   children = 0,
-  maxGuestsOnRoom = 4,
+  maxGuestsOnRoom = 6,
   allGuests = adults + children,
   date = "Check In / Check Out",
   roomName = "select room";
@@ -33,7 +33,7 @@ export default function Book() {
       src: exclusiveRoom,
       price: "$1148",
       description:
-        "Exclusive Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+        "Our the most luxory and elegante Exclusive Rooms offer Incredible interior furnished in the richly decorative style. The marble bathroom with details include 24-carat gold-plated. Upon check-in guests can expect to personal butler service receive 24-hour.",
       alt: "exclusiveRoom",
     },
     {
@@ -41,7 +41,7 @@ export default function Book() {
       price: "$876",
       src: apartmentRoom,
       description:
-        "Apartment Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+        "Our Suites ensure amazing experience. Luxury interior designed for our the most demanding guests. Enjoy a well-earned rest in one of the comfortable interior with breathtaking view.",
       alt: "apartmentRoom",
     },
     {
@@ -49,14 +49,17 @@ export default function Book() {
       price: "$389",
       src: standardRoom,
       description:
-        "Standard Room, dolor sit amet consectetur adipisicing elit Inventore, rerum expedita reiciendis molestias ex sequi illo? Porro modi, eos rem tempora nisi aspernatur, repudiandae cumque culpa, ab natus suscipit illo.",
+        "Our Standard Rooms offer unparalleled rest, come with a King bed. Let yourself a relaxing night. The perfect blend of luxury and elegant with contemporary décor.",
       alt: "standardRoom",
     },
   ];
 
-  let dynamicTitleProps = {
-    title: objectImages[indexOfObjectImges].title,
-  };
+  let [selectedRoomtitle, setTitle] = useState(
+    objectImages[indexOfObjectImges].title
+  );
+  let [selectedRoomDescription, setDescription] = useState(
+    objectImages[indexOfObjectImges].description
+  );
   let idDate;
   let dateNow = new Date();
 
@@ -99,7 +102,6 @@ export default function Book() {
   //określenie przyjazdu
   //pokazanie jaki jest wolny pokój w jakim przedziale terminów
   //określenie wyjazdu
- 
 
   const changeImage = (selectRoomImg, modifire) => {
     const btnRoom = document.querySelector(
@@ -164,20 +166,16 @@ export default function Book() {
     selectRoomImg.classList.remove("current");
     const divInfo = selectRoomImg.parentElement.parentElement.lastChild;
 
-    dynamicTitleProps = {
-      title: objectImages[indexOfObjectImges].title,
-    };
+    setTitle((selectedRoomtitle = objectImages[indexOfObjectImges].title));
+    setDescription(
+      (selectedRoomDescription = objectImages[indexOfObjectImges].description)
+    );
 
-    divInfo.children[0].textContent = dynamicTitleProps.title;
+    divInfo.children[0].textContent = selectedRoomtitle;
     divInfo.children[1].innerHTML = `${objectImages[indexOfObjectImges].price} <span>USD / NIGHT</span>`;
-    divInfo.children[2].innerHTML = `
-      ${objectImages[indexOfObjectImges].description}
-         <span class="select-room__info-details-bedIcon">
-        <img src=${doubleBedIcon} alt="doubleBedIcon" />  King Bed
-      </span>`;
-    btnRoom.textContent = dynamicTitleProps.title;
+    divInfo.children[2].textContent = selectedRoomDescription;
 
-    // divInfo.children[3].innerHTML = `<Popup title="${objectImages[indexOfObjectImges].title}"></Popup>`;
+    btnRoom.textContent = selectedRoomtitle;
   };
 
   const cursorChanger = (selectRoom) => {
@@ -207,7 +205,7 @@ export default function Book() {
 
     switch (e.target.parentElement.id) {
       case "adultMinus":
-        if (allGuests === maxGuestsOnRoom) {
+        if (allGuests === maxGuestsOnRoom || adults === 4) {
           document
             .querySelector(`.counter-plus-adult`)
             .classList.remove("select-guest__counter--disable");
@@ -238,16 +236,23 @@ export default function Book() {
             .classList.remove("select-guest__counter--disable");
           //usnuń klase disable z minus adult
         }
-        if (allGuests === maxGuestsOnRoom) {
+        if (allGuests === maxGuestsOnRoom || adults === 4) {
           return;
         } else {
           adults += 1;
           allGuests += 1;
+          if (adults === 4) {
+            e.target.parentElement.classList.add(
+              "select-guest__counter--disable"
+            );
+            //dodaj klase disable do plus adult kiedy adult ma 4
+          }
           if (allGuests === maxGuestsOnRoom) {
             e.target.parentElement.classList.add(
               "select-guest__counter--disable"
             );
             //dodaj klase disable do plus adult
+
             document
               .querySelector(`.counter-plus-child`)
               .classList.add("select-guest__counter--disable");
@@ -262,16 +267,18 @@ export default function Book() {
             .querySelector(`.counter-plus-child`)
             .classList.remove("select-guest__counter--disable");
           //usnuń klase disable z plus child
-          document
-            .querySelector(`.counter-plus-adult`)
-            .classList.remove("select-guest__counter--disable");
-          //usuń kalse disble również z plus adult
+
+          if (adults !== 4) {
+            document
+              .querySelector(`.counter-plus-adult`)
+              .classList.remove("select-guest__counter--disable");
+            //usuń kalse disble również z plus adult jesli jest rózne od 4
+          }
         }
-        console.log("spróbuj odjąć od child 1", children);
+
         if (children === 0) {
           return;
         } else {
-          console.log("odejmij od child 1");
           children -= 1;
           allGuests -= 1;
           if (children === 0) {
@@ -446,8 +453,8 @@ export default function Book() {
             </div>
           </div>
           <p className="select-guest__description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit rerum
-            error distinctio perspiciatis tempore repudiandae voluptatem illum.
+            Availabilty are rooms with one or 2 bethrooms, every of them comes
+            with a King bed
           </p>
 
           <div className="select-guest__child">
@@ -476,8 +483,7 @@ export default function Book() {
           </div>
 
           <p className="select-guest__description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit rerum
-            error distinctio perspiciatis tempore repudiandae voluptatem illum.
+            Children under 6 y.o. are not charged
           </p>
         </div>
         <div className="window-to select-room">
@@ -499,12 +505,14 @@ export default function Book() {
             </h4>
             <div className="select-room__info-details">
               {objectImages[1].description}
-              <span className="select-room__info-details-bedIcon">
-                <img src={doubleBedIcon} alt="doubleBedIcon" /> King Bed
-              </span>
             </div>
-
-            <Popup {...dynamicTitleProps} ></Popup>
+            <span className="select-room__info__bedIcon">
+              <img src={doubleBedIcon} alt="doubleBedIcon" /> King Bed
+            </span>
+            <Popup
+              title={selectedRoomtitle}
+              description={selectedRoomDescription}
+            ></Popup>
           </div>
         </div>
         <div className="window-to select-date">

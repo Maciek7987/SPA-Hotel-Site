@@ -166,6 +166,7 @@
 
 .book-page__article-select .select-guest__description {
   text-align: center;
+  font-size: 1.3rem;
 }
 
 .book-page__article-select .select-guest__adult {
@@ -196,7 +197,6 @@
 
 .book-page__article-select .select-room .bgc-room {
   position: absolute;
-  position: 33;
   width: calc(100% + 64px);
   height: calc(100% + 64px);
   -webkit-transform: translate(-32px, -32px);
@@ -225,31 +225,23 @@
   font-size: 1.1rem;
 }
 
-.book-page__article-select .select-room__info-details {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.book-page__article-select .select-room__info-details-bedIcon {
+.book-page__article-select .select-room__info__bedIcon {
+  position: absolute;
+  right: 9%;
+  bottom: 16%;
   padding-top: 1vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 55%;
+  width: 20%;
 }
 
-.book-page__article-select .select-room__info-details-bedIcon img {
-  width: 40%;
+.book-page__article-select .select-room__info__bedIcon img {
+  margin: 0 0.5vh 0 1vh;
+  width: 35%;
 }
 
 .book-page__article-select .select-room__pictures {
@@ -267,8 +259,8 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-filter: contrast(112%);
-          filter: contrast(112%);
+  -webkit-filter: contrast(120%);
+          filter: contrast(120%);
   -webkit-transition: 2s;
   transition: 2s;
 }

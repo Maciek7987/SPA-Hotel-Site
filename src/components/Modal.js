@@ -2,8 +2,28 @@ import React from "react";
 import Popup from "reactjs-popup";
 import "./scss/Modal.scss";
 import calncelIcon from "../pictures/icons/cancel-icon/cancel_96245.svg";
-
-export default () => {
+let moreInformation;
+export default ({ title, description }) => {
+  switch (title) {
+    case "Exclusive Room":
+      moreInformation =
+        description +
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit rerum error distinctio perspiciatis tempore repudiandae voluptatem illum.";
+      break;
+    case "Apartment Room":
+      moreInformation =
+        description +
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit rerum error distinctio perspiciatis tempore repudiandae voluptatem illum.";
+      break;
+    case "Standard Room":
+      moreInformation =
+        description +
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit rerum error distinctio perspiciatis tempore repudiandae voluptatem illum.";
+      break;
+    default:
+      console.log("none");
+      break;
+  }
   return (
     <Popup
       trigger={<button className="more-details "> more details </button>}
@@ -16,17 +36,9 @@ export default () => {
             <img src={calncelIcon} alt="calncelIcon" />
           </button>
           <header className="modal__header">
-            <h3> csssss </h3>
+            <h3> {title} </h3>
           </header>
-          <div className="modal__content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a
-            nostrum. Dolorem, repellat quidem ut, minima sint vel eveniet
-            quibusdam voluptates delectus doloremque, explicabo tempore dicta
-            adipisci fugit amet dignissimos? Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Consequatur sit commodi beatae optio
-            voluptatum sed eius cumque, delectus saepe repudiandae explicabo
-            nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
-          </div>
+          <div className="modal__content">{moreInformation}</div>
           <footer className="modal__actions">
             <button
               className="modal__actions-more-details"
@@ -35,7 +47,7 @@ export default () => {
                 close();
               }}
             >
-              close modal
+              close
             </button>
           </footer>
         </main>

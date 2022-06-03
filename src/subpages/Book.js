@@ -8,7 +8,7 @@ import "../components/scss/Calendar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
-import doubleBedIcon from "../pictures/icons/room-icons/double_bed_icon_150149.svg";
+import doubleBedIcon from "../pictures/icons/room-icons/grey-double-bed.svg";
 
 import exclusiveRoom from "../pictures/rooms/exclusive/pexels-cottonbro-2.jpg";
 import apartmentRoom from "../pictures/rooms/apartment/pexels-elina-sazonova-room-1.jpg";
@@ -174,7 +174,7 @@ export default function Book() {
     divInfo.children[0].textContent = selectedRoomtitle;
     divInfo.children[1].innerHTML = `${objectImages[indexOfObjectImges].price} <span>USD / NIGHT</span>`;
     divInfo.children[2].textContent = selectedRoomDescription;
-   
+
     btnRoom.textContent = selectedRoomtitle;
   };
 

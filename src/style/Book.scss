@@ -126,8 +126,6 @@
       background: none;
       padding: 0;
 
-      pointer-events: all;
-      opacity: 1;
       cursor: url("../pictures/cursor/right/icons8-back-to-50.png") 25 25,
         pointer;
       &--modifire {
@@ -147,7 +145,7 @@
         width: 30%;
         h3 {
           font-size: 1.5rem;
-          padding: 2vh 0;
+          padding: 1.5vh 0;
           border-bottom: 1px solid rgba(189, 180, 170, 0.459);
         }
         h4 {
@@ -160,15 +158,14 @@
 
         &__bedIcon {
           position: absolute;
-          right: 9%;
-          bottom: 16%;
-          padding-top: 1vh;
+          right: 8%;
+          bottom: 17%;
           display: flex;
           align-items: center;
           width: 20%;
           img {
             margin: 0 0.5vh 0 1vh;
-            width: 35%;
+            width: 22%;
           }
         }
       }

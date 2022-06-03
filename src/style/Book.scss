@@ -125,6 +125,9 @@
       grid-column: 1/-1;
       background: none;
       padding: 0;
+
+      pointer-events: all;
+      opacity: 1;
       cursor: url("../pictures/cursor/right/icons8-back-to-50.png") 25 25,
         pointer;
       &--modifire {

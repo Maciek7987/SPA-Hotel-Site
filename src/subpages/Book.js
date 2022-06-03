@@ -174,7 +174,7 @@ export default function Book() {
     divInfo.children[0].textContent = selectedRoomtitle;
     divInfo.children[1].innerHTML = `${objectImages[indexOfObjectImges].price} <span>USD / NIGHT</span>`;
     divInfo.children[2].textContent = selectedRoomDescription;
-
+   
     btnRoom.textContent = selectedRoomtitle;
   };
 

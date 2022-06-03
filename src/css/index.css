@@ -8,7 +8,7 @@
 
 body {
   overflow: hidden;
-  font-family: "Noto Serif Display", serif;
+  font-family: "Noto Serif Display", "Noto Sans JP", "Cardo", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

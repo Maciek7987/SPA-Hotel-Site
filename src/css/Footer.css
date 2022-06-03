@@ -70,6 +70,6 @@ button .every-line.active {
 .footer__navigation #footer__navigation-btn {
   border: none;
   background-color: transparent;
-  font-family: "Noto Serif Display", serif;
+  font-family: "Noto Serif Display", "Noto Sans JP", "Cardo", sans-serif;
 }
 /*# sourceMappingURL=Footer.css.map */

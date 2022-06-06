@@ -2,7 +2,7 @@
 
 .popup-content {
   width: 40%;
-  height: 80%;
+  height: 90%;
   margin: auto;
   background: rgb(255, 255, 255);
   border: 1px solid $main-color-medium;
@@ -37,59 +37,93 @@
   }
 }
 .modal {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5vh 1fr;
   position: relative;
   height: 100%;
   padding: 1vh;
   background-color: rgb(216, 208, 191);
   font-family: $secondary-font;
   font-weight: 500;
-  font-size: 1.4rem;
   &__header {
-    width: 90%;
-    height: 4vh;
-    border-bottom: 1px solid gray;
-    font-size: 18px;
-    text-align: center;
     h3 {
-      position: absolute;
       display: block;
+      position: absolute;
       left: 50%;
-      top: 2.5vh;
+      top: 3vh;
+      font-size: 1.5rem;
+      text-align: center;
       transform: translate(-50%, -50%);
     }
   }
+
   &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 80%;
-    padding: 10px 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 38vh 1fr 50vh;
+    &-gallery {
+      position: relative;
+      grid-row: 1/2;
+      background-size: cover;
+      background-position: center 58%;
+      filter: contrast(115%);
+      &-btn-arrow {
+        position: absolute;
+        top: 50%;
+        background: transparent;
+        border: none;
+        width: 6.5vh;
+        height: 8vh;
+        opacity: 0.7;
+        margin: 0 1vh;
+        transform: translateY(-50%);
+
+        img {
+          pointer-events: none;
+          width: 90%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.242);
+          transition: background-color 0.3s ease;
+        }
+        &:hover img {
+          background-color: rgba(255, 255, 255, 0.566);
+        }
+      }
+      #btn-left-details {
+        left: 0;
+      }
+      #btn-right-details {
+        right: 0;
+      }
+    }
+    &-paragraph {
+      padding: 1.5vh 1vh;
+      font-size: 1.1rem;
+      align-self: center;
+    }
     &-caption {
       display: grid;
-      grid-template-columns: 100%;
-      grid-template-rows: repeat(8, 1fr);
-      row-gap: 2%;
-      width: 100%;
-      height: 100%;
-
-      &-paragraph {
-        padding: 2%;
-      }
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(4, 7vh);
+      align-items: center;
+      justify-content: center;
       li {
         display: grid;
-        grid-template-columns: 10% 70%;
+        grid-template-columns: 12% 85%;
         width: 100%;
-        padding-left: 3%;
+        padding-left: 4%;
         list-style: none;
+        align-items: center;
+        justify-content: center;
       }
       &-icon {
-        width: 50%;
+        width: 75%;
         align-self: center;
       }
       &-specification {
+        font-size: 1em;
         align-self: center;
-
-        font-size: 0.85em;
       }
     }
   }
@@ -115,6 +149,7 @@
       }
     }
   }
+
   &__close {
     display: block;
     position: absolute;

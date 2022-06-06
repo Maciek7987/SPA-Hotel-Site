@@ -11,8 +11,18 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import doubleBedIcon from "../pictures/icons/room-icons/grey-double-bed.svg";
 
 import exclusiveRoom from "../pictures/rooms/exclusive/pexels-cottonbro-2.jpg";
+import exclusiveRoomDetails1 from "../pictures/rooms/exclusive/pexels-cottonbro-1.jpg";
+import exclusiveRoomDetails2 from "../pictures/rooms/exclusive/pexels-abdel-rahman-abu-baker-3.jpg";
+import exclusiveRoomDetails3 from "../pictures/rooms/exclusive/pexels-cottonbro-4.jpg";
+
 import apartmentRoom from "../pictures/rooms/apartment/pexels-elina-sazonova-room-1.jpg";
+import apartmentRoomDetails1 from "../pictures/rooms/apartment/pexels-maria-orlova-2.jpg";
+import apartmentRoomDetails2 from "../pictures/rooms/apartment/pexels-cottonbro-3.jpg";
+
 import standardRoom from "../pictures/rooms/standard/pexels-natasha-filippovskaya-1.jpg";
+import standardRoomDetails1 from "../pictures/rooms/standard/pexels-donald-tong-2.jpg";
+import standardRoomDetails2 from "../pictures/rooms/standard/pexels-cottonbro-3.jpg";
+import standardRoomDetails3 from "../pictures/rooms/standard/pexels-polina-kovaleva-4.jpg";
 
 //isolated some variables, them cause errors
 let targetBtn = "zeroClick";
@@ -34,15 +44,30 @@ export default function Book() {
       price: "$1148",
       description:
         "Our the most luxory and elegante Exclusive Rooms offer Incredible interior furnished in the richly decorative style. The marble bathroom with details include 24-carat gold-plated. Upon check-in guests can expect to personal butler service receive 24-hour.",
+      moreDescription:
+        "Our the most luxory and elegante Exclusive Rooms offer Incredible interior furnished in the richly decorative style. The marble bathroom with details include 24-carat gold-plated, designed by legendary Vivienne Girard, one of the biggest icons of french interior design. Dining area with unparalleled view, large comfortable sofa in living room. Upon check-in guests can expect to personal butler service receive 24-hour.",
       alt: "exclusiveRoom",
+      moreDetailsImage: [
+        exclusiveRoom,
+        exclusiveRoomDetails1,
+        exclusiveRoomDetails2,
+        exclusiveRoomDetails3,
+      ],
     },
     {
       title: "Apartment Room",
       price: "$876",
       src: apartmentRoom,
       description:
-        "Our Suites ensure amazing experience. Luxury interior designed for our the most demanding guests. Enjoy a well-earned rest in one of the comfortable interior with breathtaking view.",
+        "Our Suites ensure amazing experience. Luxury and comfortable interior designed for our the most demanding guests. The privace terrace with breathtaking view. Enjoy a well-earned rest in one of the your dreamed interior.",
+      moreDescription:
+        "Our Suites ensure amazing experience. Luxury and comfortable interior designed for our the most demanding guests. Bathroom features beautiful mosaic floors. One king bed, plus one queen size sofa bed. The privace terrace with breathtaking view. Enjoy a well-earned rest in one of the your dreamed interior.",
       alt: "apartmentRoom",
+      moreDetailsImage: [
+        apartmentRoom,
+        apartmentRoomDetails1,
+        apartmentRoomDetails2,
+      ],
     },
     {
       title: "Standard Room",
@@ -50,7 +75,15 @@ export default function Book() {
       src: standardRoom,
       description:
         "Our Standard Rooms offer unparalleled rest, come with a King bed. Let yourself a relaxing night. The perfect blend of luxury and elegant with contemporary décor.",
+      moreDescription:
+        "Our Standard Rooms offer unparalleled rest, come with a King bed. Let yourself a relaxing night. Living room with sofa and two comfortable armchairs, bathroom is finished in rustic style. The perfect blend of luxury and elegant with contemporary décor.",
       alt: "standardRoom",
+      moreDetailsImage: [
+        standardRoom,
+        standardRoomDetails1,
+        standardRoomDetails2,
+        standardRoomDetails3,
+      ],
     },
   ];
 
@@ -58,7 +91,10 @@ export default function Book() {
     objectImages[indexOfObjectImges].title
   );
   let [selectedRoomDescription, setDescription] = useState(
-    objectImages[indexOfObjectImges].description
+    objectImages[indexOfObjectImges].moreDescription
+  );
+  let [moreDetailsImage, setImage] = useState(
+    objectImages[indexOfObjectImges].moreDetailsImage
   );
   let idDate;
   let dateNow = new Date();
@@ -168,12 +204,17 @@ export default function Book() {
 
     setTitle((selectedRoomtitle = objectImages[indexOfObjectImges].title));
     setDescription(
-      (selectedRoomDescription = objectImages[indexOfObjectImges].description)
+      (selectedRoomDescription =
+        objectImages[indexOfObjectImges].moreDescription)
+    );
+    setImage(
+      (moreDetailsImage = objectImages[indexOfObjectImges].moreDetailsImage)
     );
 
     divInfo.children[0].textContent = selectedRoomtitle;
     divInfo.children[1].innerHTML = `${objectImages[indexOfObjectImges].price} <span>USD / NIGHT</span>`;
-    divInfo.children[2].textContent = selectedRoomDescription;
+    divInfo.children[2].textContent =
+      objectImages[indexOfObjectImges].description;
 
     btnRoom.textContent = selectedRoomtitle;
   };
@@ -512,6 +553,7 @@ export default function Book() {
             <Popup
               title={selectedRoomtitle}
               description={selectedRoomDescription}
+              moreDetailsImage={moreDetailsImage}
             ></Popup>
           </div>
         </div>

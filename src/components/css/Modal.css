@@ -1,6 +1,6 @@
 .popup-content {
   width: 40%;
-  height: 80%;
+  height: 90%;
   margin: auto;
   background: white;
   border: 1px solid #402808;
@@ -42,85 +42,136 @@
 }
 
 .modal {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 5vh 1fr;
+      grid-template-rows: 5vh 1fr;
   position: relative;
   height: 100%;
   padding: 1vh;
   background-color: #d8d0bf;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
   font-weight: 500;
-  font-size: 1.4rem;
-}
-
-.modal__header {
-  width: 90%;
-  height: 4vh;
-  border-bottom: 1px solid gray;
-  font-size: 18px;
-  text-align: center;
 }
 
 .modal__header h3 {
-  position: absolute;
   display: block;
+  position: absolute;
   left: 50%;
-  top: 2.5vh;
+  top: 3vh;
+  font-size: 1.5rem;
+  text-align: center;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
 
 .modal__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 80%;
-  padding: 10px 5px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 38vh 1fr 50vh;
+      grid-template-rows: 38vh 1fr 50vh;
+}
+
+.modal__content-gallery {
+  position: relative;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  background-size: cover;
+  background-position: center 58%;
+  -webkit-filter: contrast(115%);
+          filter: contrast(115%);
+}
+
+.modal__content-gallery-btn-arrow {
+  position: absolute;
+  top: 50%;
+  background: transparent;
+  border: none;
+  width: 6.5vh;
+  height: 8vh;
+  opacity: 0.7;
+  margin: 0 1vh;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.modal__content-gallery-btn-arrow img {
+  pointer-events: none;
+  width: 90%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.242);
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.modal__content-gallery-btn-arrow:hover img {
+  background-color: rgba(255, 255, 255, 0.566);
+}
+
+.modal__content-gallery #btn-left-details {
+  left: 0;
+}
+
+.modal__content-gallery #btn-right-details {
+  right: 0;
+}
+
+.modal__content-paragraph {
+  padding: 1.5vh 1vh;
+  font-size: 1.1rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .modal__content-caption {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 100%;
-      grid-template-columns: 100%;
-  -ms-grid-rows: (1fr)[8];
-      grid-template-rows: repeat(8, 1fr);
-  row-gap: 2%;
-  width: 100%;
-  height: 100%;
-}
-
-.modal__content-caption-paragraph {
-  padding: 2%;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: (7vh)[4];
+      grid-template-rows: repeat(4, 7vh);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .modal__content-caption li {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 10% 70%;
-      grid-template-columns: 10% 70%;
+  -ms-grid-columns: 12% 85%;
+      grid-template-columns: 12% 85%;
   width: 100%;
-  padding-left: 3%;
+  padding-left: 4%;
   list-style: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .modal__content-caption-icon {
-  width: 50%;
+  width: 75%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
 }
 
 .modal__content-caption-specification {
+  font-size: 1em;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  font-size: 0.85em;
 }
 
 .modal__actions {

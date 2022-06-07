@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import Popup from "../components/Modal";
+import Availability from "../components/Availability";
 
 import "../style/Book.scss";
 import "../components/scss/Calendar.scss";
@@ -114,24 +115,18 @@ export default function Book() {
 
   let whichElement = "next";
 
-  //130 pokoji zwykłych
-  //50 apartamentów
-  //17 exclusive
+  //50 pokoji zwykłych numery 1-50 włącznie
+  //30 apartamentów numery 71-100 włącznie
+  //20 exclusive numery 51-70 włacznie
 
-  //pokoje zwykłe z 1 sypialnia (65)
-  //pokoje zwykłe z 2 sypialniami (35)
-  //pokoje zwykłe z 3 sypialniami (20)
-  //pokoje zwykłe z 4 sypialniami (10)
+  //pokoje zwykłe z 1 sypialnia (30)
+  //pokoje zwykłe z 2 sypialniami (20)
 
   //apartamenty z 1 sypialnia (20)
-  //apartamenty z 2 sypialniami (15)
-  //apartamenty z 3 sypialniami (10)
-  //apartamenty z 4 sypialniami (5)
+  //apartamenty z 2 sypialniami (10)
 
-  //exclusive z 1 sypialnia (5)
-  //exclusive z 2 sypialniami (5)
-  //exclusive z 3 sypialniami (5)
-  //exclusive z 4 sypialniami (2)
+  //exclusive z 1 sypialnia (10)
+  //exclusive z 2 sypialniami (10)
 
   //wybranie ile dorosłych i ile dzieci ze wzgledu na cene za osobe dorosła i za dziecko plus do tego cena za standard pokoju
   //wybranie ilości sypialni oraz standard pokoju
@@ -576,7 +571,9 @@ export default function Book() {
         </div>
       </article>
       <article className="book-page__article-info">
-        <div className=""></div>
+        <div className="">
+          <Availability date={value}></Availability>
+        </div>
       </article>
     </section>
   );

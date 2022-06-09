@@ -225,7 +225,8 @@
         position: relative;
         width: 30%;
         height: 90%;
-        overflow: hidden;
+        overflow-x: hidden;
+
         &::before {
           position: absolute;
           left: 0;
@@ -237,6 +238,19 @@
           transform: translateX(-101%);
           background-color: $main-color-light;
           transition: 0.7s ease;
+        }
+        &[disable="true"] {
+          opacity: 0.7;
+          pointer-events: none;
+          & > button {
+            background-color: rgba(122, 122, 122, 0.156);
+          }
+          &:hover.li::before {
+            transform: translateX(-101%);
+          }
+          &:hover.li::after {
+            opacity: 1;
+          }
         }
         &:hover.li::before {
           transform: translateX(0);

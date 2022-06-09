@@ -32,8 +32,7 @@ let adults = 1,
   children = 0,
   maxGuestsOnRoom = 6,
   allGuests = adults + children,
-  date = "Check In / Check Out",
-  roomName = "select room";
+  date = "Check In / Check Out";
 
 export default function Book() {
   const [value, onChange] = useState(new Date());
@@ -87,7 +86,10 @@ export default function Book() {
       ],
     },
   ];
+  let [roomName, setRoomName] = useState("select room"); //variable defined so that later to check when roomName ceases to be  "select room"
+  let [adultsChildrenArray, setGusetArray] = useState([adults, children]); //variable defined so that later put it to html elements and to give it as props to "Availability" component
 
+  //variable is changing with changeImage function and we give it as props to "Availability" component
   let [selectedRoomtitle, setTitle] = useState(
     objectImages[indexOfObjectImges].title
   );
@@ -104,14 +106,15 @@ export default function Book() {
   let month = dateNow.getMonth() + 1;
   let day = dateNow.getDate();
 
+  //
   if (value.length === 2) {
-    idDate = "biggerFontSize";
     date = `${value[0].getDate()}.${
       value[0].getMonth() + 1
     }.${value[0].getFullYear()} - ${value[1].getDate()}.${
       value[1].getMonth() + 1
     }.${value[1].getFullYear()}`;
   }
+  if (date !== "Check In / Check Out") idDate = "biggerFontSize";
 
   let whichElement = "next";
 
@@ -134,6 +137,7 @@ export default function Book() {
   //pokazanie jaki jest wolny pokój w jakim przedziale terminów
   //określenie wyjazdu
 
+  //after click image slider (callback in afterFirstClickBtn)
   const changeImage = (selectRoomImg, modifire) => {
     const btnRoom = document.querySelector(
       ".book-page__navigation-list-item-btn.book-btn.room"
@@ -145,7 +149,7 @@ export default function Book() {
     //asign to "whichElement" name of class, depending on whether modifire is true or false
     whichElement = modifire ? "next" : "prev";
 
-    //objectImages is declarated above "array"
+    //objectImages is declarated above as "array"
 
     indexOfObjectImges = modifire
       ? indexOfObjectImges + 1
@@ -165,7 +169,7 @@ export default function Book() {
     //create img elemnet, set atribute class from above variable,
     //important also set class "current" which help to defined img for next click
     //and then for next click assigning this image as selectRoomImg
-    //set atribute src putting as index also above variable and add to parent of images
+    //set attribute src putting as index also above variable and add to parent of images
     const createdImgElementNext = document.createElement("img");
     createdImgElementNext.setAttribute(
       "class",
@@ -182,7 +186,7 @@ export default function Book() {
     );
     selectRoomImg.parentElement.appendChild(createdImgElementNext);
 
-    //differnt animation if after click, modifire was false(prev, so left side), true(next, so right side)
+    //differnt animation if after click, modifire was false( so to left side), true( so to right side)
     if (modifire) {
       selectRoomImg.animate(
         { transform: "translateX(-100%)" },
@@ -214,30 +218,21 @@ export default function Book() {
     btnRoom.textContent = selectedRoomtitle;
   };
 
+  //after mouse move at image (callback in handleClickBtn)
   const cursorChanger = (selectRoom) => {
-    let limitToNextImgCursor = selectRoom.firstChild.offsetWidth / 2;
+    let limitToNextImgCursor = selectRoom.firstChild.offsetWidth / 2; //info to which moment be show "icons8-next-page-50.png"
     selectRoom.addEventListener("mousemove", (e) => {
       if (e.clientX > limitToNextImgCursor) {
-        selectRoom.classList.add("select-room--modifire");
+        selectRoom.classList.add("select-room--modifire"); // class to styling scss (cursor: url....)
       } else {
         selectRoom.classList.remove("select-room--modifire");
       }
     });
   };
 
+  //after click button guest
   const handleCounter = (e) => {
     e.preventDefault();
-    console.log("counter: " + e.target.parentElement);
-    const btnGuest = document.querySelector(
-      ".book-page__navigation-list-item-btn.book-btn.guest"
-    );
-    let selector =
-      e.target.parentElement.id === "adultMinus" ||
-      e.target.parentElement.id === "adultPlus"
-        ? "adult-result"
-        : "child-result";
-
-    const spanGuest = document.querySelector(`#${selector}`);
 
     switch (e.target.parentElement.id) {
       case "adultMinus":
@@ -245,22 +240,25 @@ export default function Book() {
           document
             .querySelector(`.counter-plus-adult`)
             .classList.remove("select-guest__counter--disable");
-          //usnuń klase disable z plus adult
+          //remove class "disable" from plus-adult if after click "MINUS" but before subtract, number of adults or allGuests was maximum
           document
             .querySelector(`.counter-plus-child`)
             .classList.remove("select-guest__counter--disable");
-          //usnuń klase disable również z plus child
+          //remove class "disable" from plus-child because then it's also blocked
         }
         if (adults === 1) {
+          //minimum number of adults
           return;
         } else {
+          //if is min. 2
           adults -= 1;
           allGuests -= 1;
           if (adults === 1) {
+            //at once, we dont wait to next click, if is 1
             e.target.parentElement.classList.add(
               "select-guest__counter--disable"
             );
-            //dodaj klase disable do minusa adult
+            //we add class "disable" to parent of target which is a minus-adult
           }
         }
         break;
@@ -270,29 +268,29 @@ export default function Book() {
           document
             .querySelector(`.counter-minus-adult`)
             .classList.remove("select-guest__counter--disable");
-          //usnuń klase disable z minus adult
+          //usimilarly to above, we remove class after click but before adding if opposite button is off so number of adults is 1
         }
         if (allGuests === maxGuestsOnRoom || adults === 4) {
+          //if will be max guests or maximum number of adults
           return;
         } else {
           adults += 1;
           allGuests += 1;
           if (adults === 4) {
+            //if max number of adults, e.g adult=4 and child=1 then we add "disable" class to parent of click button (plus-adult)
             e.target.parentElement.classList.add(
               "select-guest__counter--disable"
             );
-            //dodaj klase disable do plus adult kiedy adult ma 4
           }
           if (allGuests === maxGuestsOnRoom) {
+            //if max number of guest, e.g adult=3 and child=3 then disable plus in adult and child button
             e.target.parentElement.classList.add(
               "select-guest__counter--disable"
             );
-            //dodaj klase disable do plus adult
 
             document
               .querySelector(`.counter-plus-child`)
               .classList.add("select-guest__counter--disable");
-            //dodaj klase disable również do plus child
           }
         }
         break;
@@ -302,17 +300,19 @@ export default function Book() {
           document
             .querySelector(`.counter-plus-child`)
             .classList.remove("select-guest__counter--disable");
-          //usnuń klase disable z plus child
+          //remove class "disable" from plus-child if after click "MINUS" but before subtract, number of allGuests was maximum
 
           if (adults !== 4) {
+            //if adult isn't block for its maximum value remove class "disable" also from plus-adult, e.g child=5 adult=1
             document
               .querySelector(`.counter-plus-adult`)
               .classList.remove("select-guest__counter--disable");
-            //usuń kalse disble również z plus adult jesli jest rózne od 4
+            //else e.g adult=4 child=2
           }
         }
 
         if (children === 0) {
+          //minimum number of child
           return;
         } else {
           children -= 1;
@@ -320,7 +320,6 @@ export default function Book() {
           if (children === 0) {
             e.target.parentElement.classList.add(
               "select-guest__counter--disable"
-              //dodaj klase disable do minus child
             );
           }
         }
@@ -330,7 +329,6 @@ export default function Book() {
           document
             .querySelector(`.counter-minus-child`)
             .classList.remove("select-guest__counter--disable");
-          //usnuń klase disable z minus child
         }
         if (allGuests === maxGuestsOnRoom) {
           return;
@@ -338,14 +336,13 @@ export default function Book() {
           children += 1;
           allGuests += 1;
           if (allGuests === maxGuestsOnRoom) {
+            //if max number of guest, e.g adult=3 and child=3 then disable plus in adult and child button
             e.target.parentElement.classList.add(
               "select-guest__counter--disable"
-              //dodaj klase disable do plus child
             );
             document
               .querySelector(`.counter-plus-adult`)
               .classList.add("select-guest__counter--disable");
-            //dodaj kalse disble również do plus adult
           }
         }
         break;
@@ -353,20 +350,19 @@ export default function Book() {
         console.log("none");
         break;
     }
-
-    //  const spanGuest = document.querySelector(`#${selector}`);
-    btnGuest.innerHTML = `<span>${adults}</span> Adults / <span>${children}</span> Children`;
-    spanGuest.textContent = selector === "adult-result" ? adults : children;
+    setGusetArray((adultsChildrenArray = [adults, children])); //after all, we set variable with correct values and put it to button content "guest", span from window "select-guest" and to give it as props to "Availability" component
   };
 
+  //after click buttons of navigation
   const handleClickBtn = (e) => {
     e.preventDefault();
-    const targetWindow = document.querySelector(`.select-${e.target.name}`);
+    const targetWindow = document.querySelector(`.select-${e.target.name}`); //selector e.g ".select-room" refers to window showing after click button
     if (e.target.name === "room") {
-      e.target.textContent = objectImages[indexOfObjectImges].title;
+      setRoomName((roomName = objectImages[indexOfObjectImges].title)); //change after first click from default value to name of room, it's to enable button date
       cursorChanger(targetWindow);
     }
 
+    //after click the same button of navigation show or hide window of it
     if (!targetWindow.classList.contains("active")) {
       targetWindow.style.pointerEvents = "visible";
       targetWindow.style.opacity = "1";
@@ -378,6 +374,7 @@ export default function Book() {
     }
   };
 
+  //function is detect all click on element article, afterFirstClickBtn because remove class "active" from different button only after first...
   const afterFirstClickBtn = (e) => {
     //if clicked target is img or container "bgc-room" them have id "roomSel"
     if (e.target.id === "roomSel") {
@@ -396,6 +393,7 @@ export default function Book() {
       } else changeImage(selectRoomImg, false);
     }
 
+    //clicking on whole element "article" removes "active" class from all windows of buttons navigation
     if (e.target.classList.contains("book-page__article-select")) {
       [...e.target.children].forEach((item) => {
         if (item.classList.contains("active")) {
@@ -406,6 +404,7 @@ export default function Book() {
       });
     }
 
+    //clicking on different button navigation than before removes "active" class from previous window of button
     if (e.target.classList.contains("book-btn")) {
       if (targetBtn.name !== e.target.name && targetBtn !== "zeroClick") {
         const targetWindow = document.querySelector(
@@ -417,6 +416,83 @@ export default function Book() {
       }
       targetBtn = e.target;
     }
+  };
+
+  let arrayTerminsReservation = [
+    {
+      id: 2222,
+      numberOfRoom: 63,
+      name: "Antionio",
+      surname: "Filipaik",
+      phone: 897754096,
+      email: "chiacynt32@gamil.com",
+      checkIn: new Date(2023, 5, 7),
+      checkOut: new Date(2023, 5, 10),
+    },
+    {
+      id: 3333,
+      numberOfRoom: 1,
+      name: "Maradnionio",
+      surname: "Delazqz",
+      phone: 687231902,
+      email: "fdddsse@gamil.com",
+      checkIn: new Date(2022, 5, 15),
+      checkOut: new Date(2022, 5, 18),
+    },
+    {
+      id: 6666,
+      numberOfRoom: 24,
+      name: "Nico",
+      surname: "Alberts",
+      phone: 876424008,
+      email: "fdddsse@gamil.com",
+      checkIn: new Date(2022, 5, 25),
+      checkOut: new Date(2022, 6, 3),
+    },
+    {
+      id: 3333,
+      numberOfRoom: 1,
+      name: "Maradnionio",
+      surname: "Delazqz",
+      phone: 687231902,
+      email: "fdddsse@gamil.com",
+      checkIn: new Date(2022, 6, 14),
+      checkOut: new Date(2022, 7, 25),
+    },
+  ];
+
+  let [range, setRange] = useState(false);
+  let toFirstDay,
+    toLastDay,
+    toLastDaysArray = [],
+    toFirstDaysArray = [];
+
+  //after click on day in calendar
+  const showDaysWhichCanSelect = (date) => {
+    if (value.length === 2) return;
+    arrayTerminsReservation.forEach((book) => {
+      toFirstDay = book.checkIn.getTime() - value.getTime(); //difference between selected day and first day of termin reservation
+      toLastDay = value.getTime() - book.checkOut.getTime(); //difference between selected day and last day of termin reservation
+
+      if (toFirstDay > 0) {
+        //values higher than zero because we check only days after selected day
+        if (toFirstDaysArray.indexOf(toFirstDay) === -1) {
+          toFirstDaysArray.push(toFirstDay);
+        }
+      }
+      if (toLastDay > 0) {
+        //values higher than zero because we check only days before selected day
+        if (toLastDaysArray.indexOf(toLastDay) === -1) {
+          toLastDaysArray.push(toLastDay);
+        }
+      }
+    });
+    //now to the smallest difference we add our selected day and result is first "disabled" day after it
+    const min = Math.min(...toFirstDaysArray) + value.getTime();
+    //here from our selected day we subtract the smallest difference and result is first "disabled" day before it
+    const max = value.getTime() - Math.min(...toLastDaysArray);
+
+    return date.getTime() >= min || date.getTime() <= max;
   };
 
   return (
@@ -436,18 +512,8 @@ export default function Book() {
                 onClick={handleClickBtn}
                 className="book-page__navigation-list-item-btn book-btn guest"
               >
-                <span>1</span> Adults / <span>0</span> Children
-              </button>
-            </li>
-
-            <li className="book-page__navigation-list-item li">
-              <button
-                id={idDate}
-                name="date"
-                onClick={handleClickBtn}
-                className="book-page__navigation-list-item-btn book-btn date"
-              >
-                {date}
+                <span>{adultsChildrenArray[0]}</span> Adults /{" "}
+                <span>{adultsChildrenArray[1]}</span> Children
               </button>
             </li>
 
@@ -458,6 +524,20 @@ export default function Book() {
                 className="book-page__navigation-list-item-btn book-btn room"
               >
                 {roomName}
+              </button>
+            </li>
+
+            <li
+              disable={roomName === "select room" ? "true" : "false"} // until room isn't selected, roomName won't be change and btn with date disable
+              className="book-page__navigation-list-item li"
+            >
+              <button
+                id={idDate}
+                name="date"
+                onClick={handleClickBtn}
+                className="book-page__navigation-list-item-btn book-btn date"
+              >
+                {date}
               </button>
             </li>
           </ul>
@@ -476,7 +556,7 @@ export default function Book() {
               </span>
 
               <span id="adult-result" className="select-guest__counter-result">
-                1
+                {adultsChildrenArray[0]}
               </span>
 
               <span
@@ -505,7 +585,7 @@ export default function Book() {
               </span>
 
               <span id="child-result" className="select-guest__counter-result">
-                0
+                {adultsChildrenArray[1]}
               </span>
 
               <span
@@ -562,17 +642,36 @@ export default function Book() {
               className="class1"
               onChange={onChange}
               value={value}
-              selectRange={true}
               showDoubleView={true}
               showFixedNumberOfWeeks={false}
               showNeighboringMonth={false}
+              selectRange={range} //range is default "false" and  onClickDay, it call function to assign opposite value
+              onClickDay={() => setRange((range = !range))}
+              tileDisabled={
+                //range is default "false" so at beginning is show calendar with availbs termins
+                range
+                  ? //after click we leave the longest possible range with day which was clicked
+                    ({ date }) => showDaysWhichCanSelect(date)
+                  : //default but also after clicking, chose range we disable days, which belong to the compartment already booked termins
+                    ({ date }) =>
+                      arrayTerminsReservation.some(
+                        (book) =>
+                          (date.getTime() > book.checkIn.getTime() &&
+                            date.getTime() < book.checkOut.getTime()) ||
+                          date.getTime() === book.checkIn.getTime() ||
+                          date.getTime() === book.checkOut.getTime()
+                      )
+              }
             />
           </div>
         </div>
       </article>
       <article className="book-page__article-info">
         <div className="">
-          <Availability date={value}></Availability>
+          <Availability
+            roomName={selectedRoomtitle}
+            guests={adultsChildrenArray}
+          ></Availability>
         </div>
       </article>
     </section>

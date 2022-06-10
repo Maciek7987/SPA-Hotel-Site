@@ -16,7 +16,6 @@
 // //exclusive z 2 sypialniami (10)
 
 export default function Availability({ roomName, guests }) {
-  console.log(roomName, guests);
   //   let [isAvailability, setAvailability] = useState("");
   //   let arrayTerminsReservation = [
   //     {

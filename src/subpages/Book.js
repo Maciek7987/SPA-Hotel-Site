@@ -2,6 +2,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import Popup from "../components/Modal";
 import Availability from "../components/Availability";
+import testReservation from "../source/availability";
 
 import "../style/Book.scss";
 import "../components/scss/Calendar.scss";
@@ -90,7 +91,7 @@ export default function Book() {
   let [adultsChildrenArray, setGusetArray] = useState([adults, children]); //variable defined so that later put it to html elements and to give it as props to "Availability" component
 
   //variable is changing with changeImage function and we give it as props to "Availability" component
-  let [selectedRoomtitle, setTitle] = useState(
+  let [selectedRoomTitle, setTitle] = useState(
     objectImages[indexOfObjectImges].title
   );
   let [selectedRoomDescription, setDescription] = useState(
@@ -99,6 +100,7 @@ export default function Book() {
   let [moreDetailsImage, setImage] = useState(
     objectImages[indexOfObjectImges].moreDetailsImage
   );
+
   let idDate;
   let dateNow = new Date();
 
@@ -201,7 +203,7 @@ export default function Book() {
     selectRoomImg.classList.remove("current");
     const divInfo = selectRoomImg.parentElement.parentElement.lastChild;
 
-    setTitle((selectedRoomtitle = objectImages[indexOfObjectImges].title));
+    setTitle((selectedRoomTitle = objectImages[indexOfObjectImges].title));
     setDescription(
       (selectedRoomDescription =
         objectImages[indexOfObjectImges].moreDescription)
@@ -210,12 +212,12 @@ export default function Book() {
       (moreDetailsImage = objectImages[indexOfObjectImges].moreDetailsImage)
     );
 
-    divInfo.children[0].textContent = selectedRoomtitle;
+    divInfo.children[0].textContent = selectedRoomTitle;
     divInfo.children[1].innerHTML = `${objectImages[indexOfObjectImges].price} <span>USD / NIGHT</span>`;
     divInfo.children[2].textContent =
       objectImages[indexOfObjectImges].description;
 
-    btnRoom.textContent = selectedRoomtitle;
+    btnRoom.textContent = selectedRoomTitle;
   };
 
   //after mouse move at image (callback in handleClickBtn)
@@ -418,48 +420,59 @@ export default function Book() {
     }
   };
 
-  let arrayTerminsReservation = [
-    {
-      id: 2222,
-      numberOfRoom: 63,
-      name: "Antionio",
-      surname: "Filipaik",
-      phone: 897754096,
-      email: "chiacynt32@gamil.com",
-      checkIn: new Date(2023, 5, 7),
-      checkOut: new Date(2023, 5, 10),
-    },
-    {
-      id: 3333,
-      numberOfRoom: 1,
-      name: "Maradnionio",
-      surname: "Delazqz",
-      phone: 687231902,
-      email: "fdddsse@gamil.com",
-      checkIn: new Date(2022, 5, 15),
-      checkOut: new Date(2022, 5, 18),
-    },
-    {
-      id: 6666,
-      numberOfRoom: 24,
-      name: "Nico",
-      surname: "Alberts",
-      phone: 876424008,
-      email: "fdddsse@gamil.com",
-      checkIn: new Date(2022, 5, 25),
-      checkOut: new Date(2022, 6, 3),
-    },
-    {
-      id: 3333,
-      numberOfRoom: 1,
-      name: "Maradnionio",
-      surname: "Delazqz",
-      phone: 687231902,
-      email: "fdddsse@gamil.com",
-      checkIn: new Date(2022, 6, 14),
-      checkOut: new Date(2022, 7, 25),
-    },
-  ];
+  // to variable assign correct array of object
+  // const arrayTerminsReservation = testReservation.test("Standard Room", [4, 2]);
+  console.log(selectedRoomTitle, adultsChildrenArray);
+  const arrayTerminsReservation = testReservation.test(
+    selectedRoomTitle,
+    adultsChildrenArray
+  );
+  console.log(
+    arrayTerminsReservation,
+    new Date(new Number(arrayTerminsReservation[0]))
+  );
+  // let arrayTerminsReservation = [
+  //   {
+  //     id: 2222,
+  //     numberOfRoom: 63,
+  //     name: "Antionio",
+  //     surname: "Filipaik",
+  //     phone: 897754096,
+  //     email: "chiacynt32@gamil.com",
+  //     checkIn: new Date(2023, 6, 7),
+  //     checkOut: new Date(2023, 6, 10),
+  //   },
+  //   {
+  //     id: 3333,
+  //     numberOfRoom: 1,
+  //     name: "Maradnionio",
+  //     surname: "Delazqz",
+  //     phone: 687231902,
+  //     email: "fdddsse@gamil.com",
+  //     checkIn: new Date(2022, 6, 15),
+  //     checkOut: new Date(2022, 6, 18),
+  //   },
+  //   {
+  //     id: 6666,
+  //     numberOfRoom: 24,
+  //     name: "Nico",
+  //     surname: "Alberts",
+  //     phone: 876424008,
+  //     email: "fdddsse@gamil.com",
+  //     checkIn: new Date(2022, 6, 25),
+  //     checkOut: new Date(2022, 7, 3),
+  //   },
+  //   {
+  //     id: 3333,
+  //     numberOfRoom: 1,
+  //     name: "Maradnionio",
+  //     surname: "Delazqz",
+  //     phone: 687231902,
+  //     email: "fdddsse@gamil.com",
+  //     checkIn: new Date(2022, 7, 14),
+  //     checkOut: new Date(2022, 8, 25),
+  //   },
+  // ];
 
   let [range, setRange] = useState(false);
   let toFirstDay,
@@ -626,7 +639,7 @@ export default function Book() {
               <img src={doubleBedIcon} alt="doubleBedIcon" /> King Bed
             </span>
             <Popup
-              title={selectedRoomtitle}
+              title={selectedRoomTitle}
               description={selectedRoomDescription}
               moreDetailsImage={moreDetailsImage}
             ></Popup>
@@ -655,11 +668,7 @@ export default function Book() {
                   : //default but also after clicking, chose range we disable days, which belong to the compartment already booked termins
                     ({ date }) =>
                       arrayTerminsReservation.some(
-                        (book) =>
-                          (date.getTime() > book.checkIn.getTime() &&
-                            date.getTime() < book.checkOut.getTime()) ||
-                          date.getTime() === book.checkIn.getTime() ||
-                          date.getTime() === book.checkOut.getTime()
+                        (book) => date.getTime() === Number(book)
                       )
               }
             />
@@ -669,7 +678,7 @@ export default function Book() {
       <article className="book-page__article-info">
         <div className="">
           <Availability
-            roomName={selectedRoomtitle}
+            roomName={selectedRoomTitle}
             guests={adultsChildrenArray}
           ></Availability>
         </div>

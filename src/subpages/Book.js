@@ -2,7 +2,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import Popup from "../components/Modal";
 import Availability from "../components/Availability";
-import testReservation from "../source/availability";
+import testReservation, { BtnToggle } from "../source/availability";
 
 import "../style/Book.scss";
 import "../components/scss/Calendar.scss";
@@ -33,204 +33,13 @@ let adults = 1,
   children = 0,
   maxGuestsOnRoom = 6,
   allGuests = adults + children,
-  date = "Check In / Check Out";
+  dateToShow = "Check In / Check Out";
 
 export default function Book() {
-  const [value, onChange] = useState(new Date());
-
-  const objectImages = [
-    {
-      title: "Exclusive Room",
-      src: exclusiveRoom,
-      price: "$1148",
-      description:
-        "Our the most luxory and elegante Exclusive Rooms offer Incredible interior furnished in the richly decorative style. The marble bathroom with details include 24-carat gold-plated. Upon check-in guests can expect to personal butler service receive 24-hour.",
-      moreDescription:
-        "Our the most luxory and elegante Exclusive Rooms offer Incredible interior furnished in the richly decorative style. The marble bathroom with details include 24-carat gold-plated, designed by legendary Vivienne Girard, one of the biggest icons of french interior design. Dining area with unparalleled view, large comfortable sofa in living room. Upon check-in guests can expect to personal butler service receive 24-hour.",
-      alt: "exclusiveRoom",
-      moreDetailsImage: [
-        exclusiveRoom,
-        exclusiveRoomDetails1,
-        exclusiveRoomDetails2,
-        exclusiveRoomDetails3,
-      ],
-    },
-    {
-      title: "Apartment Room",
-      price: "$876",
-      src: apartmentRoom,
-      description:
-        "Our Suites ensure amazing experience. Luxury and comfortable interior designed for our the most demanding guests. The privace terrace with breathtaking view. Enjoy a well-earned rest in one of the your dreamed interior.",
-      moreDescription:
-        "Our Suites ensure amazing experience. Luxury and comfortable interior designed for our the most demanding guests. Bathroom features beautiful mosaic floors. One king bed, plus one queen size sofa bed. The privace terrace with breathtaking view. Enjoy a well-earned rest in one of the your dreamed interior.",
-      alt: "apartmentRoom",
-      moreDetailsImage: [
-        apartmentRoom,
-        apartmentRoomDetails1,
-        apartmentRoomDetails2,
-      ],
-    },
-    {
-      title: "Standard Room",
-      price: "$389",
-      src: standardRoom,
-      description:
-        "Our Standard Rooms offer unparalleled rest, come with a King bed. Let yourself a relaxing night. The perfect blend of luxury and elegant with contemporary décor.",
-      moreDescription:
-        "Our Standard Rooms offer unparalleled rest, come with a King bed. Let yourself a relaxing night. Living room with sofa and two comfortable armchairs, bathroom is finished in rustic style. The perfect blend of luxury and elegant with contemporary décor.",
-      alt: "standardRoom",
-      moreDetailsImage: [
-        standardRoom,
-        standardRoomDetails1,
-        standardRoomDetails2,
-        standardRoomDetails3,
-      ],
-    },
-  ];
-  let [roomName, setRoomName] = useState("select room"); //variable defined so that later to check when roomName ceases to be  "select room"
+  let [value, onChange] = useState(new Date());
+  //GUEST
+  //////////////////////////////////////////////////////////////////////////////////////////////
   let [adultsChildrenArray, setGusetArray] = useState([adults, children]); //variable defined so that later put it to html elements and to give it as props to "Availability" component
-
-  //variable is changing with changeImage function and we give it as props to "Availability" component
-  let [selectedRoomTitle, setTitle] = useState(
-    objectImages[indexOfObjectImges].title
-  );
-  let [selectedRoomDescription, setDescription] = useState(
-    objectImages[indexOfObjectImges].moreDescription
-  );
-  let [moreDetailsImage, setImage] = useState(
-    objectImages[indexOfObjectImges].moreDetailsImage
-  );
-
-  let idDate;
-  let dateNow = new Date();
-
-  let year = dateNow.getFullYear();
-  let month = dateNow.getMonth() + 1;
-  let day = dateNow.getDate();
-
-  //
-  if (value.length === 2) {
-    date = `${value[0].getDate()}.${
-      value[0].getMonth() + 1
-    }.${value[0].getFullYear()} - ${value[1].getDate()}.${
-      value[1].getMonth() + 1
-    }.${value[1].getFullYear()}`;
-  }
-  if (date !== "Check In / Check Out") idDate = "biggerFontSize";
-
-  let whichElement = "next";
-
-  //50 pokoji zwykłych numery 1-50 włącznie
-  //30 apartamentów numery 71-100 włącznie
-  //20 exclusive numery 51-70 włacznie
-
-  //pokoje zwykłe z 1 sypialnia (30)
-  //pokoje zwykłe z 2 sypialniami (20)
-
-  //apartamenty z 1 sypialnia (20)
-  //apartamenty z 2 sypialniami (10)
-
-  //exclusive z 1 sypialnia (10)
-  //exclusive z 2 sypialniami (10)
-
-  //wybranie ile dorosłych i ile dzieci ze wzgledu na cene za osobe dorosła i za dziecko plus do tego cena za standard pokoju
-  //wybranie ilości sypialni oraz standard pokoju
-  //określenie przyjazdu
-  //pokazanie jaki jest wolny pokój w jakim przedziale terminów
-  //określenie wyjazdu
-
-  //after click image slider (callback in afterFirstClickBtn)
-  const changeImage = (selectRoomImg, modifire) => {
-    const btnRoom = document.querySelector(
-      ".book-page__navigation-list-item-btn.book-btn.room"
-    );
-    //at the beginning we remove class which was add to element in previous click, default is "next" class
-    //its important because this element is now "current" and it have differnt animation
-    selectRoomImg.classList.remove(whichElement);
-
-    //asign to "whichElement" name of class, depending on whether modifire is true or false
-    whichElement = modifire ? "next" : "prev";
-
-    //objectImages is declarated above as "array"
-
-    indexOfObjectImges = modifire
-      ? indexOfObjectImges + 1
-      : indexOfObjectImges - 1;
-    indexOfObjectImges =
-      indexOfObjectImges === 3 ? (indexOfObjectImges = 0) : indexOfObjectImges;
-    indexOfObjectImges =
-      indexOfObjectImges === -1 ? (indexOfObjectImges = 2) : indexOfObjectImges;
-
-    //at the end of this function we remove class "current" form animated img, but only after next click we remove this element because then it don't have class "current" and animation on this element is finished
-    [...selectRoomImg.parentElement.children].forEach((img) => {
-      if (!img.classList.contains("current")) {
-        img.remove();
-      }
-    });
-
-    //create img elemnet, set atribute class from above variable,
-    //important also set class "current" which help to defined img for next click
-    //and then for next click assigning this image as selectRoomImg
-    //set attribute src putting as index also above variable and add to parent of images
-    const createdImgElementNext = document.createElement("img");
-    createdImgElementNext.setAttribute(
-      "class",
-      `select-room__pictures-img current ${whichElement}`
-    );
-    createdImgElementNext.setAttribute("id", "roomSel");
-    createdImgElementNext.setAttribute(
-      "alt",
-      `${objectImages[indexOfObjectImges].alt}`
-    );
-    createdImgElementNext.setAttribute(
-      "src",
-      `${objectImages[indexOfObjectImges].src}`
-    );
-    selectRoomImg.parentElement.appendChild(createdImgElementNext);
-
-    //differnt animation if after click, modifire was false( so to left side), true( so to right side)
-    if (modifire) {
-      selectRoomImg.animate(
-        { transform: "translateX(-100%)" },
-        { duration: 500, fill: "forwards", easing: "ease" }
-      );
-    } else {
-      selectRoomImg.animate(
-        { transform: "translateX(100%)" },
-        { duration: 500, fill: "forwards", easing: "ease" }
-      );
-    }
-    selectRoomImg.classList.remove("current");
-    const divInfo = selectRoomImg.parentElement.parentElement.lastChild;
-
-    setTitle((selectedRoomTitle = objectImages[indexOfObjectImges].title));
-    setDescription(
-      (selectedRoomDescription =
-        objectImages[indexOfObjectImges].moreDescription)
-    );
-    setImage(
-      (moreDetailsImage = objectImages[indexOfObjectImges].moreDetailsImage)
-    );
-
-    divInfo.children[0].textContent = selectedRoomTitle;
-    divInfo.children[1].innerHTML = `${objectImages[indexOfObjectImges].price} <span>USD / NIGHT</span>`;
-    divInfo.children[2].textContent =
-      objectImages[indexOfObjectImges].description;
-
-    btnRoom.textContent = selectedRoomTitle;
-  };
-
-  //after mouse move at image (callback in handleClickBtn)
-  const cursorChanger = (selectRoom) => {
-    let limitToNextImgCursor = selectRoom.firstChild.offsetWidth / 2; //info to which moment be show "icons8-next-page-50.png"
-    selectRoom.addEventListener("mousemove", (e) => {
-      if (e.clientX > limitToNextImgCursor) {
-        selectRoom.classList.add("select-room--modifire"); // class to styling scss (cursor: url....)
-      } else {
-        selectRoom.classList.remove("select-room--modifire");
-      }
-    });
-  };
 
   //after click button guest
   const handleCounter = (e) => {
@@ -353,8 +162,239 @@ export default function Book() {
         break;
     }
     setGusetArray((adultsChildrenArray = [adults, children])); //after all, we set variable with correct values and put it to button content "guest", span from window "select-guest" and to give it as props to "Availability" component
+    onChange((value = new Date()));
+    dateToShow = "Check In / Check Out";
+  };
+  //ROOM
+  //////////////////////////////////////////////////////////////////////////////////////////////
+  const objectImages = [
+    {
+      title: "Exclusive Room",
+      src: exclusiveRoom,
+      price: "$1148",
+      description:
+        "Our the most luxory and elegante Exclusive Rooms offer Incredible interior furnished in the richly decorative style. The marble bathroom with details include 24-carat gold-plated. Upon check-in guests can expect to personal butler service receive 24-hour.",
+      moreDescription:
+        "Our the most luxory and elegante Exclusive Rooms offer Incredible interior furnished in the richly decorative style. The marble bathroom with details include 24-carat gold-plated, designed by legendary Vivienne Girard, one of the biggest icons of french interior design. Dining area with unparalleled view, large comfortable sofa in living room. Upon check-in guests can expect to personal butler service receive 24-hour.",
+      alt: "exclusiveRoom",
+      moreDetailsImage: [
+        exclusiveRoom,
+        exclusiveRoomDetails1,
+        exclusiveRoomDetails2,
+        exclusiveRoomDetails3,
+      ],
+    },
+    {
+      title: "Apartment Room",
+      price: "$876",
+      src: apartmentRoom,
+      description:
+        "Our Suites ensure amazing experience. Luxury and comfortable interior designed for our the most demanding guests. The privace terrace with breathtaking view. Enjoy a well-earned rest in one of the your dreamed interior.",
+      moreDescription:
+        "Our Suites ensure amazing experience. Luxury and comfortable interior designed for our the most demanding guests. Bathroom features beautiful mosaic floors. One king bed, plus one queen size sofa bed. The privace terrace with breathtaking view. Enjoy a well-earned rest in one of the your dreamed interior.",
+      alt: "apartmentRoom",
+      moreDetailsImage: [
+        apartmentRoom,
+        apartmentRoomDetails1,
+        apartmentRoomDetails2,
+      ],
+    },
+    {
+      title: "Standard Room",
+      price: "$389",
+      src: standardRoom,
+      description:
+        "Our Standard Rooms offer unparalleled rest, come with a King bed. Let yourself a relaxing night. The perfect blend of luxury and elegant with contemporary décor.",
+      moreDescription:
+        "Our Standard Rooms offer unparalleled rest, come with a King bed. Let yourself a relaxing night. Living room with sofa and two comfortable armchairs, bathroom is finished in rustic style. The perfect blend of luxury and elegant with contemporary décor.",
+      alt: "standardRoom",
+      moreDetailsImage: [
+        standardRoom,
+        standardRoomDetails1,
+        standardRoomDetails2,
+        standardRoomDetails3,
+      ],
+    },
+  ];
+  let [roomName, setRoomName] = useState("select room"); //variable defined so that later to check when roomName ceases to be  "select room"
+
+  //variable is changing with changeImage function and we give it as props to "Availability" component
+  let [selectedRoomTitle, setTitle] = useState(
+    objectImages[indexOfObjectImges].title
+  );
+  let [selectedRoomDescription, setDescription] = useState(
+    objectImages[indexOfObjectImges].moreDescription
+  );
+  let [moreDetailsImage, setImage] = useState(
+    objectImages[indexOfObjectImges].moreDetailsImage
+  );
+
+  let whichElement = "next";
+
+  //after click image slider (callback in afterFirstClickBtn)
+  const changeImage = (selectRoomImg, modifire) => {
+    const btnRoom = document.querySelector(
+      ".book-page__navigation-list-item-btn.book-btn.room"
+    );
+    //at the beginning we remove class which was add to element in previous click, default is "next" class
+    //its important because this element is now "current" and it have differnt animation
+    selectRoomImg.classList.remove(whichElement);
+
+    //asign to "whichElement" name of class, depending on whether modifire is true or false
+    whichElement = modifire ? "next" : "prev";
+
+    //objectImages is declarated above as "array"
+
+    indexOfObjectImges = modifire
+      ? indexOfObjectImges + 1
+      : indexOfObjectImges - 1;
+    indexOfObjectImges =
+      indexOfObjectImges === 3 ? (indexOfObjectImges = 0) : indexOfObjectImges;
+    indexOfObjectImges =
+      indexOfObjectImges === -1 ? (indexOfObjectImges = 2) : indexOfObjectImges;
+
+    //at the end of this function we remove class "current" form animated img, but only after next click we remove this element because then it don't have class "current" and animation on this element is finished
+    [...selectRoomImg.parentElement.children].forEach((img) => {
+      if (!img.classList.contains("current")) {
+        img.remove();
+      }
+    });
+
+    //create img elemnet, set atribute class from above variable,
+    //important also set class "current" which help to defined img for next click
+    //and then for next click assigning this image as selectRoomImg
+    //set attribute src putting as index also above variable and add to parent of images
+    const createdImgElementNext = document.createElement("img");
+    createdImgElementNext.setAttribute(
+      "class",
+      `select-room__pictures-img current ${whichElement}`
+    );
+    createdImgElementNext.setAttribute("id", "roomSel");
+    createdImgElementNext.setAttribute(
+      "alt",
+      `${objectImages[indexOfObjectImges].alt}`
+    );
+    createdImgElementNext.setAttribute(
+      "src",
+      `${objectImages[indexOfObjectImges].src}`
+    );
+    selectRoomImg.parentElement.appendChild(createdImgElementNext);
+
+    //differnt animation if after click, modifire was false( so to left side), true( so to right side)
+    if (modifire) {
+      selectRoomImg.animate(
+        { transform: "translateX(-100%)" },
+        { duration: 500, fill: "forwards", easing: "ease" }
+      );
+    } else {
+      selectRoomImg.animate(
+        { transform: "translateX(100%)" },
+        { duration: 500, fill: "forwards", easing: "ease" }
+      );
+    }
+    selectRoomImg.classList.remove("current");
+    const divInfo = selectRoomImg.parentElement.parentElement.lastChild;
+
+    setTitle((selectedRoomTitle = objectImages[indexOfObjectImges].title));
+    setDescription(
+      (selectedRoomDescription =
+        objectImages[indexOfObjectImges].moreDescription)
+    );
+    setImage(
+      (moreDetailsImage = objectImages[indexOfObjectImges].moreDetailsImage)
+    );
+
+    divInfo.children[0].textContent = selectedRoomTitle;
+    divInfo.children[1].innerHTML = `${objectImages[indexOfObjectImges].price} <span>USD / NIGHT</span>`;
+    divInfo.children[2].textContent =
+      objectImages[indexOfObjectImges].description;
+
+    btnRoom.textContent = selectedRoomTitle;
+    onChange((value = new Date()));
+    dateToShow = "Check In / Check Out";
   };
 
+  //after mouse move at image (callback in handleClickBtn)
+  const cursorChanger = (selectRoom) => {
+    let limitToNextImgCursor = selectRoom.firstChild.offsetWidth / 2; //info to which moment be show "icons8-next-page-50.png"
+    selectRoom.addEventListener("mousemove", (e) => {
+      if (e.clientX > limitToNextImgCursor) {
+        selectRoom.classList.add("select-room--modifire"); // class to styling scss (cursor: url....)
+      } else {
+        selectRoom.classList.remove("select-room--modifire");
+      }
+    });
+  };
+
+  //DATE
+  //////////////////////////////////////////////////////////////////////////////////////////////
+
+  let idDate;
+  let dateNow = new Date();
+
+  let year = dateNow.getFullYear();
+  let month = dateNow.getMonth() + 1;
+  let day = dateNow.getDate();
+
+  let [flag, setFlag] = useState("one");
+  const toggle = (e) => {
+    e.preventDefault();
+    onChange((value = new Date()));
+    dateToShow = "Check In / Check Out";
+    console.log(e.target.lastChild);
+    [...e.target.parentElement.children].forEach((btn) => {
+      btn.lastChild.classList.remove("active");
+    });
+    if (e.target.id === "one") {
+      setFlag((flag = "one"));
+      e.target.lastChild.classList.add("active");
+    } else {
+      setFlag((flag = "two"));
+      e.target.lastChild.classList.add("active");
+    }
+  };
+
+  const arrayTerminsReservation = testReservation.test(
+    selectedRoomTitle,
+    adultsChildrenArray,
+    flag
+  );
+
+  if (value.length === 2) {
+    dateToShow = `${value[0].getDate()}.${
+      value[0].getMonth() + 1
+    }.${value[0].getFullYear()} - ${value[1].getDate()}.${
+      value[1].getMonth() + 1
+    }.${value[1].getFullYear()}`;
+  }
+  if (dateToShow !== "Check In / Check Out") idDate = "biggerFontSize";
+
+  let [range, setRange] = useState(false);
+  let toDisableDay,
+    toLastDaysArray = [],
+    toFirstDaysArray = [];
+
+  //after click on day in calendar
+  const showDaysWhichCanSelect = (date) => {
+    if (value.length === 2) return;
+    arrayTerminsReservation.forEach((book) => {
+      toDisableDay = book - value.getTime(); //difference between selected day and first day of termin reservation
+
+      if (toDisableDay > 0) {
+        //values higher than zero because we check only days after selected day
+        toFirstDaysArray.push(toDisableDay);
+      } else {
+        toLastDaysArray.push(-toDisableDay);
+      }
+    });
+    //now to the smallest difference we add our selected day and result is first "disabled" day after it
+    const min = Math.min(...toFirstDaysArray) + value.getTime();
+    //here from our selected day we subtract the smallest difference and result is first "disabled" day before it
+    const max = value.getTime() - Math.min(...toLastDaysArray);
+
+    return date.getTime() >= min || date.getTime() <= max;
+  };
+  //////////////////////////////////////////////////////////////////////////////////////////////
   //after click buttons of navigation
   const handleClickBtn = (e) => {
     e.preventDefault();
@@ -419,95 +459,6 @@ export default function Book() {
       targetBtn = e.target;
     }
   };
-
-  // to variable assign correct array of object
-  // const arrayTerminsReservation = testReservation.test("Standard Room", [4, 2]);
-  console.log(selectedRoomTitle, adultsChildrenArray);
-  const arrayTerminsReservation = testReservation.test(
-    selectedRoomTitle,
-    adultsChildrenArray
-  );
-  console.log(
-    arrayTerminsReservation,
-    new Date(new Number(arrayTerminsReservation[0]))
-  );
-  // let arrayTerminsReservation = [
-  //   {
-  //     id: 2222,
-  //     numberOfRoom: 63,
-  //     name: "Antionio",
-  //     surname: "Filipaik",
-  //     phone: 897754096,
-  //     email: "chiacynt32@gamil.com",
-  //     checkIn: new Date(2023, 6, 7),
-  //     checkOut: new Date(2023, 6, 10),
-  //   },
-  //   {
-  //     id: 3333,
-  //     numberOfRoom: 1,
-  //     name: "Maradnionio",
-  //     surname: "Delazqz",
-  //     phone: 687231902,
-  //     email: "fdddsse@gamil.com",
-  //     checkIn: new Date(2022, 6, 15),
-  //     checkOut: new Date(2022, 6, 18),
-  //   },
-  //   {
-  //     id: 6666,
-  //     numberOfRoom: 24,
-  //     name: "Nico",
-  //     surname: "Alberts",
-  //     phone: 876424008,
-  //     email: "fdddsse@gamil.com",
-  //     checkIn: new Date(2022, 6, 25),
-  //     checkOut: new Date(2022, 7, 3),
-  //   },
-  //   {
-  //     id: 3333,
-  //     numberOfRoom: 1,
-  //     name: "Maradnionio",
-  //     surname: "Delazqz",
-  //     phone: 687231902,
-  //     email: "fdddsse@gamil.com",
-  //     checkIn: new Date(2022, 7, 14),
-  //     checkOut: new Date(2022, 8, 25),
-  //   },
-  // ];
-
-  let [range, setRange] = useState(false);
-  let toFirstDay,
-    toLastDay,
-    toLastDaysArray = [],
-    toFirstDaysArray = [];
-
-  //after click on day in calendar
-  const showDaysWhichCanSelect = (date) => {
-    if (value.length === 2) return;
-    arrayTerminsReservation.forEach((book) => {
-      toFirstDay = book.checkIn.getTime() - value.getTime(); //difference between selected day and first day of termin reservation
-      toLastDay = value.getTime() - book.checkOut.getTime(); //difference between selected day and last day of termin reservation
-
-      if (toFirstDay > 0) {
-        //values higher than zero because we check only days after selected day
-        if (toFirstDaysArray.indexOf(toFirstDay) === -1) {
-          toFirstDaysArray.push(toFirstDay);
-        }
-      }
-      if (toLastDay > 0) {
-        //values higher than zero because we check only days before selected day
-        if (toLastDaysArray.indexOf(toLastDay) === -1) {
-          toLastDaysArray.push(toLastDay);
-        }
-      }
-    });
-    //now to the smallest difference we add our selected day and result is first "disabled" day after it
-    const min = Math.min(...toFirstDaysArray) + value.getTime();
-    //here from our selected day we subtract the smallest difference and result is first "disabled" day before it
-    const max = value.getTime() - Math.min(...toLastDaysArray);
-
-    return date.getTime() >= min || date.getTime() <= max;
-  };
-
   return (
     <section className="book-page">
       <header className="book-page__title">
@@ -550,7 +501,7 @@ export default function Book() {
                 onClick={handleClickBtn}
                 className="book-page__navigation-list-item-btn book-btn date"
               >
-                {date}
+                {dateToShow}
               </button>
             </li>
           </ul>
@@ -665,13 +616,42 @@ export default function Book() {
                 range
                   ? //after click we leave the longest possible range with day which was clicked
                     ({ date }) => showDaysWhichCanSelect(date)
-                  : //default but also after clicking, chose range we disable days, which belong to the compartment already booked termins
+                  : //default but also after clicking chose range, we disable days, which belong to the compartment already booked termins
                     ({ date }) =>
                       arrayTerminsReservation.some(
                         (book) => date.getTime() === Number(book)
                       )
               }
             />
+            <div
+              id="bedroomsBtn"
+              disable={
+                adultsChildrenArray[0] + adultsChildrenArray[1] >= 2 &&
+                adultsChildrenArray[0] + adultsChildrenArray[1] < 4 &&
+                adultsChildrenArray[0] < 3
+                  ? "true"
+                  : "false"
+              }
+            >
+              <button
+                id="one"
+                onClick={(e) => {
+                  toggle(e);
+                }}
+              >
+                One Bedroom
+                <div className="every-line"></div>
+              </button>
+              <button
+                id="two"
+                onClick={(e) => {
+                  toggle(e);
+                }}
+              >
+                Two Bedroom
+                <div className="every-line"></div>
+              </button>
+            </div>
           </div>
         </div>
       </article>
@@ -680,6 +660,7 @@ export default function Book() {
           <Availability
             roomName={selectedRoomTitle}
             guests={adultsChildrenArray}
+            termin={dateToShow}
           ></Availability>
         </div>
       </article>

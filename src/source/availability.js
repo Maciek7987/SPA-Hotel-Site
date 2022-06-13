@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // //20 pokoji zwykłych numery 1-20 włącznie
 // //10 apartamentów numery 27-36 włącznie
 // //6 exclusive numery 21-26 włacznie
@@ -22,7 +24,17 @@ let array = {
         phone: 876424008,
         email: "fdddsse@gamil.com",
         checkIn: new Date(2022, 5, 25),
-        checkOut: new Date(2022, 6, 3),
+        checkOut: new Date(2022, 6, 25),
+      },
+      {
+        id: 52,
+        numberOfRoom: 1,
+        name: "Maradnionio",
+        surname: "Delazqz",
+        phone: 687231902,
+        email: "fdddsse@gamil.com",
+        checkIn: new Date(2022, 6, 26),
+        checkOut: new Date(2022, 7, 25),
       },
       {
         id: 52,
@@ -67,7 +79,7 @@ let array = {
         surname: "Alberts",
         phone: 876424008,
         email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 25),
+        checkIn: new Date(2022, 5, 26),
         checkOut: new Date(2022, 6, 3),
       },
       {
@@ -77,7 +89,7 @@ let array = {
         surname: "Alberts",
         phone: 876424008,
         email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 25),
+        checkIn: new Date(2022, 5, 26),
         checkOut: new Date(2022, 6, 3),
       },
       {
@@ -87,7 +99,7 @@ let array = {
         surname: "Alberts",
         phone: 876424008,
         email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 25),
+        checkIn: new Date(2022, 5, 26),
         checkOut: new Date(2022, 6, 3),
       },
       {
@@ -97,7 +109,7 @@ let array = {
         surname: "Alberts",
         phone: 876424008,
         email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 25),
+        checkIn: new Date(2022, 5, 26),
         checkOut: new Date(2022, 6, 3),
       },
       {
@@ -107,7 +119,7 @@ let array = {
         surname: "Delazqz",
         phone: 687231902,
         email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 25),
+        checkIn: new Date(2022, 5, 26),
         checkOut: new Date(2022, 6, 3),
       },
     ],
@@ -119,8 +131,28 @@ let array = {
         surname: "Filipaik",
         phone: 897754096,
         email: "chiacynt32@gamil.com",
-        checkIn: new Date(2023, 5, 7),
-        checkOut: new Date(2023, 5, 10),
+        checkIn: new Date(2022, 6, 4),
+        checkOut: new Date(2022, 6, 7),
+      },
+      {
+        id: 2222,
+        numberOfRoom: 63,
+        name: "Antionio",
+        surname: "Filipaik",
+        phone: 897754096,
+        email: "chiacynt32@gamil.com",
+        checkIn: new Date(2022, 6, 4),
+        checkOut: new Date(2022, 6, 7),
+      },
+      {
+        id: 2222,
+        numberOfRoom: 63,
+        name: "Antionio",
+        surname: "Filipaik",
+        phone: 897754096,
+        email: "chiacynt32@gamil.com",
+        checkIn: new Date(2022, 6, 4),
+        checkOut: new Date(2022, 6, 7),
       },
       {
         id: 3333,
@@ -129,8 +161,18 @@ let array = {
         surname: "Delazqz",
         phone: 687231902,
         email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 15),
-        checkOut: new Date(2022, 5, 18),
+        checkIn: new Date(2022, 6, 4),
+        checkOut: new Date(2022, 6, 7),
+      },
+      {
+        id: 3333,
+        numberOfRoom: 1,
+        name: "Maradnionio",
+        surname: "Delazqz",
+        phone: 687231902,
+        email: "fdddsse@gamil.com",
+        checkIn: new Date(2022, 6, 4),
+        checkOut: new Date(2022, 6, 7),
       },
     ],
   },
@@ -196,50 +238,57 @@ const maxNumberOfRooms = {
   exclusive: {
     oneBedroom: 3,
     twoBedrooms: 3,
+    both: 6,
   },
   apartment: {
     oneBedroom: 5,
     twoBedrooms: 5,
+    both: 10,
   },
   standard: {
-    oneBedroom: 3,
-    twoBedrooms: 3,
+    oneBedroom: 6,
+    twoBedrooms: 14,
+    both: 20,
   },
 };
-let maxRooms;
-let arr;
-let results;
-let coveringTermins = [];
-let allDaysOfCurrentBook = [],
-  arrayOfAXYZ = [],
-  i = 0;
 
-const check = (name, countOfBed) => {
+let maxRooms;
+let arr = [];
+let results;
+let allDaysOfCurrentBook = [],
+  allDaysOfWholeReservations = [];
+
+
+
+
+
+const check = (name, countOfBed, flag) => {
   console.log(name, countOfBed);
+
   switch (name) {
     case "Exclusive Room":
-      if (countOfBed === 2) {
+      if (countOfBed === 2 || (countOfBed === 3 && flag === "two")) {
         arr = array.exclusive.twoBedrooms;
         maxRooms = maxNumberOfRooms.exclusive.twoBedrooms;
-      } else {
+      } else if (countOfBed === 1 || (countOfBed === 3 && flag === "one")) {
         arr = array.exclusive.oneBedroom;
         maxRooms = maxNumberOfRooms.exclusive.oneBedroom;
       }
       break;
     case "Apartment Room":
-      if (countOfBed === 2) {
+      if (countOfBed === 2 || (countOfBed === 3 && flag === "two")) {
         arr = array.apartment.twoBedrooms;
         maxRooms = maxNumberOfRooms.apartment.twoBedrooms;
-      } else {
+      } else if (countOfBed === 1 || (countOfBed === 3 && flag === "one")) {
         arr = array.apartment.oneBedroom;
         maxRooms = maxNumberOfRooms.apartment.oneBedroom;
       }
       break;
     case "Standard Room":
-      if (countOfBed === 2) {
+      if (countOfBed === 2 || (countOfBed === 3 && flag === "two")) {
         arr = array.standard.twoBedrooms;
-        maxRooms = maxNumberOfRooms.standard.twoBedrooms; ////ustawione
-      } else {
+        maxRooms = maxNumberOfRooms.standard.twoBedrooms;
+      } else if (countOfBed === 1 || (countOfBed === 3 && flag === "one")) {
         arr = array.standard.oneBedroom;
         maxRooms = maxNumberOfRooms.standard.oneBedroom;
       }
@@ -251,60 +300,64 @@ const check = (name, countOfBed) => {
 
   // all days
   arr.forEach((book) => {
+    //whole time of one reservation divided for one day, result is count of days
     results = (book.checkOut.getTime() - book.checkIn.getTime()) / 86400000;
+    //push first day
     allDaysOfCurrentBook.push(book.checkIn.getTime());
+    //push rest of days
     for (let i = 0; i < results; i++) {
       allDaysOfCurrentBook.push(allDaysOfCurrentBook[i] + 86400000);
     }
-    arrayOfAXYZ.push(allDaysOfCurrentBook);
+    //array with all days of reservations with selected room with defined number of guests, to it add poszczególne dni każdej rezerwacji
+    allDaysOfCurrentBook.forEach((day) => {
+      allDaysOfWholeReservations.push(day);
+    });
     allDaysOfCurrentBook = [];
   });
-  console.log(arrayOfAXYZ);
-  //covering days
-  arrayOfAXYZ.forEach((daysOfOneBook, id, array) => {
-    for (let j = id; j < array.length - 1; j++) {
-      const termin = daysOfOneBook.filter((day) => array[j + 1].includes(day));
-      termin.forEach((day) => {
-        coveringTermins.push(day);
-      });
-    }
-  });
-  arrayOfAXYZ = [];
-  //covering days in which, all of these rooms are busy
-  //
+
+  //covering days in which, all of selected room are busy
   const arrayTerminsReservation = [];
   const coveringDays = {};
-  coveringTermins.forEach((x, key) => {
+
+  allDaysOfWholeReservations.forEach((x, key) => {
     coveringDays[x] = (coveringDays[x] || 0) + 1;
   });
-  console.log(coveringDays);
+  allDaysOfWholeReservations = [];
+
   for (const [key, value] of Object.entries(coveringDays)) {
     if (value >= maxRooms) arrayTerminsReservation.push(key);
   }
 
-  console.log(arrayTerminsReservation);
-  coveringTermins = [];
   return arrayTerminsReservation;
 };
 
+
+
 const arrayForValidCoordinates = {
-  test: (name, guests) => {
+  test: (name, guests, flag) => {
     let countOfBed;
     let nameOfRoom = name;
     //[0]-adults [1]-children
+    if (guests[0] === 1) {
+      countOfBed = 1;
+    }
+    if (guests[0] + guests[1] >= 2) {
+      countOfBed = 3;
+    }
     if (guests[0] + guests[1] >= 4 || guests[0] >= 3) {
       countOfBed = 2;
-    } else countOfBed = 1;
-    return check(nameOfRoom, countOfBed);
+    }
+
+    return check(nameOfRoom, countOfBed, flag);
   },
 };
 
 export default arrayForValidCoordinates;
 
 //show only this date at which haven't free rooms for selected (two or one bedrooms)
-// if number of guest is 1 then show only rooms with one bedroom
-// between show one and two bedrooms
-// if number of guest is 4 or number of adult is 3 then show only two bedrooms
+// if number of adults is 1 then show only rooms with one bedroom
+// if number of guests is 2 or 3 then show one and two bedrooms
+// if number of guests is 4 or number of adult is 3 then show only two bedrooms
 
 // for selected room with a given number of bedrooms, check if ten of reservation has common period to disable this termin
 // you could say that on the "millisecond" axis we extract ranges which will be already booked

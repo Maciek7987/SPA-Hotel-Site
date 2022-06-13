@@ -1,6 +1,8 @@
 // import { useState } from "react";
 
-// import "./scss/Availability.scss";
+import "./scss/Availability.scss";
+import "./Email";
+import Emial from "./Email";
 
 // //20 pokoji zwykłych numery 1-20 włącznie
 // //10 apartamentów numery 27-36 włącznie
@@ -16,6 +18,7 @@
 // //exclusive z 2 sypialniami (3) 24-26
 
 export default function Availability({ roomName, guests, termin }) {
+  let flag = false;
   //[0]-adults [1]-children
   let textOfAvailbsBedrooms = "";
   if (guests[0] === 1) {
@@ -27,14 +30,23 @@ export default function Availability({ roomName, guests, termin }) {
   if (guests[0] + guests[1] >= 4 || guests[0] >= 3) {
     textOfAvailbsBedrooms = "two bedrooms";
   }
+
+  if (roomName != "Select Room" && termin != "Check In / Check Out")
+    flag = true;
+  else flag = false;
   return (
     <>
-      <div>
-        adults: {guests[0]}, children: {guests[1]}
-      </div>
-      <div>room: {roomName}</div>
-      <div>termin: {termin}</div>
-      <div>availbs {textOfAvailbsBedrooms}</div>
+      <section className="email">
+        <Emial valueToSubmit="Book" flag={flag}></Emial>
+      </section>
+      <section className="summary">
+        <div>
+          adults: {guests[0]}, children: {guests[1]}
+        </div>
+        <div>room: {roomName}</div>
+        <div>termin: {termin}</div>
+        <div>availbs {textOfAvailbsBedrooms}</div>
+      </section>
     </>
   );
 }

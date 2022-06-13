@@ -1,0 +1,19 @@
+@import "./variables.scss";
+
+.email {
+  display: flex;
+  justify-content: flex-start;
+  .form {
+    width: 100%;
+    margin: 0;
+    padding: 2vh;
+    grid-template-rows: repeat(2, 19vh) 10vh;
+    .wrapper-info {
+      height: 11vh;
+    }
+  }
+}
+.summary {
+  background-color: rgb(216, 208, 191);
+  padding: 2vh;
+}

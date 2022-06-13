@@ -1,3 +1,40 @@
+a,
+button {
+  text-decoration: none;
+  color: #050301;
+  font-size: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+a .every-line,
+button .every-line {
+  width: 100%;
+  height: 1px;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.4s ease-out;
+  transition: -webkit-transform 0.4s ease-out;
+  transition: transform 0.4s ease-out;
+  transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+  background-color: #050301;
+  opacity: 0.7;
+}
+
+a:hover .every-line,
+a .every-line.active,
+button:hover .every-line,
+button .every-line.active {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: -webkit-transform 0.4s ease-out;
+  transition: -webkit-transform 0.4s ease-out;
+  transition: transform 0.4s ease-out;
+  transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+}
+
 .book-page {
   width: 100%;
   height: 100vh;
@@ -82,6 +119,8 @@
       -ms-flex-align: center;
           align-items: center;
   font-size: 1.1rem;
+  pointer-events: all;
+  opacity: 1;
 }
 
 .book-page__article-select .select-guest h3 {
@@ -164,9 +203,38 @@
   cursor: pointer;
 }
 
+.book-page__article-select .select-guest #child-age {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+}
+
+.book-page__article-select .select-guest #child-age details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+}
+
+.book-page__article-select .select-guest #child-age summary {
+  font-size: .8rem;
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+.book-page__article-select .select-guest #child-age details[open] {
+  padding: 0.5em;
+}
+
+.book-page__article-select .select-guest #child-age details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.5em;
+}
+
 .book-page__article-select .select-guest__description {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .book-page__article-select .select-guest__adult {
@@ -308,6 +376,38 @@
           align-items: center;
 }
 
+.book-page__article-select .select-date .calendar #bedroomsBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 2vh;
+  width: 40%;
+}
+
+.book-page__article-select .select-date .calendar #bedroomsBtn #one,
+.book-page__article-select .select-date .calendar #bedroomsBtn #two {
+  border: none;
+  font-size: 0.95rem;
+  margin: 2vh 2vh;
+  padding: 0.1vh 0.2vh;
+  background: transparent;
+  width: 50%;
+  height: 100%;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+}
+
+.book-page__article-select .select-date .calendar #bedroomsBtn[disable="false"] {
+  pointer-events: none;
+  opacity: 0;
+}
+
 .book-page__navigation {
   grid-column: 1/-1;
   width: 100%;
@@ -360,6 +460,7 @@
 
 .book-page__navigation-list-item[disable="true"] > button {
   background-color: rgba(122, 122, 122, 0.156);
+  border: 1px solid rgba(0, 0, 0, 0.232);
 }
 
 .book-page__navigation-list-item[disable="true"]:hover.li::before {
@@ -397,7 +498,12 @@
 }
 
 .book-page__article-info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 70% 30%;
+      grid-template-columns: 70% 30%;
   margin: 3% 0;
+  padding: 0 4%;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
 }
 /*# sourceMappingURL=Book.css.map */

@@ -562,6 +562,32 @@ export default function Book() {
             </div>
           </div>
 
+          <div id="child-age">
+            <details id="child-age__1">
+              <summary>Child 1 Age</summary>
+              Something small enough to escape casual notice.
+            </details>
+
+            <details id="child-age__2">
+              <summary>Child 2 Age</summary>
+              Something small enough to escape casual notice.
+            </details>
+
+            <details id="child-age__3">
+              <summary>Child 3 Age</summary>
+              Something small enough to escape casual notice.
+            </details>
+
+            <details id="child-age__4">
+              <summary>Child 4 Age</summary>
+              Something small enough to escape casual notice.
+            </details>
+
+            <details id="child-age__5">
+              <summary>Child 5 Age</summary>
+              Something small enough to escape casual notice.
+            </details>
+          </div>
           <p className="select-guest__description">
             Children under 6 y.o. are not charged
           </p>
@@ -656,13 +682,11 @@ export default function Book() {
         </div>
       </article>
       <article className="book-page__article-info">
-        <div className="">
-          <Availability
-            roomName={selectedRoomTitle}
-            guests={adultsChildrenArray}
-            termin={dateToShow}
-          ></Availability>
-        </div>
+        <Availability
+          roomName={selectedRoomTitle}
+          guests={adultsChildrenArray}
+          termin={dateToShow}
+        ></Availability>
       </article>
     </section>
   );

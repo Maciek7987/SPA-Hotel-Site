@@ -3,7 +3,6 @@ import { Component } from "react";
 import Email from "../components/Email";
 
 export default class Contact extends Component {
-
   render() {
     return (
       <>
@@ -12,7 +11,7 @@ export default class Contact extends Component {
             <h1 className="contact-page__title-h1">contact</h1>
           </header>
           <article className="contact-page__article-form">
-            <Email></Email>
+            <Email valueToSubmit="Send" flag={true}></Email>
           </article>
 
           <article className="contact-page__info">

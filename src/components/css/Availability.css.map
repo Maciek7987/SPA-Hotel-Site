@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEA,AAAA,MAAM,CAAC;EACL,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,UAAU;CAU5B;;AAZD,AAGE,MAHI,CAGJ,KAAK,CAAC;EACJ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,GAAG;EACZ,kBAAkB,EAAE,eAAe,CAAC,IAAI;CAIzC;;AAXH,AAQI,MARE,CAGJ,KAAK,CAKH,aAAa,CAAC;EACZ,MAAM,EAAE,IAAI;CACb;;AAGL,AAAA,QAAQ,CAAC;EACP,gBAAgB,EAAE,OAAkB;EACpC,OAAO,EAAE,GAAG;CACb",
     "sources": [
-        "../scss/Availability.scss"
+        "../scss/Availability.scss",
+        "../scss/variables.scss"
     ],
     "names": [],
     "file": "Availability.css"

@@ -115,7 +115,8 @@ export default class Emial extends Component {
     } else {
       checkWhichInoutItIs("email", "");
     }
-    if (inputTextareaValue.length < 3) {
+    if (inputTextareaValue.length < 3 && this.props.valueToSubmit === "Send") {
+      //it means that component Emial is in subPage Contact and it can't have empty and area
       const info = "Message have to more than 2 characters";
       checkWhichInoutItIs("textarea", info);
     } else {
@@ -172,90 +173,89 @@ export default class Emial extends Component {
   };
   render() {
     return (
-    
-    
-            <form className="form" method="post">
-              <div className="form__wrap">
-                <div className="wrapper-info name">
-                  <label className="wrapper-info__label">Name</label>
-                  <p className="wrapper-info__paragraph"></p>
-                </div>
-                <input
-                  className="form__wrap-input"
-                  type="text"
-                  name="name"
-                  maxLength="30"
-                  value={this.state.inputNameValue}
-                  onChange={this.handleChangeInput}
-                />
-              </div>
+      <form className="form" method="post">
+        <div className="form__wrap">
+          <div className="wrapper-info name">
+            <label className="wrapper-info__label">Name</label>
+            <p className="wrapper-info__paragraph"></p>
+          </div>
+          <input
+            className="form__wrap-input"
+            type="text"
+            name="name"
+            maxLength="30"
+            value={this.state.inputNameValue}
+            onChange={this.handleChangeInput}
+          />
+        </div>
 
-              <div className="form__wrap">
-                <div className="wrapper-info surname">
-                  <label className="wrapper-info__label">Surname</label>
-                  <p className="wrapper-info__paragraph"></p>
-                </div>
-                <input
-                  className="form__wrap-input"
-                  type="text"
-                  name="surname"
-                  maxLength="30"
-                  value={this.state.inputSurnameValue}
-                  onChange={this.handleChangeInput}
-                />
-              </div>
+        <div className="form__wrap">
+          <div className="wrapper-info surname">
+            <label className="wrapper-info__label">Surname</label>
+            <p className="wrapper-info__paragraph"></p>
+          </div>
+          <input
+            className="form__wrap-input"
+            type="text"
+            name="surname"
+            maxLength="30"
+            value={this.state.inputSurnameValue}
+            onChange={this.handleChangeInput}
+          />
+        </div>
 
-              <div className="form__wrap">
-                <div className="wrapper-info phone">
-                  <label className="wrapper-info__label">Phone</label>
-                  <p className="wrapper-info__paragraph"></p>
-                </div>
-                <input
-                  className="form__wrap-input"
-                  type="tel"
-                  name="phone"
-                  maxLength="19"
-                  value={this.state.inputPhoneValue}
-                  onChange={this.handleChangeInput}
-                />
-              </div>
+        <div className="form__wrap">
+          <div className="wrapper-info phone">
+            <label className="wrapper-info__label">Phone</label>
+            <p className="wrapper-info__paragraph"></p>
+          </div>
+          <input
+            className="form__wrap-input"
+            type="tel"
+            name="phone"
+            maxLength="19"
+            value={this.state.inputPhoneValue}
+            onChange={this.handleChangeInput}
+          />
+        </div>
 
-              <div className="form__wrap">
-                <div className="wrapper-info email">
-                  <label className="wrapper-info__label">Email</label>
-                  <p className="wrapper-info__paragraph"></p>
-                </div>
-                <input
-                  className="form__wrap-input"
-                  type="email"
-                  name="email"
-                  maxLength="30"
-                  value={this.state.inputEmailValue}
-                  onChange={this.handleChangeInput}
-                />
-              </div>
+        <div className="form__wrap">
+          <div className="wrapper-info email">
+            <label className="wrapper-info__label">Email</label>
+            <p className="wrapper-info__paragraph"></p>
+          </div>
+          <input
+            className="form__wrap-input"
+            type="email"
+            name="email"
+            maxLength="30"
+            value={this.state.inputEmailValue}
+            onChange={this.handleChangeInput}
+          />
+        </div>
 
-              <textarea
-                className="form__textarea"
-                name="textarea"
-                cols="30"
-                rows="10"
-                value={this.state.inputTextareaValue}
-                onChange={this.handleChangeInput}
-              ></textarea>
+        <textarea
+          className="form__textarea"
+          placeholder="Message"
+          name="textarea"
+          cols="30"
+          rows="10"
+          value={this.state.inputTextareaValue}
+          onChange={this.handleChangeInput}
+        ></textarea>
 
-              <div className="wrapper-info wrapper-info--textarea textarea">
-                <p className="wrapper-info__paragraph wrapper-info--textarea__paragraph"></p>
-              </div>
+        <div className="wrapper-info wrapper-info--textarea textarea">
+          <p className="wrapper-info__paragraph wrapper-info--textarea__paragraph"></p>
+        </div>
 
-              <input
-                className="form__submit"
-                type="submit"
-                value="Send"
-                onClick={this.handleSubmit}
-              />
-            </form> 
-        
+        <input
+          disable={this.props.flag ? "true" : "false"} 
+          className="form__submit"
+          type="submit"
+          value={this.props.valueToSubmit}
+          onClick={this.handleSubmit}
+        />
+      </form>
     );
   }
 }

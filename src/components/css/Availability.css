@@ -1,1 +1,26 @@
-/* No CSS *//*# sourceMappingURL=Availability.css.map */
+.email {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.email .form {
+  width: 100%;
+  margin: 0;
+  padding: 2vh;
+  -ms-grid-rows: (19vh)[2] 10vh;
+      grid-template-rows: repeat(2, 19vh) 10vh;
+}
+
+.email .form .wrapper-info {
+  height: 11vh;
+}
+
+.summary {
+  background-color: #d8d0bf;
+  padding: 2vh;
+}
+/*# sourceMappingURL=Availability.css.map */

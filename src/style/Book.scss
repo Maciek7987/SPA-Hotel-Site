@@ -54,6 +54,10 @@
       justify-content: space-around;
       align-items: center;
       font-size: 1.1rem;
+
+
+      pointer-events: all;
+      opacity: 1;
       h3 {
         font-size: 1.4rem;
       }
@@ -105,9 +109,37 @@
           }
         }
       }
+      #child-age {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+
+        details {
+          border: 1px solid #aaa;
+          border-radius: 4px;
+          padding: 0.5em 0.5em 0;
+        }
+
+        summary {
+          font-size: .8rem;
+          font-weight: bold;
+          margin: -0.5em -0.5em 0;
+          padding: 0.5em;
+        }
+
+        details[open] {
+         
+          padding: 0.5em;
+        }
+
+        details[open] summary {
+          
+          border-bottom: 1px solid #aaa;
+          margin-bottom: 0.5em;
+        }
+      }
       &__description {
         text-align: center;
-        font-size: 1.3rem;
+        font-size: 1rem;
       }
       &__adult {
         width: 100%;
@@ -269,6 +301,7 @@
           pointer-events: none;
           & > button {
             background-color: rgba(122, 122, 122, 0.156);
+            border: 1px solid rgba(0, 0, 0, 0.232);
           }
           &:hover.li::before {
             transform: translateX(-101%);
@@ -303,8 +336,10 @@
   }
 
   &__article-info {
-    // background-color: blue;
+    display: grid;
+    grid-template-columns: 70% 30%;
     margin: 3% 0;
+    padding: 0 4%;
     font-family: $secondary-font;
   }
 }

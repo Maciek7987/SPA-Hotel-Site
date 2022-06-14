@@ -35,8 +35,9 @@
     overflow: hidden;
 
     .window-to {
-      margin: 7vh;
-      padding: 1vh;
+      position: relative;
+      margin: 7vh 3vw;
+      padding: 1vh .88vw;
       transform: translateY(3%);
       transition: 0.5s ease;
       grid-row: 2/-1;
@@ -109,46 +110,19 @@
           }
         }
       }
-      #child-age {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-
-        details {
-          border: 1px solid #aaa;
-          border-radius: 4px;
-          padding: 0.5em 0.5em 0;
-        }
-
-        summary {
-          font-size: .8rem;
-          font-weight: bold;
-          margin: -0.5em -0.5em 0;
-          padding: 0.5em;
-        }
-
-        details[open] {
-         
-          padding: 0.5em;
-        }
-
-        details[open] summary {
-          
-          border-bottom: 1px solid #aaa;
-          margin-bottom: 0.5em;
-        }
-      }
+     
       &__description {
         text-align: center;
         font-size: 1rem;
       }
       &__adult {
         width: 100%;
-        padding: 0.5vw;
+        padding: 1vh 0.5vw;
         text-align: center;
       }
       &__child {
         width: 100%;
-        padding: 0.5vw;
+        padding: 1vh 0.5vw;
         text-align: center;
       }
     }
@@ -197,7 +171,7 @@
           align-items: center;
           width: 20%;
           img {
-            margin: 0 0.5vh 0 1vh;
+            margin: 0 0.5vw 0 1vw;
             width: 22%;
           }
         }
@@ -249,8 +223,8 @@
           #two {
             border: none;
             font-size: 0.95rem;
-            margin: 2vh 2vh;
-            padding: 0.1vh 0.2vh;
+            margin: 2vh 1vw;
+            padding: 0.1vh 0.1vw;
             background: transparent;
             width: 50%;
             height: 100%;

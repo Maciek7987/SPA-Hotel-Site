@@ -85,8 +85,9 @@ button .every-line.active {
 }
 
 .book-page__article-select .window-to {
-  margin: 7vh;
-  padding: 1vh;
+  position: relative;
+  margin: 7vh 3vw;
+  padding: 1vh .88vw;
   -webkit-transform: translateY(3%);
           transform: translateY(3%);
   -webkit-transition: 0.5s ease;
@@ -203,35 +204,6 @@ button .every-line.active {
   cursor: pointer;
 }
 
-.book-page__article-select .select-guest #child-age {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
-}
-
-.book-page__article-select .select-guest #child-age details {
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  padding: 0.5em 0.5em 0;
-}
-
-.book-page__article-select .select-guest #child-age summary {
-  font-size: .8rem;
-  font-weight: bold;
-  margin: -0.5em -0.5em 0;
-  padding: 0.5em;
-}
-
-.book-page__article-select .select-guest #child-age details[open] {
-  padding: 0.5em;
-}
-
-.book-page__article-select .select-guest #child-age details[open] summary {
-  border-bottom: 1px solid #aaa;
-  margin-bottom: 0.5em;
-}
-
 .book-page__article-select .select-guest__description {
   text-align: center;
   font-size: 1rem;
@@ -239,13 +211,13 @@ button .every-line.active {
 
 .book-page__article-select .select-guest__adult {
   width: 100%;
-  padding: 0.5vw;
+  padding: 1vh 0.5vw;
   text-align: center;
 }
 
 .book-page__article-select .select-guest__child {
   width: 100%;
-  padding: 0.5vw;
+  padding: 1vh 0.5vw;
   text-align: center;
 }
 
@@ -307,7 +279,7 @@ button .every-line.active {
 }
 
 .book-page__article-select .select-room__info__bedIcon img {
-  margin: 0 0.5vh 0 1vh;
+  margin: 0 0.5vw 0 1vw;
   width: 22%;
 }
 
@@ -394,8 +366,8 @@ button .every-line.active {
 .book-page__article-select .select-date .calendar #bedroomsBtn #two {
   border: none;
   font-size: 0.95rem;
-  margin: 2vh 2vh;
-  padding: 0.1vh 0.2vh;
+  margin: 2vh 1vw;
+  padding: 0.1vh 0.1vw;
   background: transparent;
   width: 50%;
   height: 100%;

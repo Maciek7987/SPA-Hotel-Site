@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import Popup from "../components/Modal";
+import BoundedTooltip from "../components/Bounded";
 import Availability from "../components/Availability";
 import testReservation, { BtnToggle } from "../source/availability";
 
@@ -561,8 +562,8 @@ export default function Book() {
               </span>
             </div>
           </div>
-
-          <div id="child-age">
+          <BoundedTooltip></BoundedTooltip>
+          {/* <div id="child-age">
             <details id="child-age__1">
               <summary>Child 1 Age</summary>
               Something small enough to escape casual notice.
@@ -587,7 +588,7 @@ export default function Book() {
               <summary>Child 5 Age</summary>
               Something small enough to escape casual notice.
             </details>
-          </div>
+          </div> */}
           <p className="select-guest__description">
             Children under 6 y.o. are not charged
           </p>

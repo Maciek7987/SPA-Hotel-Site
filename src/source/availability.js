@@ -334,14 +334,14 @@ const check = (name, countOfBed, flag) => {
 
 
 const arrayForValidCoordinates = {
-  test: (name, guests, flag) => {
+  test: (name, guests, flag, thirdGuestAge) => {
     let countOfBed;
     let nameOfRoom = name;
     //[0]-adults [1]-children
     if (guests[0] === 1) {
       countOfBed = 1;
     }
-    if (guests[0] + guests[1] >= 2) {
+    if (guests[0] + guests[1] >= 2 && thirdGuestAge === "<6") {
       countOfBed = 3;
     }
     if (guests[0] + guests[1] >= 4 || guests[0] >= 3) {

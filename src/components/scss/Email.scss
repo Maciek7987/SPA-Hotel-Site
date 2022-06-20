@@ -15,9 +15,9 @@
       height: 4vh;
       background-color: transparent;
       border: none;
-      border-bottom: 1px solid #a7beae;
+      border-bottom: 0.04rem solid #a7beae;
       font-family: $secondary-font;
-      font-size: 1rem;
+      font-size: 0.666rem;
     }
   }
   &__textarea {
@@ -25,9 +25,9 @@
     margin: 0 1%;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #a7beae;
+    border-bottom: 0.04rem solid #a7beae;
     font-family: $secondary-font;
-    font-size: 1.1rem;
+    font-size: 0.733rem;
     resize: none;
   }
   &__submit {
@@ -36,9 +36,9 @@
     height: 5vh;
     margin: 0 auto;
     background-color: $main-color-light;
-    border: 1px solid rgba(0, 0, 0, 0.232);
+    border: 0.04rem solid rgba(0, 0, 0, 0.232);
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 0.733rem;
     font-family: $secondary-font;
     transition: background-color 0.3s;
     &:hover {
@@ -57,15 +57,15 @@
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: nowrap;
-  border-bottom: 1px solid #a7beae;
+  border-bottom: 0.04rem solid #a7beae;
   align-items: center;
   height: 9vh;
   &__label {
-    font-size: 1.1rem;
+     font-size: 0.733rem;
     padding: 0 5% 0 1%;
   }
   &__paragraph {
-    font-size: 0.87rem;
+    font-size: 0.58rem;
     color: red;
   }
   &--textarea {
@@ -73,7 +73,7 @@
     border-bottom: none;
     &__paragraph {
       padding: 0 0 0 2%;
-      font-size: 0.88rem;
+      font-size: 0.586rem;
       color: red;
     }
   }

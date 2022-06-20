@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import Popup from "../components/Modal";
-import BoundedTooltip from "../components/Bounded";
+import Tooltips from "../components/Tooltips";
 import Availability from "../components/Availability";
-import testReservation, { BtnToggle } from "../source/availability";
+import testReservation from "../source/availability";
 
 import "../style/Book.scss";
 import "../components/scss/Calendar.scss";
@@ -329,6 +329,7 @@ export default function Book() {
 
   //DATE
   //////////////////////////////////////////////////////////////////////////////////////////////
+  let agesOfChildIsNotSelected = false;
 
   let idDate;
   let dateNow = new Date();
@@ -337,15 +338,30 @@ export default function Book() {
   let month = dateNow.getMonth() + 1;
   let day = dateNow.getDate();
 
+  let [thirdGuestAge, setThirdGuestAge] = useState("");
+  let [ages, setAges] = useState("");
   let [flag, setFlag] = useState("one");
+
+  const transferAgesFromChild = (arrayAges) => {
+    setAges((ages = arrayAges));
+    // if (adultsChildrenArray[0] === 2 && adultsChildrenArray[1] === 1) {
+    //   console.log(ages);
+    //   if (ages[0] === "<6") setThirdGuestAge((thirdGuestAge = "<6"));
+    // } else if (adultsChildrenArray[0] === 1 && adultsChildrenArray[2] === 2) {
+    //   console.log(ages);
+    //   if (ages[1] === "<6") setThirdGuestAge((thirdGuestAge = "<6"));
+    // }
+  };
+  console.log(ages);
   const toggle = (e) => {
     e.preventDefault();
     onChange((value = new Date()));
     dateToShow = "Check In / Check Out";
-    console.log(e.target.lastChild);
+
     [...e.target.parentElement.children].forEach((btn) => {
       btn.lastChild.classList.remove("active");
     });
+
     if (e.target.id === "one") {
       setFlag((flag = "one"));
       e.target.lastChild.classList.add("active");
@@ -358,7 +374,8 @@ export default function Book() {
   const arrayTerminsReservation = testReservation.test(
     selectedRoomTitle,
     adultsChildrenArray,
-    flag
+    flag,
+    thirdGuestAge
   );
 
   if (value.length === 2) {
@@ -403,6 +420,8 @@ export default function Book() {
     if (e.target.name === "room") {
       setRoomName((roomName = objectImages[indexOfObjectImges].title)); //change after first click from default value to name of room, it's to enable button date
       cursorChanger(targetWindow);
+    }
+    if (e.target.name === "date") {
     }
 
     //after click the same button of navigation show or hide window of it
@@ -493,7 +512,11 @@ export default function Book() {
             </li>
 
             <li
-              disable={roomName === "select room" ? "true" : "false"} // until room isn't selected, roomName won't be change and btn with date disable
+              disable={
+                roomName === "select room" || agesOfChildIsNotSelected
+                  ? "true"
+                  : "false"
+              } // until room isn't selected, roomName won't be change and btn with date disable
               className="book-page__navigation-list-item li"
             >
               <button
@@ -562,33 +585,11 @@ export default function Book() {
               </span>
             </div>
           </div>
-          <BoundedTooltip></BoundedTooltip>
-          {/* <div id="child-age">
-            <details id="child-age__1">
-              <summary>Child 1 Age</summary>
-              Something small enough to escape casual notice.
-            </details>
+          <Tooltips
+            children={adultsChildrenArray}
+            transferAgesFromChild={transferAgesFromChild}
+          ></Tooltips>
 
-            <details id="child-age__2">
-              <summary>Child 2 Age</summary>
-              Something small enough to escape casual notice.
-            </details>
-
-            <details id="child-age__3">
-              <summary>Child 3 Age</summary>
-              Something small enough to escape casual notice.
-            </details>
-
-            <details id="child-age__4">
-              <summary>Child 4 Age</summary>
-              Something small enough to escape casual notice.
-            </details>
-
-            <details id="child-age__5">
-              <summary>Child 5 Age</summary>
-              Something small enough to escape casual notice.
-            </details>
-          </div> */}
           <p className="select-guest__description">
             Children under 6 y.o. are not charged
           </p>

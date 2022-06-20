@@ -17,10 +17,10 @@
   position: absolute;
   right: 0;
   top: 54%;
-  font-size: 1.7rem;
+  font-size: 1.13rem;
   font-weight: 400;
   font-style: italic;
-  letter-spacing: 1px;
+  letter-spacing: 0.04rem;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   -webkit-writing-mode: vertical-lr;
@@ -29,7 +29,7 @@
   text-orientation: sideways;
   color: #b85042;
   z-index: -1;
-  font-family: "Noto Sans JP", "Cardo", sans-serif;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
   -webkit-animation: blink 1s linear infinite alternate;
           animation: blink 1s linear infinite alternate;
 }

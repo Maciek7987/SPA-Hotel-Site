@@ -15,16 +15,16 @@
     position: absolute;
     right: 0;
     top: 54%;
-    font-size: 1.7rem;
+    font-size: 1.13rem;
     font-weight: 400;
     font-style: italic;
-    letter-spacing: 1px;
+    letter-spacing: 0.04rem;
     transform: translateY(-50%);
     writing-mode: vertical-lr;
     text-orientation: sideways;
     color: #b85042;
     z-index: -1;
-    font-family: $third-font;
+    font-family: $secondary-font;
     animation: blink 1s linear infinite alternate;
   }
 }

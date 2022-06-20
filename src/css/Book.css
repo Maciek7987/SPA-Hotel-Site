@@ -2,15 +2,15 @@ a,
 button {
   text-decoration: none;
   color: #050301;
-  font-size: 20px;
-  letter-spacing: 2px;
+  font-size: 0.833rem;
+  letter-spacing: 0.08rem;
   cursor: pointer;
 }
 
 a .every-line,
 button .every-line {
   width: 100%;
-  height: 1px;
+  height: 0.04rem;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
   -webkit-transition: -webkit-transform 0.4s ease-out;
@@ -53,7 +53,7 @@ button .every-line.active {
   display: flex;
   grid-column: 1/-1;
   margin: 0 10%;
-  border-bottom: 1px solid #a7beae;
+  border-bottom: 0.04rem solid #a7beae;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -64,8 +64,7 @@ button .every-line.active {
 
 .book-page__title-h1 {
   position: absolute;
-  top: 1%;
-  font-size: 150px;
+  font-size: 6.25rem;
   font-weight: 500;
   opacity: 0.92;
   color: #050301;
@@ -79,15 +78,15 @@ button .every-line.active {
   -ms-grid-rows: 11vh 1fr;
       grid-template-rows: 11vh 1fr;
   margin: 3% 0;
-  border-right: 1px solid #a7beae;
+  border-right: 0.04rem solid #a7beae;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
   overflow: hidden;
 }
 
 .book-page__article-select .window-to {
   position: relative;
-  margin: 7vh 3vw;
-  padding: 1vh .88vw;
+  margin: 6vh 3vw 0 3vw;
+  padding: 1vh 0.88vw;
   -webkit-transform: translateY(3%);
           transform: translateY(3%);
   -webkit-transition: 0.5s ease;
@@ -104,9 +103,6 @@ button .every-line.active {
 }
 
 .book-page__article-select .select-guest {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1/2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,18 +110,22 @@ button .every-line.active {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1.1rem;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  font-size: 0.733rem;
   pointer-events: all;
   opacity: 1;
 }
 
 .book-page__article-select .select-guest h3 {
-  font-size: 1.4rem;
+  font-size: 0.933rem;
 }
 
 .book-page__article-select .select-guest__counter {
@@ -148,7 +148,7 @@ button .every-line.active {
 }
 
 .book-page__article-select .select-guest__counter-result {
-  font-size: 1.3rem;
+  font-size: 0.866rem;
   font-weight: 700;
 }
 
@@ -182,8 +182,9 @@ button .every-line.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -192,7 +193,7 @@ button .every-line.active {
 }
 
 .book-page__article-select .select-guest__counter-plus .icon {
-  padding: 0.4vw 0.5vw;
+  padding: 0.8vh 0.5vw;
 }
 
 .book-page__article-select .select-guest__counter-plus .icon path {
@@ -206,7 +207,7 @@ button .every-line.active {
 
 .book-page__article-select .select-guest__description {
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.666rem;
 }
 
 .book-page__article-select .select-guest__adult {
@@ -250,32 +251,37 @@ button .every-line.active {
   width: 30%;
 }
 
-.book-page__article-select .select-room__info h3 {
-  font-size: 1.5rem;
+.book-page__article-select .select-room__info-name {
+  font-size: 1rem;
   padding: 1.5vh 0;
-  border-bottom: 1px solid rgba(189, 180, 170, 0.459);
+  border-bottom: 0.04rem solid rgba(189, 180, 170, 0.459);
 }
 
-.book-page__article-select .select-room__info h4 {
+.book-page__article-select .select-room__info-price {
   padding: 1vh 0;
-  font-size: 1.3rem;
+  font-size: 0.866rem;
 }
 
-.book-page__article-select .select-room__info h4 span {
-  font-size: 1.1rem;
+.book-page__article-select .select-room__info-price span {
+  font-size: 0.733rem;
+}
+
+.book-page__article-select .select-room__info-details {
+  font-size: 0.708rem;
 }
 
 .book-page__article-select .select-room__info__bedIcon {
-  position: absolute;
-  right: 8%;
-  bottom: 18%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  right: 8%;
+  bottom: 8vh;
   width: 20%;
+  font-size: 0.666rem;
 }
 
 .book-page__article-select .select-room__info__bedIcon img {
@@ -365,7 +371,7 @@ button .every-line.active {
 .book-page__article-select .select-date .calendar #bedroomsBtn #one,
 .book-page__article-select .select-date .calendar #bedroomsBtn #two {
   border: none;
-  font-size: 0.95rem;
+  font-size: 0.633rem;
   margin: 2vh 1vw;
   padding: 0.1vh 0.1vw;
   background: transparent;
@@ -432,7 +438,7 @@ button .every-line.active {
 
 .book-page__navigation-list-item[disable="true"] > button {
   background-color: rgba(122, 122, 122, 0.156);
-  border: 1px solid rgba(0, 0, 0, 0.232);
+  border: 0.04rem solid rgba(0, 0, 0, 0.232);
 }
 
 .book-page__navigation-list-item[disable="true"]:hover.li::before {
@@ -453,20 +459,20 @@ button .every-line.active {
   position: relative;
   width: 100%;
   height: 100%;
-  font-size: 0.9rem;
+  font-size: 0.6rem;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   background-color: transparent;
-  border: 1px solid black;
+  border: 0.04rem solid black;
 }
 
 .book-page__navigation-list-item-btn span {
-  font-size: 1rem;
+  font-size: 0.666rem;
 }
 
 .book-page__navigation-list-item #biggerFontSize {
-  font-size: 1rem;
+  font-size: 0.666rem;
 }
 
 .book-page__article-info {

@@ -9,7 +9,7 @@
   line-height: 1.125em;
 }
 .react-calendar--doubleView {
-  width: 700px;
+  width: 38.46vw;
 }
 .react-calendar--doubleView .react-calendar__viewContainer {
   display: flex;
@@ -37,14 +37,14 @@
 }
 .react-calendar__navigation {
   display: flex;
-  height: 44px;
+  height: 4.07vh;
   margin-bottom: 1em;
 }
 .react-calendar__navigation button {
-  min-width: 44px;
+  min-width: 2.29vw;
   background: none;
   font-family: $secondary-font;
-  font-size: 1.4rem;
+  font-size: 0.933rem;
   font-weight: 700;
 }
 
@@ -79,10 +79,10 @@
 }
 .react-calendar__tile {
   max-width: 100%;
-  padding: 10px 6.6667px;
+  padding: 0.93vh 0.35vw;
   background: none;
   text-align: center;
-  line-height: 17px;
+  line-height: 0.708rem;
   font-weight: 700;
   font-family: $secondary-font;
   color: $main-color-medium;
@@ -99,7 +99,7 @@
 }
 
 .react-calendar__tile--now {
-  box-shadow: 0px 0px 0 1px inset darken($main-color, 82%);
+  box-shadow: 0px 0px 0 0.04rem inset darken($main-color, 82%);
 }
 
 .react-calendar__tile--active {
@@ -116,12 +116,12 @@ button.react-calendar__navigation__label {
   color: $main-color-dark !important;
   background-color: $main-color-light !important;
   opacity: 1 !important;
-  font-size: 1.1rem;
+  font-size: 0.733rem;
 }
 abbr[title] {
-  color:  $main-color-dark !important;
+  color: $main-color-dark !important;
   text-decoration: none !important;
-  font-size: 0.8rem;
+  font-size: 0.533rem;
 }
 
 .class2 .react-calendar__tile--now {

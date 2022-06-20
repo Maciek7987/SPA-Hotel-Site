@@ -6,6 +6,16 @@
           box-sizing: border-box;
 }
 
+:root {
+  font-size: 24px;
+}
+
+@media (max-width: 1600px) {
+  :root {
+    font-size: 17px;
+  }
+}
+
 body {
   overflow: hidden;
   font-family: "Noto Serif Display", "Noto Sans JP", "Cardo", sans-serif;

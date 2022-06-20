@@ -11,13 +11,12 @@
     display: flex;
     grid-column: 1/-1;
     margin: 0 10%;
-    border-bottom: 1px solid #a7beae;
+    border-bottom: 0.04rem solid #a7beae;
     justify-content: center;
     align-items: center;
     &-h1 {
       position: absolute;
-      top: 1%;
-      font-size: 150px;
+      font-size: 6.25rem;
       font-weight: 500;
       opacity: 0.92;
       color: $main-color-dark;
@@ -39,9 +38,12 @@
       height: 25%;
       padding: 2% 0;
       p {
-        font-size: 1.2rem;
-        letter-spacing: 1px;
+        font-size: 0.8rem;
+        letter-spacing: 0.04rem;
         padding-bottom: 1%;
+      }
+      h2 {
+        font-size: 1rem;
       }
     }
     .map {

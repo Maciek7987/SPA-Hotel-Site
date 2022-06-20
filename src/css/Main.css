@@ -16,18 +16,18 @@
 
 .main-section .main-section__page-1-description {
   width: 30%;
-  font-size: 2.7rem;
+  font-size: 1.8rem;
   font-weight: 200;
   color: #402808;
   padding: 19% 2% 2% 8%;
   line-height: 110%;
-  letter-spacing: 1px;
+  letter-spacing: 0.04rem;
 }
 
 .main-section .main-section__page-1-description span {
   text-transform: uppercase;
   font-weight: 400;
-  font-size: 5rem;
+  font-size: 3.33rem;
 }
 
 .main-section .main-section__page-1 .bgc-color-1 {
@@ -51,14 +51,14 @@
 
 .main-section .main-section__page-1 .bgc-color-2 h2 {
   width: 20%;
-  font-size: 6rem;
+  font-size: 4rem;
   font-weight: 300;
   text-transform: capitalize;
   color: #402808;
   padding: 2%;
   line-height: 100%;
-  letter-spacing: 2px;
-  text-shadow: 1.25px 0 0 #050301;
+  letter-spacing: 0.08rem;
+  text-shadow: 0.052rem 0 0 #050301;
 }
 
 .main-section .main-section__page-1 .wrapper {
@@ -92,8 +92,8 @@
 
 .main-section .main-section__page-1-plants {
   position: absolute;
-  width: 80%;
-  right: 30%;
+  width: 70%;
+  right: 40%;
   top: 35%;
   z-index: 1;
   -webkit-filter: brightness(35%) contrast(112%);
@@ -105,12 +105,12 @@
   bottom: 3%;
   left: 0;
   width: 40%;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 200;
   text-transform: capitalize;
-  letter-spacing: 2px;
+  letter-spacing: 0.08rem;
   color: #fff;
-  text-shadow: 3px 0 0 #050301;
+  text-shadow: 0.125rem 0 0 #050301;
   z-index: 3;
 }
 

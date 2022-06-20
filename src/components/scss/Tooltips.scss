@@ -4,14 +4,14 @@ $left: calc(((50vw - 12vw) / 2) - 18vw);
 [role="tooltip"].popup-content {
   position: absolute;
   left: calc(#{$left} / 2 + 3vw) !important;
+  width: auto;
+  height: auto;
+  margin-top: 1.3vh;
   border: none;
   background: transparent;
-  margin-top: 2vh;
   //   border: 1px solid $main-color-medium;
   //   margin: auto;
   //   background-color: rgba(216, 208, 191, 0.858);
-  width: auto;
-  height: auto;
 }
 
 .popup-overlay {
@@ -22,37 +22,60 @@ $left: calc(((50vw - 12vw) / 2) - 18vw);
 }
 
 .tooltipBoundary {
-  height: 27%;
-  width: 100%;
-  border: 1px solid rgba(216, 208, 191);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
+  width: 100%;
+  height: 27%;
+  border: 0.04rem solid rgba(216, 208, 191);
   text-align: center;
   .selectAge {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-start;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    &--active {
+      opacity: 1;
+      pointer-events: all;
+    }
     &__label {
       font-family: $third-font;
-      font-size: 0.8rem;
+      font-size: 0.533rem;
       margin-bottom: 2vh;
     }
     &__btn {
-      border: 1px solid $main-color-medium;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      position: relative;
+      width: 2.5vw;
+      padding: 0.6vh 0;
+      border: 0.04rem solid $main-color-medium;
       background-color: rgba(255, 255, 255, 0.727);
-      width: 2vh;
-      height: 2vh;
+      font-size: 0.6rem;
+      &--disable{
+        pointer-events: none;
+      }
+      .dash {
+        font-size: 0.7em;
+      }
+      &-icon {
+        font-size: 0.7em;
+        transform: translateY(7%);
+        &--open {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%, 110%);
+        }
+      }
     }
   }
 }
+
 .selectAge__btn-menu {
-  //   display: grid;
-  //   grid-template-columns: repeat(12, 3vh);
-  //   grid-template-rows: 100%;
-  //   align-items: center;
-  //   justify-content: center;
   height: 100%;
   width: 100%;
   display: flex;
@@ -62,10 +85,10 @@ $left: calc(((50vw - 12vw) / 2) - 18vw);
     border: none;
     background: none;
     font-family: $third-font;
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     color: $main-color-dark;
     &:hover {
-      box-shadow: 0 0 4px $main-color-dark;
+      box-shadow: 0 0 0.166rem $main-color-dark;
     }
   }
 }

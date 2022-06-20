@@ -27,9 +27,9 @@
   height: 4vh;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #a7beae;
+  border-bottom: 0.04rem solid #a7beae;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
-  font-size: 1rem;
+  font-size: 0.666rem;
 }
 
 .form__textarea {
@@ -37,9 +37,9 @@
   margin: 0 1%;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #a7beae;
+  border-bottom: 0.04rem solid #a7beae;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
-  font-size: 1.1rem;
+  font-size: 0.733rem;
   resize: none;
 }
 
@@ -49,9 +49,9 @@
   height: 5vh;
   margin: 0 auto;
   background-color: #a46715;
-  border: 1px solid rgba(0, 0, 0, 0.232);
+  border: 0.04rem solid rgba(0, 0, 0, 0.232);
   text-transform: uppercase;
-  font-size: 1.1rem;
+  font-size: 0.733rem;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
@@ -81,7 +81,7 @@
           justify-content: space-between;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  border-bottom: 1px solid #a7beae;
+  border-bottom: 0.04rem solid #a7beae;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -89,12 +89,12 @@
 }
 
 .wrapper-info__label {
-  font-size: 1.1rem;
+  font-size: 0.733rem;
   padding: 0 5% 0 1%;
 }
 
 .wrapper-info__paragraph {
-  font-size: 0.87rem;
+  font-size: 0.58rem;
   color: red;
 }
 
@@ -105,7 +105,7 @@
 
 .wrapper-info--textarea__paragraph {
   padding: 0 0 0 2%;
-  font-size: 0.88rem;
+  font-size: 0.586rem;
   color: red;
 }
 /*# sourceMappingURL=Email.css.map */

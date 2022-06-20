@@ -6,10 +6,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  font-size: 24px;
+   @media (max-width: 1600px) {
+    font-size: 17px;//16px provide to the same proportion how 24px
+  }
+}
 
 body {
   overflow: hidden;
   font-family: $main-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
 }

@@ -22,10 +22,10 @@ function Ages({ numberOfChild, guests, name, active, func }) {
 
     setSpan((spanContent = e.target.textContent));
     arrayAges[index] = spanContent;
-
+    func(arrayAges);
     close();
   };
-  func(arrayAges);
+
   return (
     <div className={`selectAge selectAge--${active}`}>
       <span className="selectAge__label">{numberOfChild}</span>
@@ -83,9 +83,6 @@ function Ages({ numberOfChild, guests, name, active, func }) {
     </div>
   );
 }
-
-
-
 
 export default function Tooltips({ children, transferAgesFromChild }) {
   return (

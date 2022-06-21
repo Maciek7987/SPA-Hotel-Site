@@ -1,15 +1,21 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
-import Popup from "../components/Modal";
-import Tooltips from "../components/Tooltips";
+import Popup from "reactjs-popup";
+import Modal from "../components/Modal";
+
 import Availability from "../components/Availability";
 import testReservation from "../source/availability";
 
 import "../style/Book.scss";
+import "../components/scss/Tooltips.scss";
 import "../components/scss/Calendar.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faMinus,
+  faCaretDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 import doubleBedIcon from "../pictures/icons/room-icons/grey-double-bed.svg";
 
@@ -28,6 +34,7 @@ import standardRoomDetails2 from "../pictures/rooms/standard/pexels-cottonbro-3.
 import standardRoomDetails3 from "../pictures/rooms/standard/pexels-polina-kovaleva-4.jpg";
 
 //isolated some variables, them cause errors
+
 let targetBtn = "zeroClick";
 let indexOfObjectImges = 1;
 let adults = 1,
@@ -36,8 +43,138 @@ let adults = 1,
   allGuests = adults + children,
   dateToShow = "Check In / Check Out";
 
+function Ages({ numberOfChild, showAgeUnderSix, id, active, changeStateAges }) {
+  let [spanContent, setSpan] = useState(
+    //default settings to each button content
+    <span className="open">
+      <FontAwesomeIcon className="dash dash--open" icon={faMinus} />
+      <FontAwesomeIcon className="dash dash--open" icon={faMinus} />
+    </span>
+  );
+
+  const selectBtnMenu = (e, close) => {
+    e.preventDefault();
+    // if (showAgeUnderSix === "show") changeStateAges(id, "<6"); //default assign value, if in one room can be already just  child under six years
+    setSpan((spanContent = e.target.textContent)); //after choose number change text content of button
+    changeStateAges(id, spanContent); //assign the same value as above  to the array
+    close(); //close popup
+  };
+
+  return (
+    <div className={`selectAge selectAge--${active}`}>
+      <span className="selectAge__label">{numberOfChild}</span>
+      <Popup
+        trigger={(open) => (
+          <button
+            type="button"
+            className={`selectAge__btn selectAge__btn--${showAgeUnderSix}`}
+          >
+            {showAgeUnderSix != "show" ? (
+              open ? (
+                <>
+                  {spanContent}
+                  <FontAwesomeIcon
+                    className="selectAge__btn-icon selectAge__btn-icon--open"
+                    icon={faCaretDown}
+                  />
+                </>
+              ) : (
+                <>
+                  {spanContent}
+                  <FontAwesomeIcon
+                    className="selectAge__btn-icon"
+                    icon={faCaretDown}
+                  />
+                </>
+              )
+            ) : (
+              "<6"
+            )}
+          </button>
+        )}
+        closeOnDocumentClick
+        arrow={false}
+      >
+        {(close) => (
+          <div className="selectAge__btn-menu">
+            <button onClick={(e) => selectBtnMenu(e, close)}>{"<6"}</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>6</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>8</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>9</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>10</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>11</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>12</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>13</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>14</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>15</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>16</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>17</button>
+          </div>
+        )}
+      </Popup>
+    </div>
+  );
+}
+
 export default function Book() {
   let [value, onChange] = useState(new Date());
+  let [arrayAges, setAges] = useState({
+    child1: "",
+    child2: "",
+    child3: "",
+    child4: "<6",
+    child5: "<6",
+  });
+
+  const changeStateAges = (id, content) => {
+    // switch (id) {
+    //   case "child1":
+    //      setAges((prevState) => {
+    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
+    //        arrayAges.child1 = content; // update the name property, assign a new value
+    //        return { arrayAges }; // return new object jasper object
+    //      });
+    //     break;
+    //   case "child2":
+    //      setAges((prevState) => {
+    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
+    //        arrayAges.child2 = content; // update the name property, assign a new value
+    //        return { arrayAges }; // return new object jasper object
+    //      });
+    //     break;
+    //   case "child3":
+    //      setAges((prevState) => {
+    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
+    //        arrayAges.child3 = content; // update the name property, assign a new value
+    //        return { arrayAges }; // return new object jasper object
+    //      });
+    //     break;
+    //   case "child4":
+    //      setAges((prevState) => {
+    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
+    //        arrayAges.child4 = content; // update the name property, assign a new value
+    //        return { arrayAges }; // return new object jasper object
+    //      });
+    //     break;
+    //   case "child5":
+    //      setAges((prevState) => {
+    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
+    //        arrayAges.child5 = content; // update the name property, assign a new value
+    //        return { arrayAges }; // return new object jasper object
+    //      });
+    //     break;
+    //   default:
+    //     console.log("none");
+    //     break;
+    // }
+
+    setAges((prevState) => ({
+      // object that we want to update
+      ...prevState, // keep all other key-value pairs
+      [id]: content, // update the value of specific key
+    }));
+  };
+
   //GUEST
   //////////////////////////////////////////////////////////////////////////////////////////////
   let [adultsChildrenArray, setGusetArray] = useState([adults, children]); //variable defined so that later put it to html elements and to give it as props to "Availability" component
@@ -166,6 +303,7 @@ export default function Book() {
     onChange((value = new Date()));
     dateToShow = "Check In / Check Out";
   };
+
   //ROOM
   //////////////////////////////////////////////////////////////////////////////////////////////
   const objectImages = [
@@ -337,22 +475,8 @@ export default function Book() {
   let year = dateNow.getFullYear();
   let month = dateNow.getMonth() + 1;
   let day = dateNow.getDate();
+  let [flag, setFlag] = useState("two");
 
-  let [thirdGuestAge, setThirdGuestAge] = useState("");
-  let [ages, setAges] = useState("");
-  let [flag, setFlag] = useState("one");
-
-  const transferAgesFromChild = (arrayAges) => {
-    setAges((ages = arrayAges));
-    // if (adultsChildrenArray[0] === 2 && adultsChildrenArray[1] === 1) {
-    //   console.log(ages);
-    //   if (ages[0] === "<6") setThirdGuestAge((thirdGuestAge = "<6"));
-    // } else if (adultsChildrenArray[0] === 1 && adultsChildrenArray[2] === 2) {
-    //   console.log(ages);
-    //   if (ages[1] === "<6") setThirdGuestAge((thirdGuestAge = "<6"));
-    // }
-  };
-  console.log(ages);
   const toggle = (e) => {
     e.preventDefault();
     onChange((value = new Date()));
@@ -375,7 +499,7 @@ export default function Book() {
     selectedRoomTitle,
     adultsChildrenArray,
     flag,
-    thirdGuestAge
+    arrayAges
   );
 
   if (value.length === 2) {
@@ -585,10 +709,47 @@ export default function Book() {
               </span>
             </div>
           </div>
-          <Tooltips
-            children={adultsChildrenArray}
-            transferAgesFromChild={transferAgesFromChild}
-          ></Tooltips>
+          <div className="tooltipBoundary">
+            <Ages
+              numberOfChild="Child 1 Age"
+              showAgeUnderSix={
+                1 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
+              }
+              id="child1"
+              active={adultsChildrenArray[1] >= 1 ? "active" : ""}
+              changeStateAges={changeStateAges}
+            ></Ages>
+            <Ages
+              numberOfChild="Child 2 Age"
+              showAgeUnderSix={
+                2 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
+              }
+              id="child2"
+              active={adultsChildrenArray[1] >= 2 ? "active" : ""}
+              changeStateAges={changeStateAges}
+            ></Ages>
+            <Ages
+              numberOfChild="Child 3 Age"
+              showAgeUnderSix={
+                3 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
+              }
+              active={adultsChildrenArray[1] >= 3 ? "active" : ""}
+              changeStateAges={changeStateAges}
+            ></Ages>
+            <Ages
+              numberOfChild="Child 4 Age"
+              showAgeUnderSix="show"
+              id="child4"
+              active={adultsChildrenArray[1] >= 4 ? "active" : ""}
+              changeStateAges={changeStateAges}
+            ></Ages>
+            <Ages
+              numberOfChild="Child 5 Age"
+              showAgeUnderSix="show"
+              active={adultsChildrenArray[1] >= 5 ? "active" : ""}
+              changeStateAges={changeStateAges}
+            ></Ages>
+          </div>
 
           <p className="select-guest__description">
             Children under 6 y.o. are not charged
@@ -617,11 +778,11 @@ export default function Book() {
             <span className="select-room__info__bedIcon">
               <img src={doubleBedIcon} alt="doubleBedIcon" /> King Bed
             </span>
-            <Popup
+            <Modal
               title={selectedRoomTitle}
               description={selectedRoomDescription}
               moreDetailsImage={moreDetailsImage}
-            ></Popup>
+            ></Modal>
           </div>
         </div>
         <div className="window-to select-date">
@@ -655,8 +816,16 @@ export default function Book() {
               id="bedroomsBtn"
               disable={
                 adultsChildrenArray[0] + adultsChildrenArray[1] >= 2 &&
-                adultsChildrenArray[0] + adultsChildrenArray[1] < 4 &&
-                adultsChildrenArray[0] < 3
+                ((adultsChildrenArray[0] === 2 &&
+                  adultsChildrenArray[1] === 0) ||
+                  (adultsChildrenArray[0] === 1 &&
+                    adultsChildrenArray[1] === 1) ||
+                  (adultsChildrenArray[0] === 1 &&
+                    adultsChildrenArray[1] === 2 &&
+                    (arrayAges.child1 === "<6" || arrayAges.child2 === "<6")) ||
+                  (adultsChildrenArray[0] === 2 &&
+                    adultsChildrenArray[1] === 1 &&
+                    arrayAges.child1 === "<6"))
                   ? "true"
                   : "false"
               }
@@ -677,7 +846,7 @@ export default function Book() {
                 }}
               >
                 Two Bedroom
-                <div className="every-line"></div>
+                <div className="every-line active"></div>
               </button>
             </div>
           </div>
@@ -685,6 +854,7 @@ export default function Book() {
       </article>
       <article className="book-page__article-info">
         <Availability
+          arrayAges={arrayAges}
           roomName={selectedRoomTitle}
           guests={adultsChildrenArray}
           termin={dateToShow}

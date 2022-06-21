@@ -17,23 +17,44 @@ import Emial from "./Email";
 // //exclusive z 1 sypialnia (3) 21-23
 // //exclusive z 2 sypialniami (3) 24-26
 
-export default function Availability({ roomName, guests, termin }) {
+export default function Availability({ roomName, guests, termin, arrayAges }) {
   let flag = false;
   //[0]-adults [1]-children
   let textOfAvailbsBedrooms = "";
+
   if (guests[0] === 1) {
     textOfAvailbsBedrooms = "one bedroom";
   }
   if (guests[0] + guests[1] >= 2) {
-    textOfAvailbsBedrooms = "two or one bedroom";
+    console.log(arrayAges);
+    console.log(arrayAges.child1 === "<6", arrayAges.child2 === "<6");
+    if (guests[0] === 2 && guests[1] === 0)
+      textOfAvailbsBedrooms = "two or one bedroom";
+    if (guests[0] === 1 && guests[1] === 1)
+      textOfAvailbsBedrooms = "two or one bedroom";
+    if (guests[0] === 1 && guests[1] === 2) {
+      if (arrayAges.child1 === "<6" || arrayAges.child2 === "<6")
+        textOfAvailbsBedrooms = "two or one bedroom";
+      else textOfAvailbsBedrooms = "two bedrooms";
+    }
+    if (guests[0] === 2 && guests[1] === 1) {
+      if (arrayAges.child1 === "<6")
+        textOfAvailbsBedrooms = "two or one bedroom";
+      else textOfAvailbsBedrooms = "two bedrooms";
+    }
   }
-  if (guests[0] + guests[1] >= 4 || guests[0] >= 3) {
+  if (guests[0] + guests[1] >= 4 || guests[0] === 3) {
     textOfAvailbsBedrooms = "two bedrooms";
   }
 
   if (roomName != "Select Room" && termin != "Check In / Check Out")
     flag = true;
   else flag = false;
+
+  const information =
+    textOfAvailbsBedrooms === "two or one bedroom"
+      ? " in the date tab you can choose between one or two bedrooms"
+      : "";
   return (
     <>
       <section className="email">
@@ -45,7 +66,8 @@ export default function Availability({ roomName, guests, termin }) {
         </div>
         <div>room: {roomName}</div>
         <div>termin: {termin}</div>
-        <div>availbs {textOfAvailbsBedrooms}</div>
+        <div>availbs: {textOfAvailbsBedrooms}</div>
+        <div>{information}</div>
       </section>
     </>
   );

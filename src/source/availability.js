@@ -258,10 +258,6 @@ let results;
 let allDaysOfCurrentBook = [],
   allDaysOfWholeReservations = [];
 
-
-
-
-
 const check = (name, countOfBed, flag) => {
   console.log(name, countOfBed);
 
@@ -331,20 +327,40 @@ const check = (name, countOfBed, flag) => {
   return arrayTerminsReservation;
 };
 
-
-
 const arrayForValidCoordinates = {
-  test: (name, guests, flag, thirdGuestAge) => {
+  test: (name, guests, flag, arrayAges) => {
+    // console.log(arrayAges);
     let countOfBed;
     let nameOfRoom = name;
     //[0]-adults [1]-children
+    // if (guests[0] === 1) {
+    //   countOfBed = 1;
+    // }
+    // if (guests[0] + guests[1] === 2 || guests[0] + guests[1] === 3) {
+    //   countOfBed = 3;
+    // } else if (guests[0] + guests[1] >= 4 || guests[0] >= 3) {
+    //   countOfBed = 2;
+    // }
+
     if (guests[0] === 1) {
       countOfBed = 1;
     }
-    if (guests[0] + guests[1] >= 2 && thirdGuestAge === "<6") {
-      countOfBed = 3;
+    if (guests[0] + guests[1] >= 2) {
+      console.log(arrayAges);
+      console.log(arrayAges.child1 === "<6", arrayAges.child2 === "<6");
+      if (guests[0] === 2 && guests[1] === 0) countOfBed = 3;
+      if (guests[0] === 1 && guests[1] === 1) countOfBed = 3;
+      if (guests[0] === 1 && guests[1] === 2) {
+        if (arrayAges.child1 === "<6" || arrayAges.child2 === "<6")
+          countOfBed = 3;
+        else countOfBed = 2;
+      }
+      if (guests[0] === 2 && guests[1] === 1) {
+        if (arrayAges.child1 === "<6") countOfBed = 3;
+        else countOfBed = 2;
+      }
     }
-    if (guests[0] + guests[1] >= 4 || guests[0] >= 3) {
+    if (guests[0] + guests[1] >= 4 || guests[0] === 3) {
       countOfBed = 2;
     }
 

@@ -55,7 +55,7 @@ $left: calc(((50vw - 12vw) / 2) - 18vw);
       border: 0.04rem solid $main-color-medium;
       background-color: rgba(255, 255, 255, 0.727);
       font-size: 0.6rem;
-      &--disable{
+      &--show{
         pointer-events: none;
       }
       .dash {

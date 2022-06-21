@@ -2,7 +2,7 @@ a,
 button {
   text-decoration: none;
   color: #050301;
-  font-size: 0.833rem;
+  font-size: 1rem;
   letter-spacing: 0.08rem;
   cursor: pointer;
 }
@@ -365,7 +365,7 @@ button .every-line.active {
           align-items: center;
   position: absolute;
   bottom: 2vh;
-  width: 40%;
+  width: 50%;
 }
 
 .book-page__article-select .select-date .calendar #bedroomsBtn #one,
@@ -373,9 +373,8 @@ button .every-line.active {
   border: none;
   font-size: 0.633rem;
   margin: 2vh 1vw;
-  padding: 0.1vh 0.1vw;
+  padding: 0.3vh 0.3vw;
   background: transparent;
-  width: 50%;
   height: 100%;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
   font-weight: 700;
@@ -395,6 +394,7 @@ button .every-line.active {
 }
 
 .book-page__navigation-list {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -413,7 +413,8 @@ button .every-line.active {
   position: relative;
   width: 30%;
   height: 90%;
-  overflow-x: hidden;
+  -webkit-clip-path: inset(-100vw -100vw -100vw 0);
+          clip-path: inset(-100vw -100vw -100vw 0);
 }
 
 .book-page__navigation-list-item::before {
@@ -433,12 +434,24 @@ button .every-line.active {
 
 .book-page__navigation-list-item[disable="true"] {
   opacity: 0.7;
-  pointer-events: none;
+}
+
+.book-page__navigation-list-item[disable="true"]::after {
+  content: "select a room first";
+  display: block;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  font-size: 0.8em;
+  text-align: center;
+  opacity: 0;
 }
 
 .book-page__navigation-list-item[disable="true"] > button {
   background-color: rgba(122, 122, 122, 0.156);
   border: 0.04rem solid rgba(0, 0, 0, 0.232);
+  pointer-events: none;
 }
 
 .book-page__navigation-list-item[disable="true"]:hover.li::before {

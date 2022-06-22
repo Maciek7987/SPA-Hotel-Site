@@ -14,6 +14,51 @@
   }
 }
 .summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 27% 27% 20% auto;
   background-color: rgb(216, 208, 191);
   padding: 2vh;
+  &__title {
+  }
+  &__content {
+    font-family: $secondary-font;
+    font-weight: 400;
+    font-size: 0.886rem;
+  }
+  &__availability {
+    border-bottom: 0.04rem solid #a7beae;
+    margin-bottom: 2vh;
+    &-icons {
+      font-size: 0.4rem;
+      .icon {
+        margin-right: 0.04rem;
+      }
+    }
+  }
+  &__room {
+    border-bottom: 0.04rem solid #a7beae;
+    margin-bottom: 2vh;
+  }
+  &__total {
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 0.9rem;
+      text-align: end;
+    }
+
+    &-price {
+      font-size: 0.966rem;
+      text-align: end;
+    }
+  }
+
+  &__information-content {
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
 }

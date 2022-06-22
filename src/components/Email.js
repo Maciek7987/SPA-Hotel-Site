@@ -15,6 +15,7 @@ export default class Emial extends Component {
   }
 
   handleSubmit = (e) => {
+   
     e.preventDefault();
 
     let flg1, flg2, flg3, flg4, flg5;
@@ -125,6 +126,8 @@ export default class Emial extends Component {
 
     // if everything is "true" then message is send and form is clearing
     if (flg1 && flg2 && flg3 && flg4 && flg5) {
+    ///if is on a book page add reservation to base of data and in email add new information about book from props, and new alert ///with information that reservation was completed successfully
+
       // window.Email.send({
       //   Host: "smtp.elasticemail.com",
       //   Username: "mierl23441@gmail.com",

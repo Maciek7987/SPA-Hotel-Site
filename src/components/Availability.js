@@ -1,8 +1,11 @@
-// import { useState } from "react";
+import { useEffect } from "react";
 
 import "./scss/Availability.scss";
 import "./Email";
 import Emial from "./Email";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
 
 // //20 pokoji zwykłych numery 1-20 włącznie
 // //10 apartamentów numery 27-36 włącznie
@@ -17,7 +20,25 @@ import Emial from "./Email";
 // //exclusive z 1 sypialnia (3) 21-23
 // //exclusive z 2 sypialniami (3) 24-26
 
-export default function Availability({ roomName, guests, termin, arrayAges }) {
+export default function Availability({
+  roomName,
+  guests,
+  termin,
+  arrayAges,
+  oneOrTwo,
+  price,
+}) {
+  let toCompare = [];
+  const adultPrice = Number(price.slice(1));
+  const childPrice = (adultPrice * 50) / 100;
+  let calculatedPrice = adultPrice * guests[0];
+  Object.entries(arrayAges).forEach((item) => {
+    toCompare.push(item[1]);
+  });
+  for (let i = 0; i < guests[1]; i++) {
+    if (toCompare[i] != "<6") calculatedPrice += childPrice;
+  }
+
   let flag = false;
   //[0]-adults [1]-children
   let textOfAvailbsBedrooms = "";
@@ -51,23 +72,65 @@ export default function Availability({ roomName, guests, termin, arrayAges }) {
     flag = true;
   else flag = false;
 
+  const infoAboutSelectedRoom =
+    textOfAvailbsBedrooms === "two or one bedroom"
+      ? oneOrTwo === "one"
+        ? "one bedroom"
+        : "two bedrooms"
+      : textOfAvailbsBedrooms === "one bedroom"
+      ? "one bedroom"
+      : "two bedrooms";
+
   const information =
     textOfAvailbsBedrooms === "two or one bedroom"
-      ? " in the date tab you can choose between one or two bedrooms"
+      ? "In the date tab you can choose between one or two bedrooms."
       : "";
+  const terminInfo =
+    termin === "Check In / Check Out" ? (
+      <span className="summary__availability-icons">
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+        <FontAwesomeIcon className="icon" icon={faMinus} />
+      </span>
+    ) : (
+      <span className="summary__availability-date">{termin}</span>
+    );
   return (
     <>
       <section className="email">
         <Emial valueToSubmit="Book" flag={flag}></Emial>
       </section>
       <section className="summary">
-        <div>
-          adults: {guests[0]}, children: {guests[1]}
+        <div className="summary__availability">
+          <h4 className="summary__title">Availability</h4>
+          <p className="summary__content">
+            adults: {guests[0]}, children: {guests[1]}
+            <br />
+            in termin: <br />
+            {terminInfo}
+          </p>
         </div>
-        <div>room: {roomName}</div>
-        <div>termin: {termin}</div>
-        <div>availbs: {textOfAvailbsBedrooms}</div>
-        <div>{information}</div>
+        <div className="summary__room">
+          <h4 className="summary__title">Room</h4>
+          <p className="summary__content">
+            {roomName} with {infoAboutSelectedRoom}
+          </p>
+        </div>
+        <div className="summary__total">
+          <h4 className="summary__total-title">Total:</h4>
+          <span className="summary__total-price">
+            ${Math.floor(calculatedPrice)}
+          </span>
+        </div>
+        <div className="summary__information">
+          <p className="summary__information-content">{information}</p>
+        </div>
       </section>
     </>
   );

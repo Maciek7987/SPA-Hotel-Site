@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import Popup from "reactjs-popup";
 import Modal from "../components/Modal";
@@ -55,6 +55,7 @@ function Ages({ numberOfChild, showAgeUnderSix, id, active, changeStateAges }) {
   const selectBtnMenu = (e, close) => {
     e.preventDefault();
     // if (showAgeUnderSix === "show") changeStateAges(id, "<6"); //default assign value, if in one room can be already just  child under six years
+
     setSpan((spanContent = e.target.textContent)); //after choose number change text content of button
     changeStateAges(id, spanContent); //assign the same value as above  to the array
     close(); //close popup
@@ -67,6 +68,7 @@ function Ages({ numberOfChild, showAgeUnderSix, id, active, changeStateAges }) {
         trigger={(open) => (
           <button
             type="button"
+            id={id}
             className={`selectAge__btn selectAge__btn--${showAgeUnderSix}`}
           >
             {showAgeUnderSix != "show" ? (
@@ -122,52 +124,11 @@ export default function Book() {
     child1: "",
     child2: "",
     child3: "",
-    child4: "<6",
-    child5: "<6",
+    child4: "",
+    child5: "",
   });
 
   const changeStateAges = (id, content) => {
-    // switch (id) {
-    //   case "child1":
-    //      setAges((prevState) => {
-    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
-    //        arrayAges.child1 = content; // update the name property, assign a new value
-    //        return { arrayAges }; // return new object jasper object
-    //      });
-    //     break;
-    //   case "child2":
-    //      setAges((prevState) => {
-    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
-    //        arrayAges.child2 = content; // update the name property, assign a new value
-    //        return { arrayAges }; // return new object jasper object
-    //      });
-    //     break;
-    //   case "child3":
-    //      setAges((prevState) => {
-    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
-    //        arrayAges.child3 = content; // update the name property, assign a new value
-    //        return { arrayAges }; // return new object jasper object
-    //      });
-    //     break;
-    //   case "child4":
-    //      setAges((prevState) => {
-    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
-    //        arrayAges.child4 = content; // update the name property, assign a new value
-    //        return { arrayAges }; // return new object jasper object
-    //      });
-    //     break;
-    //   case "child5":
-    //      setAges((prevState) => {
-    //        let arrayAges = { ...prevState }; // creating copy of state variable jasper
-    //        arrayAges.child5 = content; // update the name property, assign a new value
-    //        return { arrayAges }; // return new object jasper object
-    //      });
-    //     break;
-    //   default:
-    //     console.log("none");
-    //     break;
-    // }
-
     setAges((prevState) => ({
       // object that we want to update
       ...prevState, // keep all other key-value pairs
@@ -178,6 +139,17 @@ export default function Book() {
   //GUEST
   //////////////////////////////////////////////////////////////////////////////////////////////
   let [adultsChildrenArray, setGusetArray] = useState([adults, children]); //variable defined so that later put it to html elements and to give it as props to "Availability" component
+
+  useEffect(() => {
+    let ddss = document.querySelectorAll(".selectAge__btn--show");
+    let aaaa = document.querySelectorAll(".selectAge__btn");
+    aaaa.forEach((aa) => {
+      changeStateAges(aa.id, aa.textContent);
+    });
+    ddss.forEach((ff) => {
+      changeStateAges(ff.id, ff.textContent);
+    });
+  }, adultsChildrenArray);
 
   //after click button guest
   const handleCounter = (e) => {
@@ -299,6 +271,7 @@ export default function Book() {
         console.log("none");
         break;
     }
+
     setGusetArray((adultsChildrenArray = [adults, children])); //after all, we set variable with correct values and put it to button content "guest", span from window "select-guest" and to give it as props to "Availability" component
     onChange((value = new Date()));
     dateToShow = "Check In / Check Out";
@@ -310,7 +283,7 @@ export default function Book() {
     {
       title: "Exclusive Room",
       src: exclusiveRoom,
-      price: "$1148",
+      price: "$1000",
       description:
         "Our the most luxory and elegante Exclusive Rooms offer Incredible interior furnished in the richly decorative style. The marble bathroom with details include 24-carat gold-plated. Upon check-in guests can expect to personal butler service receive 24-hour.",
       moreDescription:
@@ -325,7 +298,7 @@ export default function Book() {
     },
     {
       title: "Apartment Room",
-      price: "$876",
+      price: "$800",
       src: apartmentRoom,
       description:
         "Our Suites ensure amazing experience. Luxury and comfortable interior designed for our the most demanding guests. The privace terrace with breathtaking view. Enjoy a well-earned rest in one of the your dreamed interior.",
@@ -340,7 +313,7 @@ export default function Book() {
     },
     {
       title: "Standard Room",
-      price: "$389",
+      price: "$400",
       src: standardRoom,
       description:
         "Our Standard Rooms offer unparalleled rest, come with a King bed. Let yourself a relaxing night. The perfect blend of luxury and elegant with contemporary décor.",
@@ -363,6 +336,9 @@ export default function Book() {
   );
   let [selectedRoomDescription, setDescription] = useState(
     objectImages[indexOfObjectImges].moreDescription
+  );
+  let [selectedRoomPrice, setPrice] = useState(
+    objectImages[indexOfObjectImges].price
   );
   let [moreDetailsImage, setImage] = useState(
     objectImages[indexOfObjectImges].moreDetailsImage
@@ -435,6 +411,7 @@ export default function Book() {
     const divInfo = selectRoomImg.parentElement.parentElement.lastChild;
 
     setTitle((selectedRoomTitle = objectImages[indexOfObjectImges].title));
+    setPrice((selectedRoomPrice = objectImages[indexOfObjectImges].price));
     setDescription(
       (selectedRoomDescription =
         objectImages[indexOfObjectImges].moreDescription)
@@ -681,8 +658,8 @@ export default function Book() {
             </div>
           </div>
           <p className="select-guest__description">
-            Availabilty are rooms with one or 2 bethrooms, every of them comes
-            with a King bed
+            Availability are rooms with one or 2 bedrooms, every of them comes
+            with a double King bed
           </p>
 
           <div className="select-guest__child">
@@ -733,6 +710,7 @@ export default function Book() {
               showAgeUnderSix={
                 3 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
               }
+              id="child3"
               active={adultsChildrenArray[1] >= 3 ? "active" : ""}
               changeStateAges={changeStateAges}
             ></Ages>
@@ -746,6 +724,7 @@ export default function Book() {
             <Ages
               numberOfChild="Child 5 Age"
               showAgeUnderSix="show"
+              id="child5"
               active={adultsChildrenArray[1] >= 5 ? "active" : ""}
               changeStateAges={changeStateAges}
             ></Ages>
@@ -858,6 +837,8 @@ export default function Book() {
           roomName={selectedRoomTitle}
           guests={adultsChildrenArray}
           termin={dateToShow}
+          oneOrTwo={flag}
+          price={selectedRoomPrice}
         ></Availability>
       </article>
     </section>

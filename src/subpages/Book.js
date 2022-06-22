@@ -454,8 +454,24 @@ export default function Book() {
   let day = dateNow.getDate();
   let [flag, setFlag] = useState("two");
 
+  if (value.length === 2) {
+    dateToShow = `${value[0].getDate()}.${
+      value[0].getMonth() + 1
+    }.${value[0].getFullYear()} - ${value[1].getDate()}.${
+      value[1].getMonth() + 1
+    }.${value[1].getFullYear()}`;
+  }
+  if (dateToShow !== "Check In / Check Out") idDate = "biggerFontSize";
+
+  let [range, setRange] = useState(false);
+  let toDisableDay,
+    toLastDaysArray = [],
+    toFirstDaysArray = [];
+
   const toggle = (e) => {
     e.preventDefault();
+    console.log(value);
+    setRange((range = false));
     onChange((value = new Date()));
     dateToShow = "Check In / Check Out";
 
@@ -478,20 +494,6 @@ export default function Book() {
     flag,
     arrayAges
   );
-
-  if (value.length === 2) {
-    dateToShow = `${value[0].getDate()}.${
-      value[0].getMonth() + 1
-    }.${value[0].getFullYear()} - ${value[1].getDate()}.${
-      value[1].getMonth() + 1
-    }.${value[1].getFullYear()}`;
-  }
-  if (dateToShow !== "Check In / Check Out") idDate = "biggerFontSize";
-
-  let [range, setRange] = useState(false);
-  let toDisableDay,
-    toLastDaysArray = [],
-    toFirstDaysArray = [];
 
   //after click on day in calendar
   const showDaysWhichCanSelect = (date) => {

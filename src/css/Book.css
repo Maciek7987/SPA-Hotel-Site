@@ -120,8 +120,6 @@ button .every-line.active {
   -ms-grid-column-span: 1;
   grid-column: 1/2;
   font-size: 0.733rem;
-  pointer-events: all;
-  opacity: 1;
 }
 
 .book-page__article-select .select-guest h3 {

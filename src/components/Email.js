@@ -15,7 +15,6 @@ export default class Emial extends Component {
   }
 
   handleSubmit = (e) => {
-   
     e.preventDefault();
 
     let flg1, flg2, flg3, flg4, flg5;
@@ -126,19 +125,35 @@ export default class Emial extends Component {
 
     // if everything is "true" then message is send and form is clearing
     if (flg1 && flg2 && flg3 && flg4 && flg5) {
-    ///if is on a book page add reservation to base of data and in email add new information about book from props, and new alert ///with information that reservation was completed successfully
+      ///if is on a book page add reservation to base of data and in email add new information about book from props, and new alert ///with information that reservation was completed successfully
+      if (this.props.valueToSubmit === "Book") {
+        const { price, termin, roomName, infoAboutSelectedRoom } = this.props;
+        window.Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "mierl23441@gmail.com",
+          Password: "920A7482EE5C8A1510FDFF227BA9AAA2029A",
+          To: "mierl23441@gmail.com",
+          From: "mierl23441@gmail.com",
+          Subject: `${inputNameValue} made a reservation`,
+          Body: `Name: ${inputNameValue} <br/> Surname: ${inputSurnameValue} <br/> Email: ${inputEmailValue} <br/> Phone: ${inputPhoneValue} <br/> Message: ${inputTextareaValue} <br/> Termin: ${termin} <br/> Selected room: ${roomName} with ${infoAboutSelectedRoom} <br/> Price: ${price}`,
+        }).then((inputNameValue) => {
+          alert(" reservation was completed successfully");
+        });
+      }else{
+        window.Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "mierl23441@gmail.com",
+          Password: "920A7482EE5C8A1510FDFF227BA9AAA2029A",
+          To: "mierl23441@gmail.com",
+          From: "mierl23441@gmail.com",
+          Subject: `${inputNameValue} sent you a emial message`,
+          Body: `Name: ${inputNameValue} <br/> Surname: ${inputSurnameValue} <br/> Email: ${inputEmailValue} <br/> Phone: ${inputPhoneValue} <br/> Message: ${inputTextareaValue} `,
+        }).then((inputNameValue) => {
+          alert("message was sent successfully");
+        });
+      }
 
-      // window.Email.send({
-      //   Host: "smtp.elasticemail.com",
-      //   Username: "mierl23441@gmail.com",
-      //   Password: "920A7482EE5C8A1510FDFF227BA9AAA2029A",
-      //   To: "mierl23441@gmail.com",
-      //   From: "mierl23441@gmail.com",
-      //   Subject: `${inputNameValue} sent you a message`,
-      //   Body: `Name: ${inputNameValue} <br/> Surname: ${inputSurnameValue} <br/> Email: ${inputEmailValue} <br/> Phone: ${inputPhoneValue} <br/> Message: ${inputTextareaValue} `,
-      // }).then((inputNameValue) => {
-      //   alert("message was sent successfully");
-      // });
+      
 
       this.setState({
         inputNameValue: "",
@@ -252,7 +267,7 @@ export default class Emial extends Component {
         </div>
 
         <input
-          disable={this.props.flag ? "true" : "false"} 
+          disable={this.props.flag ? "true" : "false"}
           className="form__submit"
           type="submit"
           value={this.props.valueToSubmit}

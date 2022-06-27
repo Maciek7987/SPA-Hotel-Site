@@ -111,10 +111,20 @@ export default function Availability({
     ) : (
       <span className="summary__availability-date">{termin}</span>
     );
+
+
+
   return (
     <>
       <section className="email">
-        <Emial valueToSubmit="Book" flag={flag}></Emial>
+        <Emial
+          valueToSubmit="Book"
+          flag={flag}
+          price={Math.floor(calculatedPrice)}
+          termin={termin}
+          roomName={roomName}
+          infoAboutSelectedRoom={infoAboutSelectedRoom}
+        ></Emial>
       </section>
       <section className="summary">
         <div className="summary__availability">

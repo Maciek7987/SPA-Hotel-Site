@@ -26,7 +26,7 @@ const Navigation = ({ handleReset }) => {
             <div className="every-line"></div>
           </Link>
         </li>
-        <li className="navigation__list-item">
+        {/*  <li className="navigation__list-item">
           <Link
             onClick={handleReset}
             className="navigation__list-item-link restaurants"
@@ -35,8 +35,8 @@ const Navigation = ({ handleReset }) => {
             Restaurants
             <div className="every-line"></div>
           </Link>
-        </li>
-        <li className="navigation__list-item">
+        </li> */}
+        {/* <li className="navigation__list-item">
           <Link
             onClick={handleReset}
             className="navigation__list-item-link spa"
@@ -45,7 +45,7 @@ const Navigation = ({ handleReset }) => {
             Spa
             <div className="every-line"></div>
           </Link>
-        </li>
+        </li> */}
         <li className="navigation__list-item">
           <Link
             onClick={handleReset}

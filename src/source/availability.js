@@ -1,72 +1,74 @@
+// //20 standard rooms with numbers of room 1-20 włącznie
+// //10 apartment with numbers of room 7-36 włącznie
+// //6 exclusive with numbers of room 21-26 włacznie
 
+// //standard with  z 1 bedroom (6) 1-6
+// //standard with z 2 bedrooms (14) 7-20
 
-// //20 pokoji zwykłych numery 1-20 włącznie
-// //10 apartamentów numery 27-36 włącznie
-// //6 exclusive numery 21-26 włacznie
+// //apartment with 1 bedroom (5) 27-31
+// //apartment with 2 bedrooms  (5) 32-36
 
-// //pokoje zwykłe z 1 sypialnia (6) 1-6
-// //pokoje zwykłe z 2 sypialniami (14) 7-20
-
-// //apartamenty z 1 sypialnia (5) 27-31
-// //apartamenty z 2 sypialniami (5) 32-36
-
-// //exclusive z 1 sypialnia (3) 21-23
-// //exclusive z 2 sypialniami (3) 24-26
+// //exclusive with 1 bedroom (3) 21-23
+// //exclusive with 2 bedrooms (3) 24-26
 
 let array = {
   exclusive: {
     oneBedroom: [
       {
         id: 51,
-        numberOfRoom: 24,
+        name: "Fifonż",
+        surname: "Niuk",
+        phone: 874432008,
+        email: "nachobarbero@gamil.com",
+        checkIn: new Date(2022, 7, 14),
+        checkOut: new Date(2022, 8, 25),
+      },
+      {
+        id: 52,
+        name: "Tommy",
+        surname: "Luciano",
+        phone: 1009334124,
+        email: "midus@gamil.com",
+        checkIn: new Date(2022, 7, 16),
+        checkOut: new Date(2022, 7, 30),
+      },
+      {
+        id: 52,
         name: "Nico",
-        surname: "Alberts",
-        phone: 876424008,
-        email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 25),
-        checkOut: new Date(2022, 6, 25),
-      },
-      {
-        id: 52,
-        numberOfRoom: 1,
-        name: "Maradnionio",
-        surname: "Delazqz",
-        phone: 687231902,
-        email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 6, 26),
-        checkOut: new Date(2022, 7, 25),
-      },
-      {
-        id: 52,
-        numberOfRoom: 1,
-        name: "Maradnionio",
-        surname: "Delazqz",
-        phone: 687231902,
-        email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 6, 14),
-        checkOut: new Date(2022, 7, 25),
+        surname: "Tomas",
+        phone: 9905234443,
+        email: "krater2000@gamil.com",
+        checkIn: new Date(2022, 7, 16),
+        checkOut: new Date(2022, 7, 27),
       },
     ],
     twoBedrooms: [
       {
-        id: 53,
-        numberOfRoom: 63,
+        id: 23,
         name: "Antionio",
         surname: "Filipaik",
         phone: 897754096,
         email: "chiacynt32@gamil.com",
-        checkIn: new Date(2022, 5, 11),
-        checkOut: new Date(2022, 5, 20),
+        checkIn: new Date(2022, 6, 31),
+        checkOut: new Date(2022, 7, 3),
       },
       {
         id: 54,
-        numberOfRoom: 1,
         name: "Maradnionio",
         surname: "Delazqz",
         phone: 687231902,
         email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 13),
-        checkOut: new Date(2022, 5, 20),
+        checkIn: new Date(2022, 7, 1),
+        checkOut: new Date(2022, 7, 2),
+      },
+      {
+        id: 224,
+        name: "Antionio",
+        surname: "Marcli",
+        phone: 993233452,
+        email: "ilovefrontend@gamil.com",
+        checkIn: new Date(2022, 7, 2),
+        checkOut: new Date(2022, 7, 5),
       },
     ],
   },
@@ -74,59 +76,53 @@ let array = {
     oneBedroom: [
       {
         id: 6666,
-        numberOfRoom: 24,
-        name: "Nico",
-        surname: "Alberts",
-        phone: 876424008,
-        email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 26),
-        checkOut: new Date(2022, 6, 3),
+        name: "Luna",
+        surname: "Alabators",
+        phone: 942434008,
+        email: "zzzzzzzzzzz@gamil.com",
+        checkIn: new Date(2022, 6, 26),
+        checkOut: new Date(2022, 7, 3),
       },
       {
-        id: 6666,
-        numberOfRoom: 24,
-        name: "Nico",
-        surname: "Alberts",
+        id: 777,
+        name: "Jack",
+        surname: "DaVinci",
         phone: 876424008,
-        email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 26),
-        checkOut: new Date(2022, 6, 3),
+        email: "geometria1920@gamil.com",
+        checkIn: new Date(2022, 6, 26),
+        checkOut: new Date(2022, 7, 3),
       },
       {
-        id: 6666,
-        numberOfRoom: 24,
+        id: 6966,
         name: "Nico",
         surname: "Alberts",
         phone: 876424008,
-        email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 26),
-        checkOut: new Date(2022, 6, 3),
+        email: "fusy@gamil.com",
+        checkIn: new Date(2022, 6, 26),
+        checkOut: new Date(2022, 7, 3),
       },
       {
-        id: 6666,
-        numberOfRoom: 24,
-        name: "Nico",
-        surname: "Alberts",
-        phone: 876424008,
-        email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 26),
-        checkOut: new Date(2022, 6, 3),
+        id: 2341,
+        name: "Paul",
+        surname: "October",
+        phone: 66603234,
+        email: "kapusee@gamil.com",
+        checkIn: new Date(2022, 6, 26),
+        checkOut: new Date(2022, 7, 3),
       },
       {
         id: 3333,
-        numberOfRoom: 1,
-        name: "Maradnionio",
-        surname: "Delazqz",
+        name: "Meyer",
+        surname: "Lansky",
         phone: 687231902,
-        email: "fdddsse@gamil.com",
-        checkIn: new Date(2022, 5, 26),
-        checkOut: new Date(2022, 6, 3),
+        email: "crime@gamil.com",
+        checkIn: new Date(2022, 6, 26),
+        checkOut: new Date(2022, 7, 3),
       },
     ],
     twoBedrooms: [
       {
         id: 2222,
-        numberOfRoom: 63,
         name: "Antionio",
         surname: "Filipaik",
         phone: 897754096,
@@ -136,9 +132,8 @@ let array = {
       },
       {
         id: 2222,
-        numberOfRoom: 63,
-        name: "Antionio",
-        surname: "Filipaik",
+        name: "Filipaik",
+        surname: "Antionio",
         phone: 897754096,
         email: "chiacynt32@gamil.com",
         checkIn: new Date(2022, 6, 4),
@@ -146,17 +141,15 @@ let array = {
       },
       {
         id: 2222,
-        numberOfRoom: 63,
         name: "Antionio",
-        surname: "Filipaik",
-        phone: 897754096,
-        email: "chiacynt32@gamil.com",
+        surname: "Frank",
+        phone: 97623422675,
+        email: "firankta@gamil.com",
         checkIn: new Date(2022, 6, 4),
         checkOut: new Date(2022, 6, 7),
       },
       {
         id: 3333,
-        numberOfRoom: 1,
         name: "Maradnionio",
         surname: "Delazqz",
         phone: 687231902,
@@ -166,7 +159,6 @@ let array = {
       },
       {
         id: 3333,
-        numberOfRoom: 1,
         name: "Maradnionio",
         surname: "Delazqz",
         phone: 687231902,
@@ -180,7 +172,6 @@ let array = {
     oneBedroom: [
       {
         id: 3333,
-        numberOfRoom: 1,
         name: "Maradnionio",
         surname: "Delazqz",
         phone: 687231902,
@@ -190,7 +181,6 @@ let array = {
       },
       {
         id: 3333,
-        numberOfRoom: 1,
         name: "Maradnionio",
         surname: "Delazqz",
         phone: 687231902,
@@ -200,7 +190,6 @@ let array = {
       },
       {
         id: 3333,
-        numberOfRoom: 1,
         name: "Maradnionio",
         surname: "Delazqz",
         phone: 687231902,
@@ -298,7 +287,7 @@ const check = (name, countOfBed, flag) => {
   arr.forEach((book) => {
     //whole time of one reservation divided for one day, result is count of days
     results = (book.checkOut.getTime() - book.checkIn.getTime()) / 86400000;
-    
+
     //push first day
     allDaysOfCurrentBook.push(book.checkIn.getTime());
     //push rest of days
@@ -330,19 +319,8 @@ const check = (name, countOfBed, flag) => {
 
 const arrayForValidCoordinates = {
   test: (name, guests, flag, arrayAges) => {
-    // console.log(arrayAges);
     let countOfBed;
     let nameOfRoom = name;
-    //[0]-adults [1]-children
-    // if (guests[0] === 1) {
-    //   countOfBed = 1;
-    // }
-    // if (guests[0] + guests[1] === 2 || guests[0] + guests[1] === 3) {
-    //   countOfBed = 3;
-    // } else if (guests[0] + guests[1] >= 4 || guests[0] >= 3) {
-    //   countOfBed = 2;
-    // }
-
     if (guests[0] === 1) {
       countOfBed = 1;
     }

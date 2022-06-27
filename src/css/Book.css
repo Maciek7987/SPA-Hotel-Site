@@ -83,6 +83,14 @@ button .every-line.active {
   overflow: hidden;
 }
 
+.book-page__article-select #natureIconBook {
+  position: fixed;
+  top: 32vh;
+  left: 1vw;
+  width: 7vw;
+  opacity: 0.9;
+}
+
 .book-page__article-select .window-to {
   position: relative;
   margin: 6vh 3vw 0 3vw;
@@ -227,11 +235,11 @@ button .every-line.active {
   grid-column: 1/-1;
   background: none;
   padding: 0;
-  cursor: url("../pictures/cursor/right/icons8-back-to-50.png") 25 25, pointer;
+  cursor: url("../pictures/cursor/icons8-back-to-50.png") 25 25, pointer;
 }
 
 .book-page__article-select .select-room--modifire {
-  cursor: url("../pictures/cursor/right/icons8-next-page-50.png") 25 25, pointer;
+  cursor: url("../pictures/cursor/icons8-next-page-50.png") 25 25, pointer;
 }
 
 .book-page__article-select .select-room .bgc-room {

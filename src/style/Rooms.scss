@@ -7,6 +7,13 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 20vh 1fr;
+  #natureIconRoom {
+    position: fixed;
+    top: 1vh;
+    right: 15vw;
+    width: 7vw;
+    opacity: 0.9;
+  }
   &__title {
     display: flex;
     grid-column: 1/-1;

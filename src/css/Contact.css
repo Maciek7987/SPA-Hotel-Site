@@ -46,6 +46,15 @@
   font-family: "Cardo", "Noto Sans JP", sans-serif;
 }
 
+.contact-page__info #natureIconContact {
+  position: fixed;
+  right: 10vw;
+  width: 8vw;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  opacity: 0.9;
+}
+
 .contact-page__info .wrapper-3 {
   width: 80%;
   height: 25%;

@@ -1,0 +1,49 @@
+.room-page {
+  width: 100%;
+  height: 100vh;
+  background-color: antiquewhite;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 20vh 1fr;
+      grid-template-rows: 20vh 1fr;
+}
+
+.room-page #natureIconRoom {
+  position: fixed;
+  top: 1vh;
+  right: 15vw;
+  width: 7vw;
+  opacity: 0.9;
+}
+
+.room-page__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-column: 1/-1;
+  margin: 0 10%;
+  border-bottom: 0.04rem solid #a7beae;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.room-page__title-h1 {
+  position: absolute;
+  font-size: 6.25rem;
+  font-weight: 500;
+  opacity: 0.92;
+  color: #050301;
+}
+
+.room-page__article {
+  margin: 3% 0;
+  padding: 0 2%;
+  font-family: "Cardo", "Noto Sans JP", sans-serif;
+}
+/*# sourceMappingURL=Rooms.css.map */

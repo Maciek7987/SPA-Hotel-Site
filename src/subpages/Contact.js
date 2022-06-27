@@ -1,6 +1,8 @@
 import "../style/Contact.scss";
 import { Component } from "react";
 import Email from "../components/Email";
+import natureIconContact from "../pictures/icons/nature_icon_contact.png";
+
 
 export default class Contact extends Component {
   render() {
@@ -15,6 +17,7 @@ export default class Contact extends Component {
           </article>
 
           <article className="contact-page__info">
+            <img id="natureIconContact" src={natureIconContact} alt="" />
             <div className="wrapper-3">
               <p>Email: alabaster@ahotelsite.com</p>
               <p>Tel: +871 173-342-084</p>

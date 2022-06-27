@@ -30,6 +30,15 @@
   font-size: 3.33rem;
 }
 
+.main-section .main-section__page-1 #natureIconLobby {
+  position: fixed;
+  bottom: 4vh;
+  left: 127vw;
+  width: 9vw;
+  z-index: 1;
+  opacity: 0.9;
+}
+
 .main-section .main-section__page-1 .bgc-color-1 {
   position: absolute;
   width: 65%;
@@ -116,6 +125,15 @@
 
 .main-section .main-section__page-2 {
   position: relative;
+}
+
+.main-section .main-section__page-2 #natureIconMenu {
+  position: fixed;
+  bottom: 2vh;
+  left: 228vw;
+  width: 11vw;
+  margin: 2vh 1vw;
+  opacity: 0.9;
 }
 
 .main-section .main-section__page-2 .wrapper2 {

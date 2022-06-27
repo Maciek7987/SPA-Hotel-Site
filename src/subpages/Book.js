@@ -10,6 +10,8 @@ import "../style/Book.scss";
 import "../components/scss/Tooltips.scss";
 import "../components/scss/Calendar.scss";
 
+
+import natureIconBook from "../pictures/icons/nature_icon_book.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -590,6 +592,7 @@ export default function Book() {
         onClick={afterFirstClickBtn}
         className="book-page__article-select"
       >
+        <img id="natureIconBook" src={natureIconBook} alt="" />
         <nav className="book-page__navigation">
           <ul className="book-page__navigation-list">
             <li className="book-page__navigation-list-item li">

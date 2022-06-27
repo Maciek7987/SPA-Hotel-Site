@@ -33,6 +33,13 @@
     margin: 3% 0;
     padding: 0 4%;
     font-family: $secondary-font;
+    #natureIconContact {
+      position: fixed;
+      right: 10vw;
+      width: 8vw;
+      transform: rotate(-30deg);
+      opacity: 0.9;
+    }
     .wrapper-3 {
       width: 80%;
       height: 25%;

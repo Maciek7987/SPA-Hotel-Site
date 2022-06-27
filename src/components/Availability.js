@@ -25,18 +25,28 @@ export default function Availability({
   guests,
   termin,
   arrayAges,
+  countOfDays,
   oneOrTwo,
   price,
 }) {
   let toCompare = [];
   const adultPrice = Number(price.slice(1));
   const childPrice = (adultPrice * 50) / 100;
-  let calculatedPrice = adultPrice * guests[0];
+  //countOfDays[0]-checkIn countOfDays[1]-checkOut
+
+  const numberOfDays =
+    countOfDays.length === 2
+      ? Math.round(
+          (countOfDays[1].getTime() - countOfDays[0].getTime()) / 86400000 //hotel day is from 00:00 to 23:59 
+        )
+      : 1;
+  console.log(Math.round(numberOfDays), countOfDays);
+  let calculatedPrice = numberOfDays * adultPrice * guests[0];
   Object.entries(arrayAges).forEach((item) => {
     toCompare.push(item[1]);
   });
   for (let i = 0; i < guests[1]; i++) {
-    if (toCompare[i] != "<6") calculatedPrice += childPrice;
+    if (toCompare[i] !== "<6") calculatedPrice += numberOfDays * childPrice;
   }
 
   let flag = false;
@@ -68,7 +78,7 @@ export default function Availability({
     textOfAvailbsBedrooms = "two bedrooms";
   }
 
-  if (roomName != "Select Room" && termin != "Check In / Check Out")
+  if (roomName !== "Select Room" && termin !== "Check In / Check Out")
     flag = true;
   else flag = false;
 
@@ -129,6 +139,7 @@ export default function Availability({
           </span>
         </div>
         <div className="summary__information">
+          <p className="summary__content">hotel day is from 00:00 to 23:59</p>
           <p className="summary__information-content">{information}</p>
         </div>
       </section>

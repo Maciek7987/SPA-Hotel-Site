@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 
 // //20 pokoji zwykłych numery 1-20 włącznie
 // //10 apartamentów numery 27-36 włącznie
@@ -298,6 +298,7 @@ const check = (name, countOfBed, flag) => {
   arr.forEach((book) => {
     //whole time of one reservation divided for one day, result is count of days
     results = (book.checkOut.getTime() - book.checkIn.getTime()) / 86400000;
+    
     //push first day
     allDaysOfCurrentBook.push(book.checkIn.getTime());
     //push rest of days

@@ -71,7 +71,7 @@ function Ages({ numberOfChild, showAgeUnderSix, id, active, changeStateAges }) {
             id={id}
             className={`selectAge__btn selectAge__btn--${showAgeUnderSix}`}
           >
-            {showAgeUnderSix != "show" ? (
+            {showAgeUnderSix !== "show" ? (
               open ? (
                 <>
                   {spanContent}
@@ -470,7 +470,6 @@ export default function Book() {
 
   const toggle = (e) => {
     e.preventDefault();
-    console.log(value);
     setRange((range = false));
     onChange((value = new Date()));
     dateToShow = "Check In / Check Out";
@@ -839,6 +838,7 @@ export default function Book() {
           roomName={selectedRoomTitle}
           guests={adultsChildrenArray}
           termin={dateToShow}
+          countOfDays={value}
           oneOrTwo={flag}
           price={selectedRoomPrice}
         ></Availability>

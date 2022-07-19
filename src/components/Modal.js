@@ -236,6 +236,7 @@ const modalContent = (title, description, moreDetailsImage) => {
 export default ({ title, description, moreDetailsImage }) => {
   return (
     <Popup
+      className="book-popup"
       trigger={<button className="more-details"> more details </button>}
       modal
       nested

@@ -11,10 +11,15 @@
    @media (max-width: 1600px) {
     font-size: 17px;//16px provide to the same proportion how 24px
   }
+   @media (max-width: 1200px) {
+    font-size: 15px;//16px provide to the same proportion how 24px
+  }
 }
 
+// 1200px 17px
+
 body {
-  overflow: hidden;
+ 
   font-family: $main-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

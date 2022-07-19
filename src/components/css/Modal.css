@@ -1,4 +1,4 @@
-.popup-content {
+.book-popup-content {
   width: 40%;
   height: 90%;
   margin: auto;
@@ -6,21 +6,21 @@
   border: 0.04rem solid #402808;
 }
 
-.popup-arrow {
+.book-popup-arrow {
   color: white;
 }
 
-[role="tooltip"].popup-content {
+[role="tooltip"].book-popup-content {
   width: 10.42vw;
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 0.125rem;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 0.125rem;
 }
 
-.popup-overlay {
+.book-popup-overlay {
   background: rgba(0, 0, 0, 0.5);
 }
 
-[data-popup="tooltip"].popup-overlay {
+[data-popup="tooltip"].book-popup-overlay {
   background: transparent;
 }
 
@@ -30,7 +30,7 @@
   padding: 1vh 1vw;
   background: transparent;
   border: 0.04rem solid #402808;
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-family: "Noto Sans JP", "Cardo", sans-serif;
   font-weight: 400;
   -webkit-transition: background-color 0.4s ease;
@@ -192,7 +192,7 @@
   border: 0.04rem solid #402808;
   font-family: "Noto Sans JP", "Cardo", sans-serif;
   font-weight: 400;
-  font-size: 0.666rem;
+  font-size: 0.566rem;
   -webkit-transition: background-color 0.4s ease;
   transition: background-color 0.4s ease;
 }

@@ -1,24 +1,24 @@
 @import "./variables.scss";
 
-.popup-content {
+.book-popup-content {
   width: 40%;
   height: 90%;
   margin: auto;
   background: rgb(255, 255, 255);
   border: 0.04rem solid $main-color-medium;
 }
-.popup-arrow {
+.book-popup-arrow {
   color: rgb(255, 255, 255);
 }
-[role="tooltip"].popup-content {
+[role="tooltip"].book-popup-content {
   width: 10.42vw;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 0.125rem;
 }
 
-.popup-overlay {
+.book-popup-overlay {
   background: rgba(0, 0, 0, 0.5);
 }
-[data-popup="tooltip"].popup-overlay {
+[data-popup="tooltip"].book-popup-overlay {
   background: transparent;
 }
 
@@ -28,7 +28,7 @@
   padding: 1vh 1vw;
   background: transparent;
   border: 0.04rem solid $main-color-medium;
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-family: $third-font;
   font-weight: 400;
   transition: background-color 0.4s ease;
@@ -142,7 +142,7 @@
       border: 0.04rem solid $main-color-medium;
       font-family: $third-font;
       font-weight: 400;
-      font-size: 0.666rem;
+      font-size: 0.566rem;
       transition: background-color 0.4s ease;
       &:hover {
         cursor: pointer;

@@ -1,6 +1,7 @@
 import "./scss/Email.scss";
 import { Component } from "react";
 
+
 export default class Emial extends Component {
   constructor(props) {
     super(props);

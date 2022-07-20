@@ -131,6 +131,18 @@
   z-index: 3;
 }
 
+@media (max-width: 850px) {
+  .room-page__title-h1 {
+    font-size: 5rem;
+  }
+}
+
+@media (max-height: 350px) {
+  .room-page__title-h1 {
+    font-size: 3rem;
+  }
+}
+
 .room-page__articles {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -186,7 +198,14 @@
 
 @media (max-height: 650px) {
   .room-page__articles h2 {
+    top: 1vh;
     font-size: 1.2rem;
+  }
+}
+
+@media (max-height: 350px) {
+  .room-page__articles h2 {
+    top: 0;
   }
 }
 

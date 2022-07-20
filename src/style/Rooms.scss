@@ -98,6 +98,12 @@
       color: $main-color-dark;
       transform: translateX(-50%);
       z-index: 3;
+      @media (max-width: 850px) {
+        font-size: 5rem;
+      }
+      @media (max-height: 350px) {
+        font-size: 3rem;
+      }
     }
   }
 
@@ -134,7 +140,11 @@
         transform: none;
       }
       @media (max-height: 650px) {
+        top: 1vh;
         font-size: 1.2rem;
+      }
+      @media (max-height: 350px) {
+        top: 0;
       }
     }
 
@@ -212,7 +222,6 @@
           grid-row: 4/5;
         }
       }
-      
     }
 
     &-description {

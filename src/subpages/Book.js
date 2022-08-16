@@ -10,7 +10,6 @@ import "../style/Book.scss";
 import "../components/scss/Tooltips.scss";
 import "../components/scss/Calendar.scss";
 
-
 import natureIconBook from "../pictures/icons/nature_icon_book.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -103,6 +102,7 @@ function Ages({ numberOfChild, showAgeUnderSix, id, active, changeStateAges }) {
           <div className="selectAge__btn-menu">
             <button onClick={(e) => selectBtnMenu(e, close)}>{"<6"}</button>
             <button onClick={(e) => selectBtnMenu(e, close)}>6</button>
+            <button onClick={(e) => selectBtnMenu(e, close)}>7</button>
             <button onClick={(e) => selectBtnMenu(e, close)}>8</button>
             <button onClick={(e) => selectBtnMenu(e, close)}>9</button>
             <button onClick={(e) => selectBtnMenu(e, close)}>10</button>
@@ -584,268 +584,283 @@ export default function Book() {
     }
   };
   return (
-    <section className="book-page">
-      <header className="book-page__title">
-        <h1 className="book-page__title-h1">book</h1>
-      </header>
-      <article
-        onClick={afterFirstClickBtn}
-        className="book-page__article-select"
-      >
-        <img id="natureIconBook" src={natureIconBook} alt="" />
-        <nav className="book-page__navigation">
-          <ul className="book-page__navigation-list">
-            <li className="book-page__navigation-list-item li">
-              <button
-                name="guest"
-                onClick={handleClickBtn}
-                className="book-page__navigation-list-item-btn book-btn guest"
-              >
-                <span>{adultsChildrenArray[0]}</span> Adults /{" "}
-                <span>{adultsChildrenArray[1]}</span> Children
-              </button>
-            </li>
+    <>
+      <div id="black-background">
+        <div id="device"></div>
+        <p id="text">please rotate your device</p>
+      </div>
+      <section className="book-page">
+        <header className="book-page__title">
+          <h1 className="book-page__title-h1">book</h1>
+        </header>
+        <article
+          onClick={afterFirstClickBtn}
+          className="book-page__article-select"
+        >
+          <img id="natureIconBook" src={natureIconBook} alt="" />
+          <nav className="book-page__navigation">
+            <ul className="book-page__navigation-list">
+              <li className="book-page__navigation-list-item li">
+                <button
+                  name="guest"
+                  onClick={handleClickBtn}
+                  className="book-page__navigation-list-item-btn book-btn guest"
+                >
+                  <span>{adultsChildrenArray[0]}</span> Adults /{" "}
+                  <span>{adultsChildrenArray[1]}</span> Children
+                </button>
+              </li>
 
-            <li className="book-page__navigation-list-item li">
-              <button
-                name="room"
-                onClick={handleClickBtn}
-                className="book-page__navigation-list-item-btn book-btn room"
-              >
-                {roomName}
-              </button>
-            </li>
+              <li className="book-page__navigation-list-item li">
+                <button
+                  name="room"
+                  onClick={handleClickBtn}
+                  className="book-page__navigation-list-item-btn book-btn room"
+                >
+                  {roomName}
+                </button>
+              </li>
 
-            <li
-              disable={
-                roomName === "select room" || agesOfChildIsNotSelected
-                  ? "true"
-                  : "false"
-              } // until room isn't selected, roomName won't be change and btn with date disable
-              className="book-page__navigation-list-item li"
-            >
-              <button
-                id={idDate}
-                name="date"
-                onClick={handleClickBtn}
-                className="book-page__navigation-list-item-btn book-btn date"
+              <li
+                disable={
+                  roomName === "select room" || agesOfChildIsNotSelected
+                    ? "true"
+                    : "false"
+                } // until room isn't selected, roomName won't be change and btn with date disable
+                className="book-page__navigation-list-item li"
               >
-                {dateToShow}
-              </button>
-            </li>
-          </ul>
-        </nav>
+                <button
+                  id={idDate}
+                  name="date"
+                  onClick={handleClickBtn}
+                  className="book-page__navigation-list-item-btn book-btn date"
+                >
+                  {dateToShow}
+                </button>
+              </li>
+            </ul>
+          </nav>
 
-        <div className="window-to select-guest">
-          <div className="select-guest__adult">
-            <h3>Adults</h3>
-            <div className="select-guest__counter">
-              <span
-                onClick={handleCounter}
-                className="select-guest__counter-minus counter-minus-adult select-guest__counter--disable"
-                id="adultMinus"
-              >
-                <FontAwesomeIcon className="icon" icon={faMinus} />
+          <div className="window-to select-guest">
+            <div className="select-guest__adult">
+              <h3>Adults</h3>
+              <div className="select-guest__counter">
+                <span
+                  onClick={handleCounter}
+                  className="select-guest__counter-minus counter-minus-adult select-guest__counter--disable"
+                  id="adultMinus"
+                >
+                  <FontAwesomeIcon className="icon" icon={faMinus} />
+                </span>
+
+                <span
+                  id="adult-result"
+                  className="select-guest__counter-result"
+                >
+                  {adultsChildrenArray[0]}
+                </span>
+
+                <span
+                  onClick={handleCounter}
+                  className="select-guest__counter-plus counter-plus-adult"
+                  id="adultPlus"
+                >
+                  <FontAwesomeIcon className="icon" icon={faPlus} />
+                </span>
+              </div>
+            </div>
+            <p className="select-guest__description">
+              Availability are rooms with one or 2 bedrooms, every of them comes
+              with a double King bed
+            </p>
+
+            <div className="select-guest__child">
+              <h3>Children</h3>
+              <div className="select-guest__counter">
+                <span
+                  onClick={handleCounter}
+                  className="select-guest__counter-minus counter-minus-child select-guest__counter--disable"
+                  id="childMinus"
+                >
+                  <FontAwesomeIcon className="icon" icon={faMinus} />
+                </span>
+
+                <span
+                  id="child-result"
+                  className="select-guest__counter-result"
+                >
+                  {adultsChildrenArray[1]}
+                </span>
+
+                <span
+                  onClick={handleCounter}
+                  className="select-guest__counter-plus counter-plus-child"
+                  id="childPlus"
+                >
+                  <FontAwesomeIcon className="icon" icon={faPlus} />
+                </span>
+              </div>
+            </div>
+            <div className="tooltipBoundary">
+              <Ages
+                numberOfChild="Child 1 Age"
+                showAgeUnderSix={
+                  1 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
+                }
+                id="child1"
+                active={adultsChildrenArray[1] >= 1 ? "active" : ""}
+                changeStateAges={changeStateAges}
+              ></Ages>
+              <Ages
+                numberOfChild="Child 2 Age"
+                showAgeUnderSix={
+                  2 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
+                }
+                id="child2"
+                active={adultsChildrenArray[1] >= 2 ? "active" : ""}
+                changeStateAges={changeStateAges}
+              ></Ages>
+              <Ages
+                numberOfChild="Child 3 Age"
+                showAgeUnderSix={
+                  3 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
+                }
+                id="child3"
+                active={adultsChildrenArray[1] >= 3 ? "active" : ""}
+                changeStateAges={changeStateAges}
+              ></Ages>
+              <Ages
+                numberOfChild="Child 4 Age"
+                showAgeUnderSix="show"
+                id="child4"
+                active={adultsChildrenArray[1] >= 4 ? "active" : ""}
+                changeStateAges={changeStateAges}
+              ></Ages>
+              <Ages
+                numberOfChild="Child 5 Age"
+                showAgeUnderSix="show"
+                id="child5"
+                active={adultsChildrenArray[1] >= 5 ? "active" : ""}
+                changeStateAges={changeStateAges}
+              ></Ages>
+            </div>
+
+            <p className="select-guest__description">
+              Children under 6 y.o. are not charged
+            </p>
+          </div>
+          <div className="window-to select-room">
+            <div id="roomSel" className="bgc-room"></div>
+            <div className="select-room__pictures">
+              <img
+                className="select-room__pictures-img current"
+                id="roomSel"
+                loading="lazy"
+                src={objectImages[1].src}
+                alt="apartment-room"
+              />
+            </div>
+            <div className="select-room__info">
+              <h3 className="select-room__info-name">
+                {objectImages[1].title}
+              </h3>
+              <h4 className="select-room__info-price">
+                {objectImages[indexOfObjectImges].price}
+                <span> USD / NIGHT</span>
+              </h4>
+              <div className="select-room__info-details">
+                {objectImages[1].description}
+              </div>
+              <span className="select-room__info__bedIcon">
+                <img src={doubleBedIcon} alt="doubleBedIcon" /> King Bed
               </span>
-
-              <span id="adult-result" className="select-guest__counter-result">
-                {adultsChildrenArray[0]}
-              </span>
-
-              <span
-                onClick={handleCounter}
-                className="select-guest__counter-plus counter-plus-adult"
-                id="adultPlus"
-              >
-                <FontAwesomeIcon className="icon" icon={faPlus} />
-              </span>
+              <Modal
+                title={selectedRoomTitle}
+                description={selectedRoomDescription}
+                moreDetailsImage={moreDetailsImage}
+              ></Modal>
             </div>
           </div>
-          <p className="select-guest__description">
-            Availability are rooms with one or 2 bedrooms, every of them comes
-            with a double King bed
-          </p>
-
-          <div className="select-guest__child">
-            <h3>Children</h3>
-            <div className="select-guest__counter">
-              <span
-                onClick={handleCounter}
-                className="select-guest__counter-minus counter-minus-child select-guest__counter--disable"
-                id="childMinus"
+          <div className="window-to select-date">
+            <div className="calendar">
+              <Calendar
+                maxDate={new Date(year + 2, month, day)}
+                minDate={new Date()}
+                minDetail="month"
+                locale="en-EN"
+                className="class1"
+                onChange={onChange}
+                value={value}
+                showDoubleView={true}
+                showFixedNumberOfWeeks={false}
+                showNeighboringMonth={false}
+                selectRange={range} //range is default "false" and  onClickDay, it call function to assign opposite value
+                onClickDay={() => setRange((range = !range))}
+                tileDisabled={
+                  //range is default "false" so at beginning is show calendar with availbs termins
+                  range
+                    ? //after click we leave the longest possible range with day which was clicked
+                      ({ date }) => showDaysWhichCanSelect(date)
+                    : //default but also after clicking chose range, we disable days, which belong to the compartment already booked termins
+                      ({ date }) =>
+                        arrayTerminsReservation.some(
+                          (book) => date.getTime() === Number(book)
+                        )
+                }
+              />
+              <div
+                id="bedroomsBtn"
+                disable={
+                  adultsChildrenArray[0] + adultsChildrenArray[1] >= 2 &&
+                  ((adultsChildrenArray[0] === 2 &&
+                    adultsChildrenArray[1] === 0) ||
+                    (adultsChildrenArray[0] === 1 &&
+                      adultsChildrenArray[1] === 1) ||
+                    (adultsChildrenArray[0] === 1 &&
+                      adultsChildrenArray[1] === 2 &&
+                      (arrayAges.child1 === "<6" ||
+                        arrayAges.child2 === "<6")) ||
+                    (adultsChildrenArray[0] === 2 &&
+                      adultsChildrenArray[1] === 1 &&
+                      arrayAges.child1 === "<6"))
+                    ? "true"
+                    : "false"
+                }
               >
-                <FontAwesomeIcon className="icon" icon={faMinus} />
-              </span>
-
-              <span id="child-result" className="select-guest__counter-result">
-                {adultsChildrenArray[1]}
-              </span>
-
-              <span
-                onClick={handleCounter}
-                className="select-guest__counter-plus counter-plus-child"
-                id="childPlus"
-              >
-                <FontAwesomeIcon className="icon" icon={faPlus} />
-              </span>
+                <button
+                  id="one"
+                  onClick={(e) => {
+                    toggle(e);
+                  }}
+                >
+                  One Bedroom
+                  <div className="every-line"></div>
+                </button>
+                <button
+                  id="two"
+                  onClick={(e) => {
+                    toggle(e);
+                  }}
+                >
+                  Two Bedroom
+                  <div className="every-line active"></div>
+                </button>
+              </div>
             </div>
           </div>
-          <div className="tooltipBoundary">
-            <Ages
-              numberOfChild="Child 1 Age"
-              showAgeUnderSix={
-                1 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
-              }
-              id="child1"
-              active={adultsChildrenArray[1] >= 1 ? "active" : ""}
-              changeStateAges={changeStateAges}
-            ></Ages>
-            <Ages
-              numberOfChild="Child 2 Age"
-              showAgeUnderSix={
-                2 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
-              }
-              id="child2"
-              active={adultsChildrenArray[1] >= 2 ? "active" : ""}
-              changeStateAges={changeStateAges}
-            ></Ages>
-            <Ages
-              numberOfChild="Child 3 Age"
-              showAgeUnderSix={
-                3 + adultsChildrenArray[0] >= 5 ? "show" : "do-not-show"
-              }
-              id="child3"
-              active={adultsChildrenArray[1] >= 3 ? "active" : ""}
-              changeStateAges={changeStateAges}
-            ></Ages>
-            <Ages
-              numberOfChild="Child 4 Age"
-              showAgeUnderSix="show"
-              id="child4"
-              active={adultsChildrenArray[1] >= 4 ? "active" : ""}
-              changeStateAges={changeStateAges}
-            ></Ages>
-            <Ages
-              numberOfChild="Child 5 Age"
-              showAgeUnderSix="show"
-              id="child5"
-              active={adultsChildrenArray[1] >= 5 ? "active" : ""}
-              changeStateAges={changeStateAges}
-            ></Ages>
-          </div>
-
-          <p className="select-guest__description">
-            Children under 6 y.o. are not charged
-          </p>
-        </div>
-        <div className="window-to select-room">
-          <div id="roomSel" className="bgc-room"></div>
-          <div className="select-room__pictures">
-            <img
-              className="select-room__pictures-img current"
-              id="roomSel"
-              loading="lazy"
-              src={objectImages[1].src}
-              alt="apartment-room"
-            />
-          </div>
-          <div className="select-room__info">
-            <h3 className="select-room__info-name">{objectImages[1].title}</h3>
-            <h4 className="select-room__info-price">
-              {objectImages[indexOfObjectImges].price}
-              <span> USD / NIGHT</span>
-            </h4>
-            <div className="select-room__info-details">
-              {objectImages[1].description}
-            </div>
-            <span className="select-room__info__bedIcon">
-              <img src={doubleBedIcon} alt="doubleBedIcon" /> King Bed
-            </span>
-            <Modal
-              title={selectedRoomTitle}
-              description={selectedRoomDescription}
-              moreDetailsImage={moreDetailsImage}
-            ></Modal>
-          </div>
-        </div>
-        <div className="window-to select-date">
-          <div className="calendar">
-            <Calendar
-              maxDate={new Date(year + 2, month, day)}
-              minDate={new Date()}
-              minDetail="month"
-              locale="en-EN"
-              className="class1"
-              onChange={onChange}
-              value={value}
-              showDoubleView={true}
-              showFixedNumberOfWeeks={false}
-              showNeighboringMonth={false}
-              selectRange={range} //range is default "false" and  onClickDay, it call function to assign opposite value
-              onClickDay={() => setRange((range = !range))}
-              tileDisabled={
-                //range is default "false" so at beginning is show calendar with availbs termins
-                range
-                  ? //after click we leave the longest possible range with day which was clicked
-                    ({ date }) => showDaysWhichCanSelect(date)
-                  : //default but also after clicking chose range, we disable days, which belong to the compartment already booked termins
-                    ({ date }) =>
-                      arrayTerminsReservation.some(
-                        (book) => date.getTime() === Number(book)
-                      )
-              }
-            />
-            <div
-              id="bedroomsBtn"
-              disable={
-                adultsChildrenArray[0] + adultsChildrenArray[1] >= 2 &&
-                ((adultsChildrenArray[0] === 2 &&
-                  adultsChildrenArray[1] === 0) ||
-                  (adultsChildrenArray[0] === 1 &&
-                    adultsChildrenArray[1] === 1) ||
-                  (adultsChildrenArray[0] === 1 &&
-                    adultsChildrenArray[1] === 2 &&
-                    (arrayAges.child1 === "<6" || arrayAges.child2 === "<6")) ||
-                  (adultsChildrenArray[0] === 2 &&
-                    adultsChildrenArray[1] === 1 &&
-                    arrayAges.child1 === "<6"))
-                  ? "true"
-                  : "false"
-              }
-            >
-              <button
-                id="one"
-                onClick={(e) => {
-                  toggle(e);
-                }}
-              >
-                One Bedroom
-                <div className="every-line"></div>
-              </button>
-              <button
-                id="two"
-                onClick={(e) => {
-                  toggle(e);
-                }}
-              >
-                Two Bedroom
-                <div className="every-line active"></div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </article>
-      <article className="book-page__article-info">
-        <Availability
-          arrayAges={arrayAges}
-          roomName={selectedRoomTitle}
-          guests={adultsChildrenArray}
-          termin={dateToShow}
-          countOfDays={value}
-          oneOrTwo={flag}
-          price={selectedRoomPrice}
-        ></Availability>
-      </article>
-    </section>
+        </article>
+        <article className="book-page__article-info">
+          <Availability
+            arrayAges={arrayAges}
+            roomName={selectedRoomTitle}
+            guests={adultsChildrenArray}
+            termin={dateToShow}
+            countOfDays={value}
+            oneOrTwo={flag}
+            price={selectedRoomPrice}
+          ></Availability>
+        </article>
+      </section>
+    </>
   );
 }

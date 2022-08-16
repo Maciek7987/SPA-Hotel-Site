@@ -47,6 +47,16 @@ button .every-line.active {
       grid-template-rows: 20vh 1fr;
 }
 
+@media (max-width: 1200px) {
+  .book-page {
+    -ms-grid-columns: 10vw 1fr 15vw;
+        grid-template-columns: 10vw 1fr 15vw;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    height: auto;
+  }
+}
+
 .book-page__title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -62,12 +72,34 @@ button .every-line.active {
           align-items: center;
 }
 
+@media (max-width: 1200px) {
+  .book-page__title {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    margin-bottom: 20px;
+    border: none;
+  }
+}
+
 .book-page__title-h1 {
   position: absolute;
   font-size: 6.25rem;
   font-weight: 500;
   opacity: 0.92;
   color: #050301;
+}
+
+@media (max-width: 1200px) {
+  .book-page__title-h1 {
+    font-size: 5rem;
+    text-orientation: upright;
+    -webkit-writing-mode: vertical-lr;
+        -ms-writing-mode: tb-lr;
+            writing-mode: vertical-lr;
+    letter-spacing: -20px;
+    margin-bottom: 20px;
+  }
 }
 
 .book-page__article-select {
@@ -83,10 +115,34 @@ button .every-line.active {
   overflow: hidden;
 }
 
+@media (max-width: 1200px) {
+  .book-page__article-select {
+    -ms-grid-rows: 13vh 1fr;
+        grid-template-rows: 13vh 1fr;
+    height: 100vh;
+    margin: 3% 2vw;
+    padding: 3% 0;
+    border-right: none;
+    border-bottom: 0.04rem solid #a7beae;
+  }
+}
+
+@media (max-width: 851px) {
+  .book-page__article-select {
+    padding: 0;
+  }
+}
+
+@media (max-height: 450px) {
+  .book-page__article-select {
+    padding: 0;
+  }
+}
+
 .book-page__article-select #natureIconBook {
-  position: fixed;
-  top: 32vh;
-  left: 1vw;
+  position: absolute;
+  top: 5vh;
+  left: 12vw;
   width: 7vw;
   opacity: 0.9;
 }
@@ -134,6 +190,12 @@ button .every-line.active {
   font-size: 0.933rem;
 }
 
+@media (max-width: 1200px) {
+  .book-page__article-select .select-guest h3 {
+    font-size: 1.2rem;
+  }
+}
+
 .book-page__article-select .select-guest__counter {
   margin: 0.2vw auto 0 auto;
   width: 40%;
@@ -158,6 +220,12 @@ button .every-line.active {
   font-weight: 700;
 }
 
+@media (max-width: 1200px) {
+  .book-page__article-select .select-guest__counter-result {
+    font-size: 1.1rem;
+  }
+}
+
 .book-page__article-select .select-guest__counter-minus {
   -webkit-transition: background-color 0.2s ease;
   transition: background-color 0.2s ease;
@@ -169,6 +237,12 @@ button .every-line.active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .book-page__article-select .select-guest__counter-minus {
+    font-size: 1rem;
+  }
 }
 
 .book-page__article-select .select-guest__counter-minus .icon {
@@ -198,6 +272,12 @@ button .every-line.active {
   transition: background-color 0.2s ease;
 }
 
+@media (max-width: 1200px) {
+  .book-page__article-select .select-guest__counter-plus {
+    font-size: 1rem;
+  }
+}
+
 .book-page__article-select .select-guest__counter-plus .icon {
   padding: 0.8vh 0.5vw;
 }
@@ -214,6 +294,12 @@ button .every-line.active {
 .book-page__article-select .select-guest__description {
   text-align: center;
   font-size: 0.666rem;
+}
+
+@media (max-width: 1200px) {
+  .book-page__article-select .select-guest__description {
+    font-size: 0.92rem;
+  }
 }
 
 .book-page__article-select .select-guest__adult {
@@ -263,17 +349,89 @@ button .every-line.active {
   border-bottom: 0.04rem solid rgba(189, 180, 170, 0.459);
 }
 
+@media (max-width: 1200px) {
+  .book-page__article-select .select-room__info-name {
+    font-size: 1.24rem;
+  }
+}
+
+@media (max-width: 851px) {
+  .book-page__article-select .select-room__info-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-height: 450px) {
+  .book-page__article-select .select-room__info-name {
+    font-size: 0.9rem;
+  }
+}
+
 .book-page__article-select .select-room__info-price {
   padding: 1vh 0;
   font-size: 0.866rem;
+}
+
+@media (max-width: 1200px) {
+  .book-page__article-select .select-room__info-price {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 851px) {
+  .book-page__article-select .select-room__info-price {
+    font-size: 1rem;
+  }
+}
+
+@media (max-height: 450px) {
+  .book-page__article-select .select-room__info-price {
+    font-size: 0.9rem;
+  }
 }
 
 .book-page__article-select .select-room__info-price span {
   font-size: 0.733rem;
 }
 
+@media (max-width: 1200px) {
+  .book-page__article-select .select-room__info-price span {
+    font-size: 1.016rem;
+  }
+}
+
+@media (max-width: 851px) {
+  .book-page__article-select .select-room__info-price span {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-height: 450px) {
+  .book-page__article-select .select-room__info-price span {
+    font-size: 0.72rem;
+  }
+}
+
 .book-page__article-select .select-room__info-details {
   font-size: 0.708rem;
+}
+
+@media (max-width: 1200px) {
+  .book-page__article-select .select-room__info-details {
+    font-size: 0.908rem;
+  }
+}
+
+@media (max-width: 851px) {
+  .book-page__article-select .select-room__info-details {
+    font-size: 0.808rem;
+  }
+}
+
+@media (max-height: 450px) {
+  .book-page__article-select .select-room__info-details {
+    font-size: 0.74rem;
+  }
 }
 
 .book-page__article-select .select-room__info__bedIcon {
@@ -290,9 +448,39 @@ button .every-line.active {
   font-size: 0.666rem;
 }
 
+@media (max-width: 1200px) {
+  .book-page__article-select .select-room__info__bedIcon {
+    font-size: 0.866rem;
+  }
+}
+
+@media (max-width: 851px) {
+  .book-page__article-select .select-room__info__bedIcon {
+    font-size: 0.808rem;
+  }
+}
+
+@media (max-height: 450px) {
+  .book-page__article-select .select-room__info__bedIcon {
+    display: none;
+  }
+}
+
 .book-page__article-select .select-room__info__bedIcon img {
   margin: 0 0.5vw 0 1vw;
   width: 22%;
+}
+
+@media (max-width: 1200px) {
+  .book-page__article-select .select-room__info__bedIcon img {
+    width: 27%;
+  }
+}
+
+@media (max-width: 851px) {
+  .book-page__article-select .select-room__info__bedIcon img {
+    width: 22%;
+  }
 }
 
 .book-page__article-select .select-room__pictures {
@@ -360,6 +548,10 @@ button .every-line.active {
           align-items: center;
 }
 
+.book-page__article-select .select-date .calendar .class1 {
+  width: 90%;
+}
+
 .book-page__article-select .select-date .calendar #bedroomsBtn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -386,6 +578,13 @@ button .every-line.active {
   font-weight: 700;
 }
 
+@media (max-width: 1200px) {
+  .book-page__article-select .select-date .calendar #bedroomsBtn #one,
+  .book-page__article-select .select-date .calendar #bedroomsBtn #two {
+    font-size: 0.733rem;
+  }
+}
+
 .book-page__article-select .select-date .calendar #bedroomsBtn[disable="false"] {
   pointer-events: none;
   opacity: 0;
@@ -397,6 +596,14 @@ button .every-line.active {
   padding: 0 4%;
   margin: 0 auto;
   background-color: transparent;
+}
+
+@media (max-width: 1200px) {
+  .book-page__navigation {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+  }
 }
 
 .book-page__navigation-list {
@@ -486,15 +693,35 @@ button .every-line.active {
   border: 0.04rem solid black;
 }
 
+@media (max-width: 1200px) {
+  .book-page__navigation-list-item-btn {
+    font-size: 0.8rem;
+  }
+}
+
 .book-page__navigation-list-item-btn span {
   font-size: 0.666rem;
+}
+
+@media (max-width: 1200px) {
+  .book-page__navigation-list-item-btn span {
+    font-size: 0.9rem;
+  }
 }
 
 .book-page__navigation-list-item #biggerFontSize {
   font-size: 0.666rem;
 }
 
+@media (max-width: 1200px) {
+  .book-page__navigation-list-item #biggerFontSize {
+    font-size: 0.9rem;
+  }
+}
+
 .book-page__article-info {
+  grid-row: 2/-1;
+  grid-column: 2/-1;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 70% 30%;
@@ -502,5 +729,15 @@ button .every-line.active {
   margin: 3% 0;
   padding: 0 4%;
   font-family: "Cardo", "Noto Sans JP", sans-serif;
+}
+
+@media (max-width: 1200px) {
+  .book-page__article-info {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 /*# sourceMappingURL=Book.css.map */

@@ -6,6 +6,20 @@
   border: 0.04rem solid #402808;
 }
 
+@media (max-width: 851px) {
+  .book-popup-content {
+    width: 60%;
+    height: 95%;
+  }
+}
+
+@media (max-height: 450px) {
+  .book-popup-content {
+    width: 60%;
+    height: 95%;
+  }
+}
+
 .book-popup-arrow {
   color: white;
 }
@@ -96,7 +110,7 @@
   width: 3.25vw;
   height: 8vh;
   opacity: 0.7;
-  margin: 0 .5vw;
+  margin: 0 0.5vw;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }

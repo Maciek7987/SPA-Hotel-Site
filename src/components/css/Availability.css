@@ -15,6 +15,13 @@
       grid-template-rows: repeat(2, 19vh) 10vh;
 }
 
+@media (max-width: 1200px) {
+  .email .form {
+    -ms-grid-rows: (19vh)[2] 15vh;
+        grid-template-rows: repeat(2, 19vh) 15vh;
+  }
+}
+
 .email .form .wrapper-info {
   height: 11vh;
 }
@@ -28,6 +35,30 @@
       grid-template-rows: 27% 27% 20% auto;
   background-color: #d8d0bf;
   padding: 2vh;
+}
+
+@media (max-width: 1200px) {
+  .summary {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 15vw;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 851px) {
+  .summary {
+    -ms-grid-rows: 27% 27% 20% auto;
+        grid-template-rows: 27% 27% 20% auto;
+  }
+}
+
+@media (max-height: 450px) {
+  .summary {
+    -ms-grid-rows: 35% 30% 10% auto;
+        grid-template-rows: 35% 30% 10% auto;
+  }
 }
 
 .summary__content {

@@ -166,6 +166,10 @@ class Home extends Component {
         {/* <div className="loading-screen">
           <div className="spinner"></div>
         </div> */}
+        <div id="black-background">
+          <div id="device"></div>
+          <p id="text">please rotate your device</p>
+        </div>
         <section ref={this.homePage} className="home-page">
           <HorizontalScroll
             ref={this.horizontalScroll}
@@ -176,7 +180,14 @@ class Home extends Component {
           >
             <Main />
           </HorizontalScroll>
-          <video loading="lazy" className="lazysizes" loop autoPlay muted>
+          <video
+            id="toDisableForMobile"
+            loading="lazy"
+            className="lazysizes"
+            loop
+            autoPlay
+            muted
+          >
             <source loading="lazy" src={video} type="video/mp4" />
           </video>
           <Navigation handleReset={this.resetStateAnimValue} />

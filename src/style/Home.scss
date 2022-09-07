@@ -1,15 +1,33 @@
 @import "../components/scss/variables.scss";
+@import "../components/scss/AnimationRoate.scss";
 
 .home-page {
-   overflow: hidden;
+  overflow: hidden;
   position: relative;
   width: 100%;
   height: 100vh;
+  @media (max-width: 800px) {
+    background-image: url("../pictures//pexels-cottonbro-wine_Moment.jpg");
+    background-size: cover;
+    #toDisableForMobile {
+      display: none;
+    }
+  }
+  @media (max-width: 420px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    @include animation-rotate;
+  }
   .lazysizes {
     z-index: -1;
     position: absolute;
-    top: -10vh;
+    top: 0;
+    left: 0;
     width: 100%;
+    transform: scale(1.3);
     filter: $picture-contrast;
   }
   .infoAboutScroll {

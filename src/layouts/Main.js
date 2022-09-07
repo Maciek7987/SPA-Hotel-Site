@@ -26,16 +26,18 @@ const Main = () => {
               alt="lobby"
             />
           </div>
-          <img
-            loading="lazy"
-            className="main-section__page-1-plants"
-            src={plantsImg}
-            alt="plants-background"
-          />
-          <p className="main-section__page-1-quote">
-            "Truth, when it is more difficult, is more pleasant, and knowledge
-            that costs is more valued."
-          </p>
+          <div className="main-section__page-1-wrap">
+            <img
+              loading="lazy"
+              className="main-section__page-1-wrap-plants"
+              src={plantsImg}
+              alt="plants-background"
+            />
+            <p className="main-section__page-1-wrap-quote">
+              "Truth, when it is more difficult, is more pleasant, and knowledge
+              that costs is more valued."
+            </p>
+          </div>
         </div>
       </article>
 

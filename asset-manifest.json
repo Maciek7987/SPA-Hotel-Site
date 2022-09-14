@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/maciek7987.github.io/static/css/main.b31c6afc.css",
-    "main.js": "/maciek7987.github.io/static/js/main.bef0cc0a.js",
+    "main.js": "/maciek7987.github.io/static/js/main.5ef3dd07.js",
     "static/media/pexels-cottonbro-main-xs.mp4": "/maciek7987.github.io/static/media/pexels-cottonbro-main-xs.fddac751b958c5ccc4c4.mp4",
     "static/media/pexels-natasha-filippovskaya-1-lg.jpg": "/maciek7987.github.io/static/media/pexels-natasha-filippovskaya-1-lg.f9a9e79476d3af1372bd.jpg",
     "static/media/pexels-polina-kovaleva-4-lg.jpg": "/maciek7987.github.io/static/media/pexels-polina-kovaleva-4-lg.44bd842e465885452ef6.jpg",
@@ -43,10 +43,10 @@
     "static/media/grey-building.svg": "/maciek7987.github.io/static/media/grey-building.fbe94acab5c82631865550b3eff198f0.svg",
     "static/media/grey-tv.svg": "/maciek7987.github.io/static/media/grey-tv.1984573bdd52313d3a6ad6be958ee85f.svg",
     "main.b31c6afc.css.map": "/maciek7987.github.io/static/css/main.b31c6afc.css.map",
-    "main.bef0cc0a.js.map": "/maciek7987.github.io/static/js/main.bef0cc0a.js.map"
+    "main.5ef3dd07.js.map": "/maciek7987.github.io/static/js/main.5ef3dd07.js.map"
   },
   "entrypoints": [
     "static/css/main.b31c6afc.css",
-    "static/js/main.bef0cc0a.js"
+    "static/js/main.5ef3dd07.js"
   ]
 }

@@ -28,7 +28,7 @@ application created to learn framework "React" and make single-page application
 ## Some information about creating project :)
 
 The hardest moments at create application were
-when library react-router had new version and a had to make paths working. Second thing was add react-scroll-horizontal library and writed algorithm to smooth move after click when user use mouse wheel also set it to correct view after resize. Next was subpage 'contact" when i had to make a form contact which send a message to my email and validation to it. Subpage "book" still was the most harder. First i create button to add guest and algorithm which block
+when library react-router had new version and i had to make paths working. Second thing was add react-scroll-horizontal library and writed algorithm to smooth move after click when user use mouse wheel also set it to correct view after resize. Next was subpage "contact" when i had to make a form contact which send a message to my email and validation to it. Subpage "book" still was the most harder. First i create button to add guest and algorithm which block
 buttons addition or subtraction when adult had 1 or 4 ( one room in hotel has one bedroom or two bedroom, with double bed ).
 But always have to be a one adult. Next block buttons when all added guests were 6 ( e.g. 1 adult and 5 child) but two of child had to be under 6 years. But it that was just the beginning, book.js and files import to it has about 1927 linie javascript.
 

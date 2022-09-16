@@ -19,7 +19,7 @@ application created to learn framework "React" and make single-page application
 ### Application was deploy on free account heroku because gitHub Pages had problems with SPA
 #### [https://spa-hotel-site.herokuapp.com/]
 
-![Home page](./images/FirstImage.png) ![Book page](./images/SecondImage.png)
+![Home page](./images/FirstImageSmall.png) ![Book page](./images/SecondImage.png)
 
 ## Some information about creating project :)
 

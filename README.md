@@ -23,7 +23,7 @@ application created to learn framework "React" and make single-page application
 
 #### [https://spa-hotel-site.herokuapp.com/]
 
-![Home page](./images/FirstImageSmall-2.png) ![Book page](./images/SecondImageSmall.png)
+![Home page](./images/FirstImage-2.png) ![Book page](./images/SecondImage.png)
 
 ## Some information about creating project :)
 

@@ -10,16 +10,14 @@
   .main-section__page-1 {
     position: relative;
     &-description {
-      width: 30%;
+      width: 35%;
       font-size: 1.8rem;
       font-weight: 200;
       color: $main-color-medium;
-      padding: 18% 2% 2% 8%;
+      padding: 18% 4% 2% 5%;
       line-height: 110%;
       letter-spacing: 0.04rem;
-      // @media (max-width: 1200px) {
-      //   font-size: 1.6rem;
-      // }
+
       @media (max-width: 1000px) {
         font-size: 1.4rem;
       }
@@ -27,7 +25,10 @@
         font-size: 1.3rem;
       }
       @media (max-width: 750px) {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+      }
+      @media (max-width: 420px) {
+        font-size: 0.68rem;
       }
       span {
         text-transform: uppercase;
@@ -37,7 +38,13 @@
           font-size: 3rem;
         }
         @media (max-width: 900px) {
-          font-size: 2.6rem;
+          font-size: 2.5rem;
+        }
+        @media (max-width: 750px) {
+          font-size: 2rem;
+        }
+        @media (max-width: 420px) {
+          font-size: 1rem;
         }
       }
     }
@@ -48,6 +55,9 @@
       width: 9vw;
       z-index: 1;
       opacity: 0.9;
+      @media (max-width: 420px) {
+        left: 123vw;
+      }
     }
     .bgc-color-1 {
       position: absolute;
@@ -84,6 +94,13 @@
         @media (max-width: 900px) {
           font-size: 2.5rem;
         }
+        @media (max-width: 750px) {
+          font-size: 2rem;
+        }
+        @media (max-width: 420px) {
+          font-size: 1.2rem;
+          padding: 0 0 0 4%;
+        }
       }
     }
     .wrapper {
@@ -109,6 +126,10 @@
       right: 35%;
       width: 70%;
       height: 70%;
+      @media (max-width: 420px) {
+        width: 85%;
+        height: 85%;
+      }
       &-plants {
         position: absolute;
         width: 100%;
@@ -135,7 +156,10 @@
           font-size: 1.5rem;
         }
         @media (max-width: 750px) {
-          font-size: 1.3rem;
+          font-size: 1rem;
+        }
+        @media (max-width: 480px) {
+          font-size: 0.8rem;
         }
       }
     }

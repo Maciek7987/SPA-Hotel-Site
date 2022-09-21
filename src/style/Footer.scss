@@ -3,12 +3,16 @@
 .footer {
   display: flex;
   position: fixed;
-  bottom: 1vh;
+  bottom: 0;
   left: 0;
   width: 100vw;
-  height: 5%;
+  height: 8%;
   justify-content: center;
   z-index: 9999;
+  @media (max-width: 800px) {
+    background-color: rgb(120, 89, 48);
+
+  }
   &__navigation {
     display: flex;
     width: 25%;
@@ -17,10 +21,19 @@
     justify-content: space-evenly;
     opacity: 1;
     transition: opacity 0.25s;
+    @media (max-width: 800px) {
+      width: 40%;
+    }
     #footer__navigation-btn {
       border: none;
       background-color: transparent;
       font-family: $main-font;
+      @media (max-width: 800px) {
+        color: antiquewhite;
+      }
+      @media (max-width: 420px) {
+        font-size: 0.7rem;
+      }
     }
   }
 }

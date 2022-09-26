@@ -145,13 +145,13 @@ export default function Book() {
   let [adultsChildrenArray, setGusetArray] = useState([adults, children]); //variable defined so that later put it to html elements and to give it as props to "Availability" component
 
   useEffect(() => {
-    let ddss = document.querySelectorAll(".selectAge__btn--show");
-    let aaaa = document.querySelectorAll(".selectAge__btn");
-    aaaa.forEach((aa) => {
-      changeStateAges(aa.id, aa.textContent);
+    let selectAgeBtnShow = document.querySelectorAll(".selectAge__btn--show");
+    let selectAgeBtn = document.querySelectorAll(".selectAge__btn");
+    selectAgeBtnShow.forEach((btn) => {
+      changeStateAges(btn.id, btn.textContent);
     });
-    ddss.forEach((ff) => {
-      changeStateAges(ff.id, ff.textContent);
+    selectAgeBtn.forEach((btn) => {
+      changeStateAges(btn.id, btn.textContent);
     });
   }, adultsChildrenArray);
 

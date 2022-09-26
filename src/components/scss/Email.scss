@@ -26,7 +26,7 @@
   }
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 20vh);
+    grid-template-rows: repeat(3, 20vh);
   }
   &__wrap {
     display: flex;

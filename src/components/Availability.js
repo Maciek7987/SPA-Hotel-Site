@@ -1,11 +1,15 @@
-import { useEffect } from "react";
+import { useState} from "react";
 
 import "./scss/Availability.scss";
 import "./Email";
 import Emial from "./Email";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMinus,
+  faBars,
+  faBarsStaggered,
+} from "@fortawesome/free-solid-svg-icons";
 
 // //20 pokoji zwykłych numery 1-20 włącznie
 // //10 apartamentów numery 27-36 włącznie
@@ -29,6 +33,14 @@ export default function Availability({
   oneOrTwo,
   price,
 }) {
+  //burger
+  let [toggleIcon, setIcon] = useState(false);
+  const showMenu = (e) => {
+    e.preventDefault();
+    setIcon((toggleIcon = !toggleIcon));
+    console.log(toggleIcon);
+  };
+  //
   let toCompare = [];
   const adultPrice = Number(price.slice(1));
   const childPrice = (adultPrice * 50) / 100;
@@ -37,7 +49,7 @@ export default function Availability({
   const numberOfDays =
     countOfDays.length === 2
       ? Math.round(
-          (countOfDays[1].getTime() - countOfDays[0].getTime()) / 86400000 //hotel day is from 00:00 to 23:59 
+          (countOfDays[1].getTime() - countOfDays[0].getTime()) / 86400000 //hotel day is from 00:00 to 23:59
         )
       : 1;
   console.log(Math.round(numberOfDays), countOfDays);
@@ -112,10 +124,14 @@ export default function Availability({
       <span className="summary__availability-date">{termin}</span>
     );
 
-
-
   return (
     <>
+      <button onClick={(e) => showMenu(e)} className="availability__bar">
+        <FontAwesomeIcon
+          className="availability__bar-icon"
+          icon={toggleIcon ? faBarsStaggered : faBars}
+        />
+      </button>
       <section className="email">
         <Emial
           valueToSubmit="Book"
@@ -126,7 +142,7 @@ export default function Availability({
           infoAboutSelectedRoom={infoAboutSelectedRoom}
         ></Emial>
       </section>
-      <section className="summary">
+      <section title={toggleIcon.toString()} className="summary">
         <div className="summary__availability">
           <h4 className="summary__title">Availability</h4>
           <p className="summary__content">

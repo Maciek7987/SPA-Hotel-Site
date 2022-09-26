@@ -10,10 +10,13 @@
     width: 60%;
     height: 95%;
   }
-  @media (max-height: 450px) {
-    width: 60%;
-    height: 95%;
+  @media (max-width: 700px) {
+    width: 80%;
   }
+  // @media (max-height: 450px) {
+  //   width: 60%;
+  //   height: 95%;
+  // }
 }
 .book-popup-arrow {
   color: rgb(255, 255, 255);
@@ -40,6 +43,10 @@
   font-family: $third-font;
   font-weight: 400;
   transition: background-color 0.4s ease;
+  @media (max-width: 420px) {
+    bottom: 10vh;
+    font-size: 0.6rem;
+  }
   &:hover {
     cursor: pointer;
     background-color: #fff;
@@ -114,7 +121,7 @@
     &-caption {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(4, 7vh);
+      grid-template-rows: repeat(4, 5vh);
       align-items: center;
       justify-content: center;
       li {
@@ -126,13 +133,22 @@
         align-items: center;
         justify-content: center;
       }
+      li:nth-child(even) {
+        padding-left: 15%;
+      }
       &-icon {
         width: 75%;
         align-self: center;
+        @media (max-width: 700px) {
+          width: 50%;
+        }
       }
       &-specification {
         font-size: 0.708rem;
         align-self: center;
+        @media (max-width: 700px) {
+          font-size: 0.63rem;
+        }
       }
     }
   }

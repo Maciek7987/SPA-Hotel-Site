@@ -34,6 +34,7 @@ import standardRoomDetails1 from "../pictures/rooms/standard/pexels-donald-tong-
 import standardRoomDetails2 from "../pictures/rooms/standard/pexels-cottonbro-3.jpg";
 import standardRoomDetails3 from "../pictures/rooms/standard/pexels-polina-kovaleva-4.jpg";
 
+
 //isolated some variables, them cause errors
 
 let targetBtn = "zeroClick";
@@ -121,6 +122,7 @@ function Ages({ numberOfChild, showAgeUnderSix, id, active, changeStateAges }) {
 }
 
 export default function Book() {
+
   let [value, onChange] = useState(new Date());
   let [arrayAges, setAges] = useState({
     child1: "",
@@ -848,6 +850,7 @@ export default function Book() {
               </div>
             </div>
           </div>
+          
         </article>
         <article className="book-page__article-info">
           <Availability

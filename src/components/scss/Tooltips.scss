@@ -1,7 +1,7 @@
 @import "./variables.scss";
 
 $space: calc(((50vw - 12vw) / 2) - 18.2vw);
-// x - window select guest, 50vw - article-select, 12vw - sum of margins, 18.2vw - count of buttons multiplied by their width
+// x - window select guest, 50vw - article-select, 12vw - sum of margins, 18.2vw - count of buttons multiplied by their width (13*1.4vw)
 // 50vw = 3vw + x + 3vw + 3vw + x + 3vw
 // 50vw = 12vw + 2x
 //50vw - 12vw = 2x | :2
@@ -10,16 +10,32 @@ $space: calc(((50vw - 12vw) / 2) - 18.2vw);
 //to 1200px layout is changed
 $space2: calc(((100vw - 25vw - 4vw - 12vw) / 2) - 28.6vw);
 
+//to 880px layout is changed, 4vw is a sum of margins of article-select,
+$space3: calc(((85vw - 4vw) / 2) - 39vw);
+//to 700px layout is changed
+$space4: calc(((100vw - 4vw) / 2) - 39vw);
 [role="tooltip"].popup-content {
   position: absolute;
-  left: calc(#{$space} / 2 + 3vw) !important;
+  left: calc(#{$space} / 2 + 3vw) !important; //3vw is a margin of select-guest
   width: auto;
   height: auto;
   margin-top: 1.3vh;
   border: none;
   background: transparent;
   @media (max-width: 1200px) {
-    left: calc(#{$space2} / 2 + 10vw + 2vw + 3vw) !important;
+    left: calc(
+      #{$space2} / 2 + 10vw + 2vw + 3vw
+    ) !important; //10vw is a margin of column for title, 2vw is a margin of article-select, 3vw is a margin of select-guest
+  }
+  @media (max-width: 880px) {
+    left: calc(
+      #{$space3} / 2 + 2vw
+    ) !important; //2vw is a margin of article-select
+  }
+  @media (max-width: 700px) {
+    left: calc(
+      #{$space4} / 2 + 2vw
+    ) !important; //2vw is a margin of article-select
   }
 }
 
@@ -112,7 +128,12 @@ $space2: calc(((100vw - 25vw - 4vw - 12vw) / 2) - 28.6vw);
     @media (max-width: 1200px) {
       width: 2.2vw;
       height: 3vh;
-      font-size: .8rem;
+      font-size: 0.8rem;
+    }
+    @media (max-width: 880px) {
+      width: 3vw;
+      height: 4.8vh;
+      font-size: 0.9rem;
     }
     &:hover {
       box-shadow: 0 0 0.166rem $main-color-dark;

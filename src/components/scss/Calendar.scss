@@ -7,6 +7,9 @@
   background: transparent;
   font-family: $secondary-font;
   line-height: 1.125em;
+  @media (max-width: 420px) {
+    height: 80%;
+  }
 }
 .react-calendar--doubleView {
   width: 38.46vw;
@@ -14,10 +17,16 @@
 .react-calendar--doubleView .react-calendar__viewContainer {
   display: flex;
   margin: -0.5em;
+  @media (max-width: 420px) {
+    margin: 0;
+  }
 }
 .react-calendar--doubleView .react-calendar__viewContainer > * {
   width: 50%;
   margin: 0.5em;
+  @media (max-width: 420px) {
+    width: 45%;
+  }
 }
 .react-calendar,
 .react-calendar *,
@@ -42,6 +51,10 @@
   @media (max-width: 1200px) {
     height: 5.07vh;
     margin-bottom: 1.2em;
+  }
+  @media (max-width: 420px) {
+    height: 7vh;
+    margin-bottom: 0.9em;
   }
 }
 .react-calendar__navigation button {
@@ -99,7 +112,11 @@
   }
   @media (max-width: 880px) {
     line-height: 0.8rem;
-    font-size: .98rem;
+    font-size: 0.98rem;
+  }
+  @media (max-width: 420px) {
+    line-height: 0.7rem;
+    font-size: 0.7rem;
   }
 }
 .react-calendar__month-view__days__day--neighboringMonth {

@@ -19,10 +19,6 @@ application created to learn framework "React" and make single-page application
 - react-scroll-horizontal 1.6.6
 - reactjs-popup 2.0.5
 
-### Application was deploy on free account heroku because gitHub Pages had problems with SPA
-
-### [https://spa-hotel-site.herokuapp.com/]
-
 ![Home page](./images/FirstImage-2.png) ![Book page](./images/SecondImage.png)
 
 ## Some information about creating project :)
